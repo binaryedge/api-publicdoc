@@ -1,6 +1,6 @@
 # Service
 
-The Service grabber tries to extract Product specific information from a remote address.
+The Service grabber tries to extract product specific information from a remote address.
 
 ### Service Event Example
 ```
