@@ -3,7 +3,7 @@
 
 <p align="center"><img src ="https://dl.dropboxusercontent.com/s/rk8m8jlf2z8ay5j/how%20to%20use%20api.png?dl=0: 200px;" /></p>
 
-Note: all requests are identified by Job ID are shown in the stream window
+Note: all requests are identified by Job ID and are shown in the stream window.
 
 
 
@@ -16,14 +16,14 @@ Note: all requests are identified by Job ID are shown in the stream window
 
 |   | Input                                                                                                                                                                                                                                                                                                   | Output                                                    |
 |---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| 1 | `curl -v http://api.binaryedge.io/v1/login -H ‘X-APP-ID: insert your app ID' -H ‘X-USER-ID: insert your user ID' `                                                                                                                                                                                        | {"client_token":"client token","stream_url":"stream URL"} |
-| 2 | `curl insert your stream URL -H 'X-Token: insert your client token' `                                                                                                                                                                                                                                     | (data stream)                                             |
-| 3 | `curl http://api.binaryedge.io/v1/tasks,-d,'{"type":"scan", "description": "insert your description here", "options":[{"targets":["insert your IP/ IP network"], "ports":[{"port":insert port, “sample”: insert sample size, "modules": ["insert module"]}]}]}' -v -H 'X-Token:insert your client token'` | {"stream_url":"stream URL","job_id":"Job ID"}             |
+| 1 | `curl -v http://api.binaryedge.io/v1/login -H 'X-APP-ID: InsertAnAppID' -H 'X-USER-ID: InsertYourUserID' `                                                                                                                                                                                        | {"client_token":"client token","stream_url":"stream URL"} |
+| 2 | `curl insert your stream URL -H 'X-Token: InsertYourClientToken' `                                                                                                                                                                                                                                     | (data stream)                                             |
+| 3 | `curl http://api.binaryedge.io/v1/tasks,-d,'{"type":"scan", "description": "InsertYourDescriptionHere", "options":[{"targets":["InsertAnIPAddress/IPNetwork"], "ports":[{"port":InsertPort, “sample”: InsertSampleSize, "modules": ["InsertModule"]}]}]}' -v -H 'X-Token:InsertYourClientToken'` | {"stream_url":"stream URL","job_id":"Job ID"}             |
 
 
 
 
-### Supported Modules:
+### Supported Modules
 
 
 
@@ -62,10 +62,9 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 
 **Q:** What is the sample parameter?
 
-**A: ** The Sample parameter is used to define how many open ports the platform needs to find before stopping the scan. It is useful to test modules and different configurations for each module (that we are adding in the future).
+**A: ** The Sample parameter is used to define how many open ports the platform needs to find before stopping the scan. It is useful to test modules and different configurations for each module (that we are adding in the future). This parameter is optional - by default the scan stops only after scanning the entire list of IP addresses and ports.
 
 **Q:** How do I scan multiple hosts with one request?
-
 
 **A: **
 
