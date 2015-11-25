@@ -67,3 +67,43 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 
 **Q:** How do I scan multiple hosts with one request?
 
+**A: **
+
+```
+options: [{
+   "targets": [array of cidrs (string)],
+   "ports": [{
+       "port": int,
+       "modules": [array of module names (string)],
+       "sample": int
+   }]
+}]
+```
+
+for example:
+
+```
+{
+   "type": "scan",
+   "description": "test a bunch of networks",
+   "options": [
+       {
+         "targets": ["192.168.0.0/24”,"192.168.1.0/24"],
+         "ports": [{
+            "port": 995,
+            "module": “service",
+           },
+           {
+            "port": 22,
+            "module": “ssh"
+           }]
+       }, {
+         "targets": ["192.168.1.0/24"],
+         "ports": [{
+            "port": 5900,
+            "module": “vnc"
+         }]
+       }
+     ]
+ }
+ ```
