@@ -14,7 +14,6 @@ Note: all requests are identified by Job ID are shown in the stream window
 
 
 
-
 |   | Input                                                                                                                                                                                                                                                                                                   | Output                                                    |
 |---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 | 1 | `curl -v http://api.binaryedge.io/v1/login -H ‘X-APP-ID: insert your app ID' -H ‘X-USER-ID: insert your user ID' `                                                                                                                                                                                        | {"client_token":"client token","stream_url":"stream URL"} |
