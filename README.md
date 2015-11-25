@@ -91,7 +91,7 @@ for example:
          "targets": ["xxx.xxx.x.x/xx","xxx.xxx.x.x/xx"],
          "ports": [{
             "port": 995,
-            "module": "service",
+            "module": "service"
            },
            {
             "port": 22,
@@ -104,6 +104,6 @@ for example:
             "module": "vnc"
          }]
        }
-     ]
+     ]     
  }
  ```
