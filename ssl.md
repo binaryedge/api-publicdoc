@@ -1,9 +1,9 @@
-### About
+## About
 SSL Module can analyze the SSL configuration of a server by connecting to it. 
 It is designed to be fast and comprehensive and should help organizations and testers identify misconfigurations affecting their SSL servers.
 
 
-# How to read the list:
+## How to read the list:
 
 
 ###Dictionaries:
