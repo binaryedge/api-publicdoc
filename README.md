@@ -13,11 +13,10 @@ Note: all requests are identified by Job ID and are shown in the stream window.
 
 
 
-
 |   | Input                                                                                                                                                                                                                                                                                                   | Output                                                    |
 |---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| 1 | `curl -v http://api.binaryedge.io/v1/login -H 'X-APP-ID: InsertAnAppID' -H 'X-USER-ID: InsertYourUserID' `                                                                                                                                                                                        | {"client_token":"client token","stream_url":"stream URL"} |
-| 2 | `curl insert your stream URL -H 'X-Token: InsertYourClientToken' `                                                                                                                                                                                                                                     | (data stream)                                             |
+| 1 | `curl -v http://api.binaryedge.io/v1/login -H 'X-APP-ID:InsertYourAppID' -H 'X-USER-ID:InsertYourUserID' `                                                                                                                                                                                        | {"client_token":"client token","stream_url":"stream URL"} |
+| 2 | `curl InsertYourStreamURL -H 'X-Token:InsertYourClientToken' `                                                                                                                                                                                                                                     | (data stream)                                             |
 | 3 | `curl http://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "InsertYourDescriptionHere", "options":[{"targets":["InsertAnIPAddress/IPNetwork"], "ports":[{"port":InsertPort, "sample": InsertSampleSize, "modules": ["InsertModule"]}]}]}' -v -H 'X-Token:InsertYourClientToken'` | {"stream_url":"stream URL","job_id":"Job ID"}             |
 
 
@@ -60,11 +59,25 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 
 ### FAQ
 
-**Q:** What is the sample parameter?
+**Q: What is the sample parameter?**
 
 **A: ** The Sample parameter is used to define how many open ports the platform needs to find before stopping the scan. It is useful to test modules and different configurations for each module (that we are adding in the future). This parameter is optional - by default the scan stops only after scanning the entire list of IP addresses and ports.
 
-**Q:** How do I scan multiple hosts with one request?
+**Q: How can I consume the stream?**
+
+**A: ** The stream outputs to STDOUT, allowing you to consume it in different ways. For example:
+
+- Direct the stream to a file: 
+    - `curl InsertYourStreamURL -H 'X-Token:InsertYourClientToken' > file.txt`
+- Pipe the stream to a custom application you developed to process it:
+    - `curl InsertYourStreamURL -H 'X-Token:InsertYourClientToken' | application_name `
+    
+    
+**Q: What should I do if I get a error 500?**
+
+**A: ** In this case, you should contact support@binaryedge.io
+
+**Q: How do I scan multiple hosts with one request?**
 
 **A: **
 
