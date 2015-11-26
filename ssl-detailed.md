@@ -81,7 +81,7 @@ acceptedCipherSuites: [list]
 ---
 
 # Json Output List:
-### Standart 443 SSL Scan
+### Standard 443 SSL Scan
 
 ```python
 
