@@ -63,7 +63,7 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 
 **A: ** The Sample parameter is used to define how many open ports the platform needs to find before stopping the scan. It is useful to test modules and different configurations for each module (that we are adding in the future). This parameter is optional - by default the scan stops only after scanning the entire list of IP addresses and ports.
 
-<<<<<<< HEAD
+
 **Q: How can I consume the stream?**
 
 **A: ** The stream outputs to STDOUT, allowing you to consume it in different ways. For example:
