@@ -66,7 +66,7 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 
 **Q: How can I consume the stream?**
 
-**A: ** The stream outputs to STDOUT, allowing you to consume it in different ways. For example:
+**A:** The stream outputs to STDOUT, allowing you to consume it in different ways. For example:
 
 - Direct the stream to a file: 
     - `curl InsertYourStreamURL -H 'X-Token:InsertYourClientToken' > file.txt`
@@ -76,10 +76,9 @@ Note: If you want a custom-made module, please contact BinaryEdge.
     
 **Q: What should I do if I get a error 500?**
 
-**A: ** In this case, you should contact support@binaryedge.io
+**A:** In this case, you should contact support@binaryedge.io
 
-**Q: How do I scan multiple hosts with one request?**
-=======
+
 **Q:** How can I consume the stream?
 
 **A: ** The stream outputs to STDOUT, allowing you to consume it in different ways. For example:
@@ -87,9 +86,8 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 
 
 **Q:** How do I scan multiple hosts with one request?
->>>>>>> origin/master
 
-**A: **
+**A:**
 
 ```
 options: [{
