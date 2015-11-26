@@ -47,7 +47,7 @@ msg - Warning sent by the server, for example, "Too many security failures".
       "width": 1280,
       "height": 1024,
       "version": "RFB 003.007",
-      "link": "https://s3-eu-west-1.amazonaws.com/be-vnc-screens/vnc_212.182.21.41_5900_1446568457.jpg"
+      "link": "https://s3-eu-west-1.amazonaws.com/be-vnc-screens/vnc_xxx.xxx.xx.xx_5900_1446568457.jpg"
     }
   },
   ...
