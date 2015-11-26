@@ -79,11 +79,6 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 **A:** In this case, you should contact support@binaryedge.io
 
 
-**Q: How can I consume the stream?**
-
-**A:** The stream outputs to STDOUT, allowing you to consume it in different ways. For example:
-- option1: output to a file: curl InsertYourStreamURL -H 'X-Token:InsertYourClientToken' > file.txt
-
 
 **Q:** How do I scan multiple hosts with one request?
 
