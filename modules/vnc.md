@@ -35,9 +35,9 @@ version - Version of the VNC Protocol
 link - URL link to the screenshot
 
 msg - Warning sent by the server, for example, "Too many security failures".
- 
 
-#### VNC Event Example 
+
+#### VNC Event Example
 ```
 {
   ...

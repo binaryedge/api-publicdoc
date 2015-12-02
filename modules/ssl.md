@@ -2,12 +2,12 @@
 
 ## About
 
-SSL Module can analyze the SSL configuration of a server by connecting to it. 
+SSL Module can analyze the SSL configuration of a server by connecting to it.
 It is designed to be fast and comprehensive and should help organizations and testers identify misconfigurations affecting their SSL servers.
 
 #### Detailed Information:
- 
- https://github.com/binaryedge/api-publicdoc/blob/master/ssl-detailed.md
+
+ https://github.com/binaryedge/api-publicdoc/blob/master/modules/ssl-detailed.md
 
 ## Example:
 

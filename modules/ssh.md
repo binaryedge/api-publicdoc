@@ -45,16 +45,16 @@ Extract SSH keys and algorithms from SSH servers.
 		key - Public Key
 		fingerprint - Fingerprint of the key
 		length - Length of the key
-		
+
 **Algorithms** - Supported Algorithms that the target server report:
 		kex
 		server_host_key
 		encryption
 		mac
 		compression
- 
- 
- 
+
+
+
 ### Example
 
 ###### SSH Event Example  Collapse source

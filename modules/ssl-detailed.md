@@ -1,5 +1,5 @@
 ## About
-SSL Module can analyze the SSL configuration of a server by connecting to it. 
+SSL Module can analyze the SSL configuration of a server by connecting to it.
 It is designed to be fast and comprehensive and should help organizations and testers identify misconfigurations affecting their SSL servers.
 
 
@@ -9,9 +9,9 @@ It is designed to be fast and comprehensive and should help organizations and te
 ###Dictionaries:
 
 ```
-data: 
+data:
 ```
-	
+
 > when you have "name: \<empty\>" means that inside **json[data]** you have a **dictionary**   
 > *example*: json["a"] -> Dict { b: 'bb', c: 'cc' }  
 > *example*: json["a"]["b"] -> bb
@@ -36,7 +36,7 @@ certinfo: [list]
 ```
 ip: string
 ```
-	
+
 > when you have "name: string" means that returns a **string**.  
 > *example*: json["ip"] -> "xxx.x.x.x"
 
@@ -63,12 +63,12 @@ acceptedCipherSuites: [list]
 
 > when you have **"[ ]"** like **"[name]"** that means its optional, may have or not depends on the scan and data collected.   
 > So in the **"[keyExchange]"** you can see that is an **Array** but is optinal, so you may have  **"keyExchange"** or **not**.   
-> 
+>
 > But **"acceptedCipherSuites"** is different, it can return the key **"cipherSuite"** _*OR*_ it will return a string **""**, depending on the data.  
 > *example*: json["scan1"]["acceptedCipherSuites"][0] -> { cipherSuite: ... }  
 > *example*: json["scan2"]["acceptedCipherSuites"][0] -> ""  
-  
-> when you see a **"[int]:"** think of an index/position inside an array, again, depends on the data. 
+
+> when you see a **"[int]:"** think of an index/position inside an array, again, depends on the data.
 > *example*: "test[int]:" test[0] ok, test[1] ok, test[2] error  
 
 
@@ -94,19 +94,19 @@ port: string #ex: 443
 [host]: string #ex: firefox.com
 
 data:
-	
-	#Test the validity of the certificates and get relevant information from the certificate. 
-	certinfo: [list] 
+
+	#Test the validity of the certificates and get relevant information from the certificate.
+	certinfo: [list]
 	[int]:
 		certificateChain: [list]
 		[int]:
 			certificate: [list]
 			[int]:
 				asPEM: [list]
-				[int]: string #ex:[0] Return the certificate 
+				[int]: string #ex:[0] Return the certificate
 
 				subjectPublicKeyinfo: [list]
-				[int]: 
+				[int]:
 					publicKey: [list]
 					[int]:
 						modulus: [list]
@@ -121,23 +121,23 @@ data:
 					publicKeySize: [list]
 					[int]: string #ex:[0] 2048
 
-				version: [list] 
+				version: [list]
 				[int]: string #ex:[0] 2
 
 				extensions: [list]
 				[int]:
 					X509v3SubjectKeyIdentifier: [list]
 					[int]: string #ex:[0] 6A:B1:53:FF:24:2D:F4:1E:D6:E2:F1:D5:5F:8D:BE:FB:44:76:35:18
-					
+
 					X509v3ExtendedKeyUsage: [list]
 					[int]:
-						
+
 						TLSWebClientAuthentication: [list]
 						[int]: string
-						
+
 						TLSWebServerAuthentication: [list]
 						[int]: string
-						
+
 						AuthorityInformationAccess: [list]
 						[int]:
 							CAIssuers: [list]
@@ -152,7 +152,7 @@ data:
 								[int]:
 									listEntry: [list]
 									[int]: string #ex:[0] http://ocsp.digicert.com				
-						
+
 						X509v3CRLDistributionPoints: [list]
 						[int]:
 							FullName: [list]
@@ -162,10 +162,10 @@ data:
 							URI: [list]
 							[int]:
 								listEntry: [list]
-								[int]: string 
+								[int]: string
 								#ex:[0] http://crl3.digicert.com/ssca-sha2-g4.crl
 								#ex:[1] http://crl4.digicert.com/ssca-sha2-g4.crl  
-						
+
 						X509v3BasicConstraints: [list]
 						[int]: string #ex:[0] CA:FALSE
 
@@ -191,7 +191,7 @@ data:
 
 						X509v3AuthorityKeyIdentifier: [list]
 						[int]: string #ex:[0] keyid:0F:80:61:1C:82:31:61:D5:2F:28:E7:8D:46:38:B4:2C:E1:C6:D9:E2
-						
+
 						X509v3CertificatePolicies: [list]
 						[int]: [list]
 							Policy: [list]
@@ -214,7 +214,7 @@ data:
 				[int]: value #ex: 0273213B48220C3CE06B4560AF04455B
 
 				subject: [list]
-				[int]: 
+				[int]:
 						countryName: [list]
 						[int]: string #ex:[0] US
 
@@ -234,7 +234,7 @@ data:
 				[int]:
 					notAfter: [list]
 					[int]: string #ex:[0] Nov 22 12:00:00 2016 GMT
-					
+
 					notBefore: [list]
 					[int]: string #ex:[0] Feb  6 00:00:00 2014 GMT
 
@@ -248,9 +248,9 @@ data:
 
 					organizationName: [list]
 					[int]: string #ex:[0] DigiCert Inc
-				
+
 				position: string #ex: leaf
-				
+
 				sha1Fingerprint: string #ex: 9e0c9ca295cfcd94bf8f643bcee3f0044ec98087
 
 		certificateValidation
@@ -279,16 +279,16 @@ data:
 
 							serialNumber: [list]
 							[int]: string #ex:[0] 0273213B48220C3CE06B4560AF04455B
-							
+
 							issuerNameHash: [list]
 							[int]: string #ex:[0] 105FA67A80089DB5279F35CE830B43889EA3C70D
-							
+
 							issuerKeyHash: [list]
 							[int]: string #ex:[0] 0F80611C823161D52F28E78D4638B42CE1C6D9E2
-						
+
 						thisUpdate: [list]
 						[int]: string #ex:[0] Oct 21 08:51:00 2015 GMT
-						
+
 						certStatus: [list]
 						[int]: string #ex:[0] good
 
@@ -310,7 +310,7 @@ data:
 		title: string #ex: Certificate Information
 
 	#Tests for Deflate Compression
-	compression: [list] 
+	compression: [list]
 	[int]:
 		compressionMethod: [list]
 		[int]:
@@ -320,7 +320,7 @@ data:
 		title: string #ex: Deflate Compression
 
 	#Tests for the OpenSSL Heartbleed vulnerability
-	heartbleed: [list] 
+	heartbleed: [list]
 	[int]:
 		openSslHeartbleed: [list]
 		[int]:
@@ -351,7 +351,7 @@ data:
 		[int]:
 			errors:	string #ex: 0
 			failedAttempts:	string #ex: 0
-			isSupported: True/False	
+			isSupported: True/False
 			successfulAttempts:	string #ex: 5
 			totalAttempts: string  #ex: 5
 		sessionResumptionWithTLSTickets: [list]
@@ -363,9 +363,9 @@ data:
 	#SSL 2.0 OpenSSL cipher
 	sslv2: [list]
 	<*1>
-	
+
 	#SSL 2.0 OpenSSL cipher
-	sslv3: [list] 
+	sslv3: [list]
 	<*1>
 
 	#TLS 1.0 OpenSSL cipher
@@ -408,7 +408,7 @@ data:
                 [Cofactor]: string #ex: 1
                 [Field_Type]: string #ex: prime-field
                 Generator: string #ex: 0x008094456061..
-                [GeneratorType]: string #ex: uncompressed 
+                [GeneratorType]: string #ex: uncompressed
                 GroupSize: string #ex: 256
                 [Order]: string #ex: 0x00fff..
                 [prime OR Prime]: string #ex: 0x00ffff..
@@ -416,7 +416,7 @@ data:
                 Type: string #ex: ECDH
 
 			anonymous: True/False
-			connectionStatus: string 
+			connectionStatus: string
 			keySize: string #ex: 128
 			name: string #ex: AES128-GCM-SHA256
 
@@ -431,7 +431,7 @@ data:
 				Cofactor: string #ex: 1
 				Field_Type: string #ex: prime-field
 				Generator: string #ex: 0x008094456061..
-				GeneratorType: string #ex: uncompressed	
+				GeneratorType: string #ex: uncompressed
 				GroupSize: string #ex: 256
 				Order: string #ex: 0x00fff..
 				Prime: string #ex: 0x00ffff..
@@ -439,12 +439,12 @@ data:
 				Type: string #ex: ECDH
 
 			anonymous: True/False
-			connectionStatus: string 
+			connectionStatus: string
 			keySize: string #ex: 128
 			name: string #ECDHE-RSA-AES128-GCM-SHA256
 
 	isProtocolSupported: True/False
-	title: string 
+	title: string
 		#ex: SSLV2 Cipher Suites
 		#ex: SSLV3 Cipher Suites
 		#ex: TLSV1 Cipher Suites
