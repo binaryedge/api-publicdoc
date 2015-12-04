@@ -19,7 +19,11 @@ The Service grabber tries to extract product specific information from a remote 
         {
             "service":
             {
-                "name":"http"
+                "name":"http",
+                "product":"Apache httpd",
+                "version":"2.2.15",
+                "extrainfo":"(CentOS)",
+                "cpe":["cpe:/a:apache:http_server:2.2.15"]
             },
             "script":
             [
