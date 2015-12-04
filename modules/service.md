@@ -4,7 +4,8 @@ The Service grabber tries to extract product specific information from a remote 
 
 ### Service Event Example
 ```
- {"result_type":"service",
+ {
+  "result_type":"service",
     "provider":"min-29-12699-ustx-dev",
     "origin":"grabber",
     "src":{
@@ -16,16 +17,6 @@ The Service grabber tries to extract product specific information from a remote 
     {
         "data":
         {
-            "state":"up",
-            "port":
-            {
-                "state":
-                {
-                    "state":"open",
-                    "reason":"syn-ack",
-                    "reason_ttl":"52"
-                }
-            },
             "service":
             {
                 "name":"http"
@@ -39,9 +30,12 @@ The Service grabber tries to extract product specific information from a remote 
                 {
                     "id":"http-title",
                     "output":"Invalid URL",
+                    scripts:
+                    {
                     ....
                         <extra script information, dynamic because if depends on the script>
                     ....
+                    }
                 }
             ]
         }
