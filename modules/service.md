@@ -5,13 +5,18 @@ The Service grabber tries to extract product specific information from a remote 
 ### Service Event Example
 ```
  {
-  "result_type":"service",
-    "provider":"min-29-12699-ustx-dev",
-    "origin":"grabber",
-    "src":{
-        "ip":"xx.xxx.xx.x",
-        "port":80,
-        "protocol":"tcp"
+    "origin": {
+      "type": "service",
+      "job_id": "client-816f1185-4bc1-4b5f-9a7d-61a2df315a6b",
+      "client_id": "client",
+      "minion": "min-29-13130-uk",
+      "module": "grabber",
+      "ts": 1453385574412
+    },
+    "target": {
+      "ip": "X.X.X.X",
+      "port": 80,
+      "protocol": "tcp"
     },
     "result":
     {
@@ -37,13 +42,12 @@ The Service grabber tries to extract product specific information from a remote 
                     scripts:
                     {
                     ....
-                        <extra script information, dynamic because if depends on the script>
+                        <extra script information, dynamic, because it depends on the script>
                     ....
                     }
                 }
             ]
         }
-    },
-    "ts":1446516004130
+    }
 }
 ```

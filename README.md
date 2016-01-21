@@ -1,16 +1,8 @@
 # How to use BinaryEdge’s API
 
-
 <p align="center"><img src ="https://dl.dropboxusercontent.com/s/alzaxfybeckchos/how_to_use_api_2.png?dl=0: 200px;" /></p>
 
 Note: all requests are identified by Job ID and are shown in the stream window.
-
-
-
-
-
-
-
 
 
 |   | Input                                                                                                                                                                                                                                                                                                   | Output                                                    |
@@ -71,8 +63,21 @@ _Detailed documentation_: [service module documentation](https://github.com/bina
 Note: If you want a custom-made module, please contact BinaryEdge.
 
 
+### Client Errors
 
+Sending invalid JSON:
 
+```
+HTTP/1.1 400 Bad Request
+{"message":"Invalid json"}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 400 Bad Request
+{"message":"Unauthorized"}
+```
 
 ### FAQ
 
