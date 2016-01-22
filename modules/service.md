@@ -9,7 +9,7 @@ The Service grabber tries to extract product specific information from a remote 
       "type": "service",
       "job_id": "client-816f1185-4bc1-4b5f-9a7d-61a2df315a6b",
       "client_id": "client",
-      "minion": "min-29-13130-uk",
+      "country": "uk",
       "module": "grabber",
       "ts": 1453385574412
     },
