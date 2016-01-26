@@ -16,7 +16,7 @@ It is designed to be fast and comprehensive and should help organizations and te
 
 ```json
 {
-   "ip": "xxx.xxx.x.xxx:xxx",
+  "ip": "xxx.xxx.x.xxx:xxx",
   "ipv6": "xxxx:xxxx:xxxx:xxx::xx",
   "port": "587",
   "host": "smtp.gmail.com",

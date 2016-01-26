@@ -1,7 +1,6 @@
-#SSH
+# SSH
 
 Extract SSH keys and algorithms from SSH servers.
-
 
 ## Schema
 
@@ -61,12 +60,18 @@ Extract SSH keys and algorithms from SSH servers.
 
 ```
 {
-  "result_type": "ssh",
-  "provider": "min-29-16916-uk-dev",
-  "origin": "grabber",
-  "src": {
-    "ip": "xx.xxx.xxx.xxx",
-    "port": 22
+  "origin": {
+    "type": "ssh",
+    "job_id": "client-816f1185-4bc1-4b5f-9a7d-61a2df315a6b",
+    "client_id": "client",
+    "country": "uk",
+    "module": "grabber",
+    "ts": 1453385574412
+  },
+  "target": {
+    "ip": "X.X.X.X",
+    "port": 22,
+    "protocol": "tcp"
   },
   "result": {
     "data": {
@@ -146,7 +151,6 @@ Extract SSH keys and algorithms from SSH servers.
       },
       "banner": "SSH-2.0-OpenSSH_6.6.1p1"
     }
-  },
-  "ts": 1446384845053
+  }
 }
 ```
