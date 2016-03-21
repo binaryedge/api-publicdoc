@@ -62,6 +62,28 @@ _Detailed documentation_: [service module documentation](https://github.com/bina
 Note: If you want a custom-made module, please contact BinaryEdge.
 
 
+### GET /stream/job_id - Job Replay
+
+If you want to retrieve the results from a previously requested job, you can replay the stream with this endpoint.
+
+```
+curl https://stream.api.binaryedge.io/v1/stream/JOB_ID -H 'X-Token:InsertYourClientToken'
+
+HTTP/1.1 200 OK
+<Stream results from request job>
+```
+
+### POST /tasks/job_id/revoke - Job Revoke
+
+If you want to cancel a request job:
+
+```
+curl -XPOST https://api.binaryedge.io/v1/tasks/JOB_ID/revoke -H  'X-Token:InsertYourClientToken'
+
+HTTP/1.1 200 OK
+{"message": "Job revoked"}
+```
+
 ### Job Status
 
 In order for you to know the status of your jobs we provide information in 2 distinct ways:
@@ -78,14 +100,6 @@ In your stream you will find messages providing insight on the current status of
 		"job_id": "c4773cb-aa1e-4356eac1ad08",
 		"type": "job_status",
     ...
-	},
-	"metrics": {
-		"num_initial_tasks": 1,
-		"num_targets": 1,
-		"time_to_process": "0.266140937805"
-	},
-	"extrainfo": {
-    // Parameters of job requested
 	},
 	"status": {
 		"success": null,
@@ -138,7 +152,6 @@ Where Status can be:
   * "Revoked": Job was revoked by user;
   * "Success": Job completed successfully;
   * "Failed": Job completed, but did not finish.
-
 
 ### Error Messages
 
