@@ -54,17 +54,22 @@ _Description_: Extract VNC details and screenshot
 _Detailed documentation_: [vnc module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/vnc.md "vnc")
 
 ##### 4. service
-_Description_: Extract product specific information, e.g. product name, version.
+_Description_: Extract detailed product specific information, e.g. product name, version, headers, scripts. If you just want product name and version, consider using the faster "service-simple".
 
 _Detailed documentation_: [service module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service.md "service")
 
-##### 5. Custom Modules
+##### 5. service-simple
+_Description_: Extract basic product specific information, e.g. product name, version. This module is much faster than "service", since it returns less information.
+
+_Detailed documentation_: [service module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
+
+##### 6. Custom Modules
 Note: If you want a custom-made module, please contact BinaryEdge.
 
 
 ### GET /stream/job_id - Job Replay
 
-If you want to retrieve the results from a previously requested job, you can replay the stream with this endpoint.
+To retrieve the results from a previously requested job, you can replay the stream with this endpoint.
 
 ```
 curl https://stream.api.binaryedge.io/v1/stream/JOB_ID -H 'X-Token:InsertYourClientToken'
@@ -75,7 +80,7 @@ HTTP/1.1 200 OK
 
 ### POST /tasks/job_id/revoke - Job Revoke
 
-If you want to cancel a request job:
+To cancel a requested job:
 
 ```
 curl -XPOST https://api.binaryedge.io/v1/tasks/JOB_ID/revoke -H  'X-Token:InsertYourClientToken'
@@ -89,7 +94,26 @@ HTTP/1.1 200 OK
 In order for you to know the status of your jobs we provide information in 2 distinct ways:
 
 
-#### 1. Status Messages
+#### 1. Status Endpoint GET /tasks/job_id/status
+
+To check the current status of a Requested job:
+
+```
+curl https://api.binaryedge.io/v1/tasks/<job_id>/status -H 'X-Token:InsertYourClientToken'
+
+HTTP/1.1 200 OK
+{"message"="STATUS"}
+```
+
+Where Status can be:
+
+  * "Requested": Job was requested successfully;
+  * "Revoked": Job was revoked by user;
+  * "Success": Job completed successfully;
+  * "Failed": Job completed, but did not finish.
+
+
+#### 2. Status Messages
 
 In your stream you will find messages providing insight on the current status of your jobs:
 
@@ -135,23 +159,6 @@ Meaning of the status fields:
   * "revoked": If the job was canceled by the user or not.
 
 
-#### 2. Status Endpoint GET /tasks/job_id/status
-
-To check the current status of a Requested job:
-
-```
-curl https://api.binaryedge.io/v1/tasks/<job_id>/status -H 'X-Token:InsertYourClientToken'
-
-HTTP/1.1 200 OK
-{"message"="STATUS"}
-```
-
-Where Status can be:
-
-  * "Requested": Job was requested successfully;
-  * "Revoked": Job was revoked by user;
-  * "Success": Job completed successfully;
-  * "Failed": Job completed, but did not finish.
 
 ### Error Messages
 
