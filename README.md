@@ -58,10 +58,10 @@ _Description_: Extract detailed product specific information, e.g. product name,
 
 _Detailed documentation_: [service module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service.md "service")
 
-##### 5. service-simple
+##### 5. service-simple (beta)
 _Description_: Extract basic product specific information, e.g. product name, version. This module is much faster than "service", since it returns less information.
 
-_Detailed documentation_: [service module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
+_Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
 
 ##### 6. Custom Modules
 Note: If you want a custom-made module, please contact BinaryEdge.
