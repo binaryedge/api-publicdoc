@@ -72,7 +72,7 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 To retrieve the results from a previously requested job, you can replay the stream with this endpoint.
 
 ```
-curl https://stream.api.binaryedge.io/v1/stream/JOB_ID -H 'X-Token:InsertYourClientToken'
+curl https://stream.api.binaryedge.io/v1/replay/JOB_ID -H 'X-Token:InsertYourClientToken'
 
 HTTP/1.1 200 OK
 <Stream results from request job>
@@ -94,7 +94,7 @@ HTTP/1.1 200 OK
 In order for you to know the status of your jobs we provide information in 2 distinct ways:
 
 
-#### 1. Status Endpoint GET /tasks/job_id/status
+#### 1. GET /tasks/job_id/status - Status Endpoint
 
 To check the current status of a Requested job:
 
