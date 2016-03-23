@@ -1,6 +1,6 @@
 # Service
 
-The Service grabber tries to extract product specific information from a remote address.
+The Service grabber tries to extract product specific information from a remote address. If you just want product name and version, consider using the faster [service-simple module](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service")
 
 ### Service Event Example
 ```
