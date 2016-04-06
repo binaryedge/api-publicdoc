@@ -67,7 +67,7 @@ _Detailed documentation_: [service-simple module documentation](https://github.c
 Note: If you want a custom-made module, please contact BinaryEdge.
 
 
-### GET /stream/job_id - Job Replay
+### GET /v1/replay/job_id - Job Replay
 
 To retrieve the results from a previously requested job, you can replay the stream with this endpoint.
 
@@ -78,7 +78,7 @@ HTTP/1.1 200 OK
 <Stream results from request job>
 ```
 
-### POST /tasks/job_id/revoke - Job Revoke
+### POST /v1/tasks/job_id/revoke - Job Revoke
 
 To cancel a requested job:
 
@@ -94,7 +94,7 @@ HTTP/1.1 200 OK
 In order for you to know the status of your jobs we provide information in 2 distinct ways:
 
 
-#### 1. GET /tasks/job_id/status - Status Endpoint
+#### 1. GET /v1/tasks/job_id/status - Status Endpoint
 
 To check the current status of a Requested job:
 
