@@ -10,13 +10,13 @@ This modules provides the following data:
   * cpe: Common Platform Enumeration, if available
 
 
-  ### Service Request Example
+### Service Simple Request Example
 
   ```
 curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["149.202.178.130"], "ports":[{"port":80,"protocol":"tcp","modules": ["service-simple"]}]}]}' -H 'X-Token:NNNNNN'
   ```
 
-### Service Event Example
+### Service Simple Event Example
 ```
 
 {
