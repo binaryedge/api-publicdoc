@@ -8,7 +8,7 @@ Note: all requests are identified by Job ID and are shown in the stream window.
 |   | Input                                                                                                                                                                                                                                                                                                   | Output                                                    |
 |---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 | 1 | `curl https://stream.api.binaryedge.io/v1/stream -H 'X-Token:InsertYourClientToken' `                                                                                                                                                                                                                                     | (data stream)                                             |
-| 2 | `curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "InsertYourDescriptionHere", "options":[{"targets":["InsertAnIPAddress/IPNetwork"], "ports":[{"port":InsertPort, "sample": InsertSampleSize, "modules": ["InsertModule"]}]}]}' -v -H 'X-Token:InsertYourClientToken'` | {"stream_url":"stream URL","job_id":"Job ID"}             |
+| 2 | `curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "InsertYourDescriptionHere", "options":[{"targets":["InsertAnIPAddress/IPNetwork"], "ports":[{"port":InsertPort, "protocol": "tcp or udp", "modules": ["InsertModule"]}]}]}' -v -H 'X-Token:InsertYourClientToken'` | {"stream_url":"stream URL","job_id":"Job ID"}             |
 
 
 ### Data Stream
@@ -67,7 +67,7 @@ _Detailed documentation_: [service-simple module documentation](https://github.c
 Note: If you want a custom-made module, please contact BinaryEdge.
 
 
-### GET /stream/job_id - Job Replay
+### GET /v1/replay/job_id - Job Replay
 
 To retrieve the results from a previously requested job, you can replay the stream with this endpoint.
 
@@ -78,7 +78,7 @@ HTTP/1.1 200 OK
 <Stream results from request job>
 ```
 
-### POST /tasks/job_id/revoke - Job Revoke
+### POST /v1/tasks/job_id/revoke - Job Revoke
 
 To cancel a requested job:
 
@@ -94,7 +94,7 @@ HTTP/1.1 200 OK
 In order for you to know the status of your jobs we provide information in 2 distinct ways:
 
 
-#### 1. GET /tasks/job_id/status - Status Endpoint
+#### 1. GET /v1/tasks/job_id/status - Status Endpoint
 
 To check the current status of a Requested job:
 

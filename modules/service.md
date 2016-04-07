@@ -2,6 +2,12 @@
 
 The Service grabber tries to extract product specific information from a remote address. If you just want product name and version, consider using the faster [service-simple module](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service")
 
+### Service Request Example
+
+```
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["149.202.178.130"], "ports":[{"port":80,"protocol":"tcp","modules": ["service"]}]}]}' -H 'X-Token:XXXXXX'
+```
+
 ### Service Event Example
 ```
  {
@@ -23,29 +29,27 @@ The Service grabber tries to extract product specific information from a remote 
         "data":
         {
             "service":
-            {
-                "name":"http",
-                "product":"Apache httpd",
-                "version":"2.2.15",
-                "extrainfo":"(CentOS)",
-                "cpe":["cpe:/a:apache:http_server:2.2.15"]
-            },
-            "script":
-            [
-                {
-                    "id":"http-methods",
-                    "output":"No Allow or Public header in OPTIONS response (status code 400)"
-                },
-                {
-                    "id":"http-title",
-                    "output":"Invalid URL",
-                    scripts:
-                    {
-                    ....
-                        <extra script information, dynamic, because it depends on the script>
-                    ....
-                    }
-                }
+              {
+        				"name": "http",
+        				"product": "nginx",
+        				"version": "1.4.6",
+        				"extrainfo": "Ubuntu",
+        				"ostype": "Linux",
+        				"cpe": ["cpe:/a:igor_sysoev:nginx:1.4.6", "cpe:/o:linux:linux_kernel"]
+        			},
+        		"scripts": [
+              {
+        				"results": ["GET", "HEAD"],
+        				"id": "http-methods",
+        				"output": "\n  Supported Methods: GET HEAD"
+        			}, {
+        				"results": ["nginx/1.4.6 (Ubuntu)"],
+        				"id": "http-server-header",
+        				"output": "nginx/1.4.6 (Ubuntu)"
+        			},
+              {
+                  <extra scripts information, dynamic, depending on service detected>
+              }
             ]
         }
     }

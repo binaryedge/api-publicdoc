@@ -10,7 +10,13 @@ This modules provides the following data:
   * cpe: Common Platform Enumeration, if available
 
 
-### Service Event Example
+### Service Simple Request Example
+
+  ```
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["149.202.178.130"], "ports":[{"port":80,"protocol":"tcp","modules": ["service-simple"]}]}]}' -H 'X-Token:NNNNNN'
+  ```
+
+### Service Simple Event Example
 ```
 
 {
@@ -30,11 +36,14 @@ This modules provides the following data:
 	"result": {
     "data": {
       "service": {
-  			"product": "Tornado httpd",
-  			"version": "2.1.1git",
-  			"cpe": ["cpe:/a:tornadoweb:tornado:2.1.1git"],
-  			"name": "http"
-      }
+				"product": "nginx",
+				"name": "http",
+				"extrainfo": "Ubuntu",
+				"cpe": ["cpe:/a:igor_sysoev:nginx:1.4.6", "cpe:/o:canonical:ubuntu_linux", "cpe:/o:linux:linux_kernel"],
+				"version": "1.4.6",
+				"ostype": "Linux",
+				"method": "probe_matching"
+			}
 		}
 	}
 }
