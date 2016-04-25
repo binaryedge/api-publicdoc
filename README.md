@@ -63,7 +63,12 @@ _Description_: Extract basic product specific information, e.g. product name, ve
 
 _Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
 
-##### 6. Custom Modules
+##### 6. HTTP
+_Description_: Extract HTTP information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
+
+_Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/http.md "http")
+
+##### 7. Custom Modules
 Note: If you want a custom-made module, please contact BinaryEdge.
 
 
@@ -89,7 +94,7 @@ HTTP/1.1 200 OK
 {"message": "Job revoked"}
 ```
 
-### Job Status
+### Job Status (Beta)
 
 In order for you to know the status of your jobs we provide information in 2 distinct ways:
 
@@ -102,7 +107,7 @@ To check the current status of a Requested job:
 curl https://api.binaryedge.io/v1/tasks/<job_id>/status -H 'X-Token:InsertYourClientToken'
 
 HTTP/1.1 200 OK
-{"message"="STATUS"}
+{"message":"<STATUS>"}
 ```
 
 Where Status can be:
