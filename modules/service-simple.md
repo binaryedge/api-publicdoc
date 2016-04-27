@@ -13,7 +13,7 @@ This modules provides the following data:
 ### Service Simple Request Example
 
   ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["149.202.178.130"], "ports":[{"port":80,"protocol":"tcp","modules": ["service-simple"]}]}]}' -H 'X-Token:NNNNNN'
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["149.202.178.130"], "ports":[{"port":80,"protocol":"tcp","modules": ["service-simple"]}]}]}' -H "X-Token:NNNNNN"
   ```
 
 ### Service Simple Event Example

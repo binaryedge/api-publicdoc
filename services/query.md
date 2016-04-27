@@ -10,7 +10,7 @@ Currently, the query endpoint only supports 1 type of service, VNC.
 
 VNC allows to get a screenshot associated with a particular IP.
 
-`curl https://api.binaryedge.io/v1/query/vnc/X.X.X.X -H 'X-Token:InsertYourClientToken' `
+`curl https://api.binaryedge.io/v1/query/vnc/X.X.X.X -H "X-Token:InsertYourClientToken" `
 
 ```
 {

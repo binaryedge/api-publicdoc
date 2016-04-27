@@ -7,8 +7,8 @@ Note: all requests are identified by Job ID and are shown in the stream window.
 
 |   | Input                                                                                                                                                                                                                                                                                                   | Output                                                    |
 |---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| 1 | `curl https://stream.api.binaryedge.io/v1/stream -H 'X-Token:InsertYourClientToken' `                                                                                                                                                                                                                                     | (data stream)                                             |
-| 2 | `curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "InsertYourDescriptionHere", "options":[{"targets":["InsertAnIPAddress/IPNetwork"], "ports":[{"port":InsertPort, "protocol": "tcp or udp", "modules": ["InsertModule"]}]}]}' -v -H 'X-Token:InsertYourClientToken'` | {"stream_url":"stream URL","job_id":"Job ID"}             |
+| 1 | `curl https://stream.api.binaryedge.io/v1/stream -H "X-Token:InsertYourClientToken" `                                                                                                                                                                                                                                     | (data stream)                                             |
+| 2 | `curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "InsertYourDescriptionHere", "options":[{"targets":["InsertAnIPAddress/IPNetwork"], "ports":[{"port":InsertPort, "protocol": "tcp or udp", "modules": ["InsertModule"]}]}]}' -v -H "X-Token:InsertYourClientToken"` | {"stream_url":"stream URL","job_id":"Job ID"}             |
 
 
 ### Data Stream
@@ -87,7 +87,7 @@ Note: If you want a custom-made module, please contact BinaryEdge.
 To retrieve the results from a previously requested job, you can replay the stream with this endpoint.
 
 ```
-curl https://stream.api.binaryedge.io/v1/replay/JOB_ID -H 'X-Token:InsertYourClientToken'
+curl https://stream.api.binaryedge.io/v1/replay/JOB_ID -H "X-Token:InsertYourClientToken"
 
 HTTP/1.1 200 OK
 <Stream results from request job>
@@ -98,7 +98,7 @@ HTTP/1.1 200 OK
 To cancel a requested job:
 
 ```
-curl -XPOST https://api.binaryedge.io/v1/tasks/JOB_ID/revoke -H  'X-Token:InsertYourClientToken'
+curl -XPOST https://api.binaryedge.io/v1/tasks/JOB_ID/revoke -H  "X-Token:InsertYourClientToken"
 
 HTTP/1.1 200 OK
 {"message": "Job revoked"}
@@ -114,7 +114,7 @@ In order for you to know the status of your jobs we provide information in 2 dis
 To check the current status of a Requested job:
 
 ```
-curl https://api.binaryedge.io/v1/tasks/<job_id>/status -H 'X-Token:InsertYourClientToken'
+curl https://api.binaryedge.io/v1/tasks/<job_id>/status -H "X-Token:InsertYourClientToken"
 
 HTTP/1.1 200 OK
 {"message":"<STATUS>"}
@@ -203,9 +203,9 @@ HTTP/1.1 400 Bad Request
 **A:** The stream outputs to STDOUT, allowing you to consume it in different ways. For example:
 
 - Direct the stream to a file:
-    - `curl https://stream.api.binaryedge.io/v1/stream -H 'X-Token:InsertYourClientToken' > file.txt`
+    - `curl https://stream.api.binaryedge.io/v1/stream -H "X-Token:InsertYourClientToken" > file.txt`
 - Pipe the stream to a custom application you developed to process it:
-    - `curl https://stream.api.binaryedge.io/v1/stream -H 'X-Token:InsertYourClientToken' | application_name `
+    - `curl https://stream.api.binaryedge.io/v1/stream -H "X-Token:InsertYourClientToken" | application_name `
 
 
 **Q: What should I do if I get a error 500?**

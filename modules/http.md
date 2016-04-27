@@ -5,7 +5,7 @@ Extract HTTP information, e.g. HTTP headers, HTTP status codes, HTTP body, and r
 ## HTTP Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"protocol":"tcp","modules": ["http"]}]}]}' -H 'X-Token:<Token>'
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"protocol":"tcp","modules": ["http"]}]}]}' -H "X-Token:<Token>"
 ```
 
 ## Schema
@@ -58,12 +58,12 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
 	* redirects - List of redirects followed
 		* statusCode - Redirect status code
 		* redirectUri - Redirect location
-	
+
 ## HTTP Event Example
 The HTTP module request:
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["2a03:2880:2130:cf24:face:b00c::25de"], "ports":[{"port":80,"protocol":"tcp","modules": ["http"]}]}]}' -H 'X-Token:<Token>'
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["2a03:2880:2130:cf24:face:b00c::25de"], "ports":[{"port":80,"protocol":"tcp","modules": ["http"]}]}]}' -H "X-Token:<Token>"
 ```
 
 Would generate a output similar to:
