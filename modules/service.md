@@ -5,7 +5,7 @@ The Service grabber tries to extract product specific information from a remote 
 ### Service Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["149.202.178.130"], "ports":[{"port":80,"protocol":"tcp","modules": ["service"]}]}]}' -H 'X-Token:XXXXXX'
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["149.202.178.130"], "ports":[{"port":80,"protocol":"tcp","modules": ["service"]}]}]}' -H "X-Token:XXXXXX"
 ```
 
 ### Service Event Example
