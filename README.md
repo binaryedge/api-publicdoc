@@ -175,13 +175,22 @@ Meaning of the status fields:
 
 
 
+### Query Endpoints
+
+In order for you get information on certain ips
+
+"/query/vnc/{ip}"
+"/query/ip"
+"/query/raw"
+
+#### GET /v1/query/vnc/IP - VNC Endpoint
 ### Error Messages
 
-Sending invalid JSON:
+Querying for an IP that is not on record:
 
 ```
-HTTP/1.1 400 Bad Request
-{"message":"Invalid json"}
+HTTP/1.1 404 Not Found
+{"message": "No record found."}
 ```
 
 Sending invalid Token:
@@ -189,6 +198,65 @@ Sending invalid Token:
 ```
 HTTP/1.1 400 Bad Request
 {"message":"Unauthorized"}
+```
+
+### Response
+
+#### GET /v1/query/ip/IP - IP Data Endpoint
+### Error Messages
+
+
+Querying for an IP that is not on record:
+
+```
+HTTP/1.1 404 Not Found
+{"message": "No record found."}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 400 Bad Request
+{"message":"Unauthorized"}
+```
+
+### Response
+
+```
+curl -v https://api.dev.binaryedge.io/v1/query/ip?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
+```
+```
+{
+  "info": {
+    "country.isocode": "US"
+  },
+  "http": {
+    "80.tcp": {
+      "response.headers.server": "nginx/1.8.0",
+      "response.httpVersion": "1.1",
+      "response.body": "\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n\n<head>\n\n<meta name=\"Description\" content=\"Information architecture, Web Design, Web Standards.\" />\n<meta name=\"Keywords\" content=\"your, keywords\" />\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n<meta name=\"Robots\" content=\"index,follow\" />\t\n\n<title>Bizprofit Network (Login)</title>\n\n<link href=\"css/login.css\" rel=\"stylesheet\" type=\"text/css\" />\n</head>\n<body id=\"common\">\n<div id=\"page\">\n   <div id=\"container\">\n\t\t<div id=\"image\">&nbsp;</div>\n\t\t<div class=\"form-login\">\n         \n               <form method=\"POST\" id=\"form-login\" action=\"login.php\"> \n                  <table>\n                  <tbody>\n                     <tr>\n                        <td>Username</td><td>: <input name=\"username\" style=\"width: 90px;\" type=\"text\"></td>\n                     </tr>\n                     <tr>\n                        <td>Password</td><td>: <input name=\"password\" value=\"\" style=\"width: 90px;\" type=\"password\"></td> \n                     </tr>\n                     <tr>\n                        <td>&nbsp;</td>\n                        <td><input class=\"button\" name=\"login\" value=\"LOGIN\" style=\"border: medium none;\" type=\"submit\"></td>\n                     </tr>\n                   </tbody></table>\n               </form>\n            \n      </div>\n\t</div>\n</div>\n\n</body>\n</html>\n",
+      "request.headers.User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
+      "request.url": "http://[45.63.84.115]/",
+      "response.headers.transfer-encoding": "chunked",
+      "response.headers.expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "ts": "2016-05-23 09:35:32",
+      "response.href": "http://[45.63.84.115]/login.php",
+      "response.headers.content-type": "text/html",
+      "response.headers.pragma": "no-cache",
+      "response.headers.cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "response.headers.date": "Mon, 23 May 2016 09:35:32 GMT",
+      "response.headers.set-cookie": "[\"PHPSESSID=n70oq06h3lgt63da6bs11f70m5; path=/\"]",
+      "response.statusMessage": "OK",
+      "response.headers.x-powered-by": "PHP/5.3.3",
+      "response.redirects": "[{\"redirectUri\": \"http://[45.63.84.115]/login.php\", \"statusCode\": 302}]",
+      "response.headers.connection": "close",
+      "response.statusCode": "200"
+    }
+  },
+  "target": {
+    "ip": "45.63.84.115"
+  }
+}
 ```
 
 ### FAQ
@@ -253,6 +321,6 @@ for example:
             "module": "vnc"
          }]
        }
-     ]     
+     ]
  }
  ```
