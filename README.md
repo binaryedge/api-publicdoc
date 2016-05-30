@@ -177,11 +177,7 @@ Meaning of the status fields:
 
 ### Query Endpoints
 
-In order for you get information on certain ips
-
-"/query/vnc/{ip}"
-"/query/ip"
-"/query/raw"
+In order for you get historical information on certain ips
 
 #### GET /v1/query/vnc/IP - VNC Endpoint
 ### Error Messages
@@ -201,7 +197,23 @@ HTTP/1.1 400 Bad Request
 ```
 
 ### Response
-
+```
+curl -v https://api.binaryedge.io/v1/query/vnc?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
+```
+```
+{
+  "vnc": {
+    "5900.tcp": {
+      "version": "3.8",
+      "auth_enabled": "true",
+      "ts": "2016-04-07 14:10:21"
+    }
+  },
+  "target": {
+    "ip": "1.22.230.100"
+  }
+}
+```
 #### GET /v1/query/ip/IP - IP Data Endpoint
 ### Error Messages
 
@@ -223,7 +235,7 @@ HTTP/1.1 400 Bad Request
 ### Response
 
 ```
-curl -v https://api.dev.binaryedge.io/v1/query/ip?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
+curl -v https://api.binaryedge.io/v1/query/ip?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
 ```
 ```
 {
@@ -257,6 +269,59 @@ curl -v https://api.dev.binaryedge.io/v1/query/ip?ip=XXX.XXX.XXX.XXX -H 'X-Token
     "ip": "45.63.84.115"
   }
 }
+```
+
+
+#### GET /v1/query/raw/IP - Raw IP Data Endpoint
+### Error Messages
+
+
+Querying for an IP that is not on record:
+
+```
+HTTP/1.1 404 Not Found
+{"message": "No record found."}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 400 Bad Request
+{"message":"Unauthorized"}
+```
+
+### Response
+
+```
+curl -v https://api.binaryedge.io/v1/query/raw?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
+```
+```
+{
+  "origin": {
+    "country": "uk",
+    "module": "grabber",
+    "ts": 1464558594512,
+    "type": "service-simple"
+  },
+  "target": {
+    "ip": "222.208.183.136",
+    "protocol": "tcp",
+    "port": 992
+  },
+  "result": {
+    "data": {
+      "state": {
+        "state": "open|filtered"
+      },
+      "service": {
+        "name": "telnets",
+        "method": "table_default"
+      },
+      "total_delta": 4.775846004486084
+    }
+  }
+}
+
 ```
 
 ### FAQ
