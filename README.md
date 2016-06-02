@@ -179,7 +179,7 @@ Meaning of the status fields:
 
 In order for you get historical information on certain ips
 
-#### GET /v1/query/vnc/IP - VNC Endpoint
+#### GET /v1/query/image - VNC Endpoint
 ### Error Messages
 
 Querying for an IP that is not on record:
@@ -198,7 +198,7 @@ HTTP/1.1 400 Bad Request
 
 ### Response
 ```
-curl -v https://api.binaryedge.io/v1/query/vnc?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
+curl -v https://api.binaryedge.io/v1/query/image?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
 ```
 ```
 {
@@ -214,7 +214,7 @@ curl -v https://api.binaryedge.io/v1/query/vnc?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
   }
 }
 ```
-#### GET /v1/query/raw/IP - Raw IP Data Endpoint
+#### GET /v1/query/raw - Raw IP Data Endpoint
 ### Error Messages
 
 
