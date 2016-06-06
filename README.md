@@ -178,6 +178,11 @@ Meaning of the status fields:
 ### Query Endpoints
 
 In order for you get historical information on certain ips
+These endpoints allow the following parameter:
+* page The number of the page of results, example: curl https://api.binaryedge.io/query/image?ip=8.8.8.8&page=2
+* ip The ip getting information from, example: curl https://api.binaryedge.io/query/image?ip=8.8.8.8
+* ipRange A range of ips for querying scanned information, example: curl https://api.binaryedge.io/query/image?ipRange=8.8.8.4-8.8.8.8
+* cidr A cidr representing a class of ips, example: curl https://api.binaryedge.io/query/image?cidr=61.0.0.0/8
 
 #### GET /v1/query/image - VNC Endpoint
 ### Error Messages
@@ -202,15 +207,20 @@ curl -v https://api.binaryedge.io/v1/query/image?ip=XXX.XXX.XXX.XXX -H 'X-Token:
 ```
 ```
 {
-  "vnc": {
-    "5900.tcp": {
-      "version": "3.8",
-      "auth_enabled": "true",
-      "ts": "2016-04-07 14:10:21"
-    }
+  "origin": {
+    "country": "us",
+    "type": "vnc",
+    "ts": 1460035078342,
+    "module": "grabber"
   },
   "target": {
-    "ip": "1.22.230.100"
+    "ip": "61.252.162.16",
+    "port": 5900
+  },
+  "result": {
+    "data": {
+      "version": "3.889"
+    }
   }
 }
 ```
