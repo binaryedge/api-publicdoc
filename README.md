@@ -191,13 +191,23 @@ Meaning of the status fields:
 
 
 
+### Query Endpoints
+
+In order for you get historical information on certain ips
+These endpoints allow the following parameter:
+* page The number of the page of results, example: curl https://api.binaryedge.io/query/image?ip=8.8.8.8&page=2
+* ip The ip getting information from, example: curl https://api.binaryedge.io/query/image?ip=8.8.8.8
+* ipRange A range of ips for querying scanned information, example: curl https://api.binaryedge.io/query/image?ipRange=8.8.8.4-8.8.8.8
+* cidr A cidr representing a class of ips, example: curl https://api.binaryedge.io/query/image?cidr=61.0.0.0/8
+
+#### GET /v1/query/image - VNC Endpoint
 ### Error Messages
 
-Sending invalid JSON:
+Querying for an IP that is not on record:
 
 ```
-HTTP/1.1 400 Bad Request
-{"message":"Invalid json"}
+HTTP/1.1 404 Not Found
+{"message": "No record found."}
 ```
 
 Sending invalid Token:
@@ -205,6 +215,81 @@ Sending invalid Token:
 ```
 HTTP/1.1 400 Bad Request
 {"message":"Unauthorized"}
+```
+
+### Response
+```
+curl -v https://api.binaryedge.io/v1/query/image?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
+```
+```
+{
+  "origin": {
+    "country": "us",
+    "type": "vnc",
+    "ts": 1460035078342,
+    "module": "grabber"
+  },
+  "target": {
+    "ip": "61.252.162.16",
+    "port": 5900
+  },
+  "result": {
+    "data": {
+      "version": "3.889"
+    }
+  }
+}
+```
+#### GET /v1/query/raw - Raw IP Data Endpoint
+### Error Messages
+
+
+Querying for an IP that is not on record:
+
+```
+HTTP/1.1 404 Not Found
+{"message": "No record found."}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 400 Bad Request
+{"message":"Unauthorized"}
+```
+
+### Response
+
+```
+curl -v https://api.binaryedge.io/v1/query/raw?ip=XXX.XXX.XXX.XXX -H 'X-Token:'
+```
+```
+{
+  "origin": {
+    "country": "uk",
+    "module": "grabber",
+    "ts": 1464558594512,
+    "type": "service-simple"
+  },
+  "target": {
+    "ip": "222.208.183.136",
+    "protocol": "tcp",
+    "port": 992
+  },
+  "result": {
+    "data": {
+      "state": {
+        "state": "open|filtered"
+      },
+      "service": {
+        "name": "telnets",
+        "method": "table_default"
+      },
+      "total_delta": 4.775846004486084
+    }
+  }
+}
+
 ```
 
 ### FAQ
@@ -269,6 +354,6 @@ for example:
             "module": "vnc"
          }]
        }
-     ]     
+     ]
  }
  ```
