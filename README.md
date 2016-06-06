@@ -73,12 +73,28 @@ _Description_: Extract basic product specific information, e.g. product name, ve
 
 _Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
 
-##### 6. HTTP
+##### 6. http
 _Description_: Extract HTTP information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
 
 _Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/http.md "http")
 
-##### 7. Custom Modules
+##### 7. telnet
+_Description_: Extract Telnet information, e.g. Will, Do, Don't Won't commands.
+
+_Detailed documentation_: [telnet module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/telnet.md "telnet")
+
+##### 8. rdp
+_Description_: Extract RDP details and screenshot
+
+_Detailed documentation_: [rdp module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/rdp.md "rdp")
+
+##### 9. x11
+_Description_: Extract x11 screenshot
+
+_Detailed documentation_: [x11 module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/x11.md "x11")
+
+
+##### Custom Modules
 Note: If you want a custom-made module, please contact BinaryEdge.
 
 
