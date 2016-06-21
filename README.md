@@ -98,7 +98,7 @@ _Detailed documentation_: [x11 module documentation](https://github.com/binaryed
 Note: If you want a custom-made module, please contact BinaryEdge.
 
 ### Configurations
-It is possible to set module specific configurations on the job requests. For example, the HTTP module allows the configuration of the Host and the User Agent HTTP headers and the SSL module allows the configuration of the SNI.
+It is possible to set module specific configurations on the job requests. For example, the HTTP module allows the configuration of the Host and the User Agent HTTP headers.
 The configuration should be set in the "config" key at the same json level of the requested module.
 
 Example:
@@ -124,6 +124,13 @@ Example:
      ]
  }
  ```
+ 
+#### Available configurations
+
+- **Host header** - Change HTTP Host header. Available for **HTTP** module.
+- **User Agent** - Change HTTP User Agent. Available for **HTTP** and **Service** modules.
+- **SNI** - Set HTTPS Server Name Indication. Available for **SSL** module.
+ 
 
 ### GET /v1/replay/job_id - Job Replay
 
