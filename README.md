@@ -97,6 +97,33 @@ _Detailed documentation_: [x11 module documentation](https://github.com/binaryed
 ##### Custom Modules
 Note: If you want a custom-made module, please contact BinaryEdge.
 
+### Configurations
+It is possible to set module specific configurations on the job requests. For example, the HTTP module allows the configuration of the Host and the User Agent HTTP headers and the SSL module allows the configuration of the SNI.
+The configuration should be set in the "config" key at the same json level of the requested module.
+
+Example:
+
+```
+{
+   "type": "scan",
+   "description": "test a bunch of networks",
+   "options": [
+       {
+         "targets": ["xxx.xxx.x.x/xx","xxx.xxx.x.x/xx"],
+         "ports": [
+           {
+            "port": 80,
+            "modules": ["http"],
+            "config":
+            	{
+            		"user_agent":"Test user Agent", 
+            		"host_header":"google.com"
+            	}
+           }]
+       }
+     ]
+ }
+ ```
 
 ### GET /v1/replay/job_id - Job Replay
 
@@ -149,6 +176,7 @@ Where Status can be:
 In your stream you will find messages providing insight on the current status of your jobs:
 
 ***When a Job is created:***
+
 ```
 {
 	"origin": {
@@ -166,6 +194,7 @@ In your stream you will find messages providing insight on the current status of
 ```
 
 ***Job is completed***
+
 ```
 {
 	"origin": {
@@ -341,17 +370,17 @@ for example:
          "targets": ["xxx.xxx.x.x/xx","xxx.xxx.x.x/xx"],
          "ports": [{
             "port": 995,
-            "module": "service"
+            "modules": ["service"]
            },
            {
             "port": 22,
-            "module": "ssh"
+            "modules": ["ssh"]
            }]
        }, {
          "targets": ["xxx.xxx.x.x/xx"],
          "ports": [{
             "port": 5900,
-            "module": "vnc"
+            "modules": ["vnc"]
          }]
        }
      ]
