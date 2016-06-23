@@ -73,8 +73,8 @@ _Description_: Extract basic product specific information, e.g. product name, ve
 
 _Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
 
-##### 6. http
-_Description_: Extract HTTP information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
+##### 6. http & https
+_Description_: Extract HTTP/HTTPS information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
 
 _Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/http.md "http")
 
@@ -127,9 +127,9 @@ Example:
  
 #### Available configurations
 
-- **Host header** - Change HTTP Host header. Available for **HTTP** module.
-- **User Agent** - Change HTTP User Agent. Available for **HTTP** and **Service** modules.
-- **SNI** - Set HTTPS Server Name Indication. Available for **SSL** module.
+- **Host header** - Change HTTP Host header. Available for **HTTP** and **HTTPS** module.
+- **User Agent** - Change HTTP User Agent. Available for **HTTP** and **HTTPS** and **Service** modules.
+- **SNI** - Set HTTPS Server Name Indication. Available for **HTTPS** and **SSL** module.
  
 
 ### GET /v1/replay/job_id - Job Replay
