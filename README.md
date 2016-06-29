@@ -1,6 +1,6 @@
 # How to use BinaryEdge’s API
 
-<p align="center"><img src ="https://dl.dropboxusercontent.com/s/os0bw1purmnyrp3/how_to_use_api_2.png?dl=0: 200px;" /></p>
+<p align="center"><img src ="https://dl.dropboxusercontent.com/s/mcu6bftqbbzrf7l/how_to_use_api_2.png?dl=0: 200px;" /></p>
 
 Note: all requests are identified by Job ID and are shown in the stream window.
 
