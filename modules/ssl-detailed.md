@@ -463,7 +463,7 @@ data:
   "port": "587",
   "host": "smtp.gmail.com",
   "data": {
-    "certinfo": [
+    "certinfo_full": [
       {
         "certificateChain": [
           {
