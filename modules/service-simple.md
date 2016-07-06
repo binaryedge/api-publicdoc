@@ -4,22 +4,20 @@ The Service Simple grabber tries to extract product specific information from se
 
 This module provides the following data:
 
-  * name: Type of service that is running
-  * product: Product designation (and Vendor)
-  * version: Application version number
-  * device: Type of device running the service
-  * ostype: Operating system running the service
-  * hostname: Hostname (if any) offered by the service
-  * extrainfo: Extra information extracted, can be an OS, version of a framework, etc
-  * cpe: List of Common Platform Enumeration tags, if available
-  * banner: Server response from which information was extracted
-
-This module also returns one additional field "method" which is the method used to match or extract information from server responses. Possible values for this "method" field are:
-
-  * probe_matching: server responses matched one of the expected responses for the probes that were sent
-  * probe_extraction: customized information extraction, used when server responses do not match expected responses, but have relevant information
-  * probe_matching/probe_extraction: it's a mix of the previous methods, used when simple matching with expected responses does not return sufficient information
-  * table_default: no information was obtained, hence the resulting service name is simply a speculation given the port number
+  * **name**: Type of service that is running
+  * **product**: Product designation (and Vendor)
+  * **version**: Application version number
+  * **device**: Type of device running the service
+  * **ostype**: Operating system running the service
+  * **hostname**: Hostname (if any) offered by the service
+  * **extrainfo**: Extra information extracted, can be an OS, version of a framework, etc
+  * **cpe**: List of Common Platform Enumeration tags, if available
+  * **banner**: Server response from which information was extracted
+  * **method**: method used to match or extract information from server responses. Possible values for this field are:
+  	* **probe_matching**: server responses matched one of the expected responses for the probes that were sent
+  	* **probe_extraction**: customized information extraction, used when server responses do not match expected responses, but have relevant information
+  	* **probe_matching/probe_extraction**: it's a mix of the previous methods, used when simple matching with expected responses does not return sufficient information
+  	* **table_default**: no information was obtained, hence the resulting service name is simply a speculation given the port number
 
 
 ### Service Simple Request Example
