@@ -2,7 +2,7 @@
 
 The Service Simple grabber tries to extract product specific information from service running on a remote address. This module is much faster than "service", since it returns less information. If you want more details, including header information for example, please use the [service module](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service.md "service")
 
-This module provides the following data:
+This module provides the following data (if available):
 
   * **name**: Type of service that is running
   * **product**: Product designation (and Vendor)
