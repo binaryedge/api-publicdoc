@@ -1,17 +1,18 @@
 # HTTP & HTTPS
 
-Extract HTTP/HTTPS information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
+
+ExtractHTTP/HTTPSs informatio, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirectss.
 
 ## HTTP Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"protocol":"tcp","modules": ["http"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"modules": ["http"]}]}]}' -H "X-Token:<Token>"
 ```
 
 ## HTTPS Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"protocol":"tcp","modules": ["https"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"modules": ["https"]}]}]}' -H "X-Token:<Token>"
 ```
 
 ## Schema
