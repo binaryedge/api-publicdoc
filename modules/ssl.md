@@ -5,9 +5,8 @@
 SSL Module can analyze the SSL configuration of a server by connecting to it.
 It is designed to be fast and comprehensive and should help organizations and testers identify misconfigurations affecting their SSL servers.
 
-By default it runs in full mode where it will run all the cipher suite tests but it's possible to select a fast mode by changing the configuration key **ssl_mode** to **fast**.
+By default, the SSL module runs in full mode, where it will run all the cipher suite tests. It is possible to disable the cipher tests by selecting the fast mode, i.e., changing the configuration key **ssl_mode** to **fast**.
 
-Check https://github.com/binaryedge/api-publicdoc/blob/master/modules/ssl-detailed.md for detailed information on the full mode.
 
 ## Schema
 
