@@ -5,7 +5,7 @@ The Service Simple grabber tries to extract product specific information from se
 This module provides the following data (if available):
 
 * **state**: Information regarding the state of the connection to the target
-  * **state**: State if the connection to the target. Possible values for this field are:
+  * **state**: State of the connection to the target. Possible values for this field are:
     * **open**: The connection was established, data was sent and the target returned any response
     * **open|filtered**: The connection was established, data was sent, but the target did not respond
     * **closed**: The connection was not established.
