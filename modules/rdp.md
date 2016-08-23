@@ -17,7 +17,8 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
   "result": {
     "data": {
       "security": "string",
-      "link": "string"
+      "link": "string",
+      "reason": "string"
     }
 }
 ```
@@ -26,6 +27,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
 
   * security - Type of RDP security
   * link - URL link to the screenshot
+  * reason - Reason why the connection was successful or errored.
 
 ## RDP Event Example
 
@@ -46,7 +48,8 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
   "result": {
     "data": {
       "security": "SSL",
-      "link": "https://url/to/image.jpg"
+      "link": "https://url/to/image.jpg",
+      "reason":"Connection was closed cleanly."
     }
   }
 }
