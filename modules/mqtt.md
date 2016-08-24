@@ -1,8 +1,8 @@
 # MQTT (beta)
 
-Grab MQTT information, messages and topics.
+Grab MQTT information, including messages and topics.
 
-This module connects to MQTT brokers and grabs information. It will connected to a broker and listen for **30 seconds** for the first **100 messages** until a maximun of **9 MB** of data. 
+This module connects to MQTT brokers and grabs data it. The module listens for **30 seconds** for the first **100 messages** until a maximun of **9 MB** of data. 
 
 
 More information about MQTT at http://mqtt.org/documentation .
