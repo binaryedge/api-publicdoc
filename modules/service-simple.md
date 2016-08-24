@@ -4,6 +4,13 @@ The Service Simple grabber tries to extract product specific information from se
 
 This module provides the following data (if available):
 
+* **state**: Information regarding the state of the connection to the target
+  * **state**: State of the connection to the target. Possible values for this field are:
+    * **open**: The connection was established, data was sent and the target returned any response
+    * **open|filtered**: The connection was established, data was sent, but the target did not respond
+    * **closed**: The connection was not established.
+
+* **service**: Information regarding the service that is likely to be running on the target
   * **name**: Type of service that is running
   * **product**: Product designation (and Vendor)
   * **version**: Application version number
@@ -13,12 +20,11 @@ This module provides the following data (if available):
   * **extrainfo**: Extra information extracted, can be an OS, version of a framework, etc
   * **cpe**: List of Common Platform Enumeration tags, if available
   * **banner**: Server response from which information was extracted
-  * **method**: method used to match or extract information from server responses. Possible values for this field are:
-  	* **probe_matching**: server responses matched one of the expected responses for the probes that were sent
-  	* **probe_extraction**: customized information extraction, used when server responses do not match expected responses, but have relevant information
-  	* **probe_matching/probe_extraction**: it's a mix of the previous methods, used when simple matching with expected responses does not return sufficient information
-  	* **table_default**: no information was obtained, hence the resulting service name is simply a speculation given the port number
-
+  * **method**: Method used to match or extract information from server responses. Possible values for this field are:
+	* **probe_matching**: Server responses matched one of the expected responses for the probes that were sent
+	* **probe_extraction**: Customized information extraction, used when server responses do not match expected responses, but have relevant information
+	* **probe_matching/probe_extraction**: It's a mix of the previous methods, used when simple matching with expected responses does not return sufficient information
+	* **table_default**: No information was obtained, hence the resulting service name is simply a speculation given the port number
 
 ### Service Simple Request Example
 

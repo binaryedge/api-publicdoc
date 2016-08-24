@@ -18,6 +18,9 @@ The Port event is the default event that runs with every job.
     "ip": "X.X.X.X",
     "port": 80,
     "protocol": "tcp"
+  },
+  "result":{
+  	"response":"synack"
   }
 }
 ```
