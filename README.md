@@ -76,7 +76,7 @@ _Detailed documentation_: [service-simple module documentation](https://github.c
 ##### 6. http & https
 _Description_: Extract HTTP/HTTPS information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
 
-_Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/http.md "http")
+_Detailed documentation_: [http & https module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/http.md "http")
 
 ##### 7. telnet
 _Description_: Extract Telnet information, e.g. Will, Do, Don't Won't commands.
