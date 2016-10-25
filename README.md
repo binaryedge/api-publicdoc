@@ -33,7 +33,7 @@ Note: all requests are identified by Job ID and are shown in the stream window.
     * [x11](#x11)
 
   * [Query Endpoints](#query-endpoints)
-    * [GET /v1/query/image -  ](#get-v1queryimage)
+    * [GET /v1/query/image - Remote Desktop Query](#get-v1queryimage)
     * [GET /v1/query/raw - Historical Query](#get-v1queryraw)
 
 
