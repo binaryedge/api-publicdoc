@@ -359,6 +359,13 @@ HTTP/1.1 400 Bad Request
 
 Access our historical database. This will provide with all the raw events regarding an IP
 
+Available options:
+
+  * ip: Target IP, e.g.: 
+    * ip=210.1.1.X
+  * cidr: Target CIDR, e.g.:
+    * cidr=210.1.1.X/24
+
 ##### Response
 
 ```
