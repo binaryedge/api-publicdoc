@@ -255,13 +255,6 @@ Meaning of the status fields:
 
 ### Query Endpoints
 
-In order for you get historical information on certain ips
-These endpoints allow the following parameter:
-* page The number of the page of results, example: curl https://api.binaryedge.io/query/image?ip=8.8.8.8&page=2
-* ip The ip getting information from, example: curl https://api.binaryedge.io/query/image?ip=8.8.8.8
-* ipRange A range of ips for querying scanned information, example: curl https://api.binaryedge.io/query/image?ipRange=8.8.8.4-8.8.8.8
-* cidr A cidr representing a class of ips, example: curl https://api.binaryedge.io/query/image?cidr=61.0.0.0/8
-
 #### GET /v1/query/image
 
 Query details about remote desktops that were detected by BinaryEdge.
