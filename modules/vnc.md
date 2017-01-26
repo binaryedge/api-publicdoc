@@ -42,7 +42,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
 ```
 {
   "origin": {
-    "type": "vlc",
+    "type": "vnc",
     "job_id": "client-816f1185-4bc1-4b5f-9a7d-61a2df315a6b",
     "client_id": "client",
     "country": "uk",
