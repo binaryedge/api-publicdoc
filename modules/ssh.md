@@ -59,6 +59,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
 		mac
 		compression
 
+**Banner** - Server response identifying service.
 
 
 ### Example
