@@ -255,29 +255,69 @@ Meaning of the status fields:
 
 ### Query Endpoints
 
-#### GET /v1/query/image
+##### GET /v1/query/image
 
-Query details about remote desktops that were detected by BinaryEdge.
+Query for a list of remote desktops found (latest first).
 
-##### GET /v1/query/image/image_id
+Available options:
 
-Obtain our analysis on a Remote Desktop. This includes the following information:
+  * pagesize: Maximum number of results to return per page
+    * pagesize=100
+  * page: Page number of the results
+    * page=1
 
-  * IP;
-  * Port;
-  * geoip;
-  * has_faces: Noolean, if faces were detected or not; 
+```
+curl -v https://api.binaryedge.io/v1/query/image -H 'X-Token:InsertYourClientToken'
+```
+
+```
+[{
+	"url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+	"image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
+}, {
+	"url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+	"image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
+}]
+```
+
+##### Error Messages
+
+Sending invalid Token:
+
+```
+HTTP/1.1 401 Unauthorized
+{"title": "Unauthorized"}
+```
+
+##### GET /v1/query/image/<image_id>?(options)
+
+Query details about remote desktops that were detected by BinaryEdge. This includes the following information:
+
+  * IP: target address where the screenshot was taken;
+  * Port: target port where the service was running;
+  * ts: timestamp of when the screenshot was taken;
+  * geoip: geographical information;
+  * has_faces: Boolean, whether faces were detected or not; 
   * n_faces: Integer, Number of faces detected on the image;
-  * words: Array, Strings, List of words obtains via our OCR process;
+  * tags: Array, Strings, List of tags automatically attributed by our process;
   * height: Integer;
   * width: Integer;
+  * created_at: timestamp of when the screenshot information entered the database;
+  * modified_at: timestamp of when the screenshot information was last updated;
   * url: String, URL to download image;
-  * thumbe: String, URL to download image thumbnail;
+  * thumb: String, URL to download image thumbnail;
 
+Available options:
+
+  * ocr: if present, shows an additional "words" field, which is a list of words obtains via our OCR process, e.g.: 
+    * ocr=1
 
 ```
-curl -v https://api.binaryedge.io/v1/query/image/f1b0a311af803ea73ac48adce2378f58adce2378f5 -H 'X-Token:InsertYourClientToken'
+curl -v https://api.binaryedge.io/v1/query/image/f1b0a311af803ea73ac48adce2378f58adce2378f5?ocr=1 -H 'X-Token:InsertYourClientToken'
 ```
+
 ```
 {
 	"modified_at": 1473888487412,
@@ -305,15 +345,44 @@ curl -v https://api.binaryedge.io/v1/query/image/f1b0a311af803ea73ac48adce2378f5
 }
 ```
 
+##### Error Messages
+
+Sending invalid Token:
+
+```
+HTTP/1.1 401 Unauthorized
+{"title": "Unauthorized"}
+```
+
+Querying for an image_id with no records:
+
+```
+HTTP/1.1 404 Not Found
+{"title": "Not Found"}
+```
+
 ##### GET /v1/query/image/search?(options)
+
+Query for a list of remote desktops according to certain filters.
 
 Available options:
 
-  * ip: IP or CIDR you want to target, e.g.: 
+  * ip: IP, CIDR or Range you want to target, e.g.: 
     * ip=127.0.0.1
+  * port: Port number /range you want to target, e.g.:
+    * port=5900
+  * country: Search images from a certain country, e.g.:
+    * country=pt
+  * tag: Search images that contain a tag, e.g.:
+    * tag=has_faces
+    * tag=mobile
   * word: Search images that contain a word, e.g.:
     * word=microsoft
     * word=credit+card
+  * pagesize: Maximum number of results to return per page
+    * pagesize=100
+  * page: Page number of the results
+    * page=1
 
 ```
 curl https://api.binaryedge.io/v1/query/image/search\?ip\=120.XXX.XXX.XXX  -H 'X-Token:InsertYourClientToken'
@@ -333,37 +402,77 @@ curl https://api.binaryedge.io/v1/query/image/search\?ip\=120.XXX.XXX.XXX  -H 'X
 
 ##### Error Messages
 
-Querying for an IP that is not on record:
+Performing a malformed query:
 
 ```
-HTTP/1.1 404 Not Found
-{"title": "Not found."}
+HTTP/1.1 400 Bad Request
+{"title": "Bad Request"}
 ```
 
 Sending invalid Token:
 
 ```
-HTTP/1.1 400 Bad Request
-{"message":"Unauthorized"}
+HTTP/1.1 401 Unauthorized
+{"title": "Unauthorized"}
 ```
 
+##### GET /v1/query/image/search?similar=<image_id>
 
-#### GET /v1/query/raw - Raw IP Data Endpoint
+Query for a list of remote desktops that are similar to another remote desktop.
+Note: This option cannot be used together with the previous ones.
 
-Access our historical database. This will provide with all the raw events regarding an IP
+```
+curl https://api.binaryedge.io/v1/query/image/search\?similar\=f1b0a311af803ea73ac48adce2378f58adce2378f5  -H 'X-Token:InsertYourClientToken'
+```
+
+```
+[{
+	"url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+	"image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
+}, {
+	"url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+	"image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
+}]
+```
+
+##### Error Messages
+
+Performing a malformed query:
+
+```
+HTTP/1.1 400 Bad Request
+{"title": "Bad Request"}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 401 Unauthorized
+{"title": "Unauthorized"}
+```
+
+#### GET /v1/query/raw (deprecated)
+#### GET /v1/query/historical - Historical IP Data Endpoint
+
+Access our historical database. This will provide with all the raw events regarding an IP 
 
 Available options:
 
-  * ip: Target IP, e.g.: 
-    * ip=210.1.1.X
-  * cidr: Target CIDR, e.g.:
-    * cidr=210.1.1.X/24
+  * Target IP, e.g.: 
+    * /v1/query/historical/210.1.1.X
+  * Target CIDR, e.g.:
+    * /v1/query/historical/210.1.1.X/24
+  * Target Range, e.g.:
+    * /v1/query/historical/210.1.1.X-210.1.1.Y
 
 ##### Response
 
 ```
-curl -v https://api.binaryedge.io/v1/query/raw?ip=222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
+curl -v https://api.binaryedge.io/v1/query/historical/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
 ```
+
 ```
 {
   "origin": {
@@ -394,20 +503,97 @@ curl -v https://api.binaryedge.io/v1/query/raw?ip=222.208.xxx.xxx -H 'X-Token:In
 
 ##### Error Messages
 
-
-Querying for an IP that is not on record:
+Querying for a malformed IP address, CIDR or range
 
 ```
-HTTP/1.1 404 Not Found
-{"message": "not found in records"}
+HTTP/1.1 401 Bad Request
+{"status": 400, "msg": "Targets with wrong format/type or range ill-defined. Please review your query."}
 ```
 
 Sending invalid Token:
 
 ```
-HTTP/1.1 400 Bad Request
-{"message":"Unauthorized"}
+HTTP/1.1 401 Unauthorized
+{"status": 401, "msg": "Unauthorized."}
 ```
+
+Querying for an IP that has no records:
+
+```
+HTTP/1.1 404 Not Found
+{"status": 404, "msg": "No information available for given targets."}
+```
+
+#### GET /v1/query/latest - Latest IP Data Endpoint
+
+Access our historical database. This will provide with the latest raw events regarding an IP 
+
+Available options:
+
+  * Target IP, e.g.: 
+    * /v1/query/latest/210.1.1.X
+  * Target CIDR, e.g.:
+    * /v1/query/latest/210.1.1.X/24
+  * Target Range, e.g.:
+    * /v1/query/latest/210.1.1.X-210.1.1.Y
+
+##### Response
+
+```
+curl -v https://api.binaryedge.io/v1/query/latest/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
+```
+
+```
+{
+  "origin": {
+    "country": "uk",
+    "module": "grabber",
+    "ts": 1464558594512,
+    "type": "service-simple"
+  },
+  "target": {
+    "ip": "222.208.xxx.xxx",
+    "protocol": "tcp",
+    "port": 992
+  },
+  "result": {
+    "data": {
+      "state": {
+        "state": "open|filtered"
+      },
+      "service": {
+        "name": "telnets",
+        "method": "table_default"
+      }
+    }
+  }
+}
+
+```
+
+##### Error Messages
+
+Querying for a malformed IP address, CIDR or range
+
+```
+HTTP/1.1 401 Bad Request
+{"status": 400, "msg": "Targets with wrong format/type or range ill-defined. Please review your query."}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 401 Unauthorized
+{"status": 401, "msg": "Unauthorized."}
+```
+
+Querying for an IP that has no records:
+
+```
+HTTP/1.1 404 Not Found
+{"status": 404, "msg": "No information available for given targets."}
+```
+
 
 ### FAQ
 
