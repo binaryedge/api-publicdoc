@@ -17,22 +17,22 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
   ...
   "result": {
     "data": {
-      "banner": <string>,
+      "banner": "string",
       "will": [{
-          "name": <string>,
-          "value": <int>
+          "name": "string",
+          "value": "int"
         }],
       "do": [{
-          "name": <string>,
-          "value": <int>
+          "name": "string",
+          "value": "int"
         }],
       "wont": [{
-          "name": <string>,
-          "value": <int>
+          "name": "string",
+          "value": "int"
         }],
       "dont": [{
-          "name": <string>,
-          "value": <int>
+          "name": "string",
+          "value": "int"
         }]
     }
   }

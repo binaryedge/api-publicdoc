@@ -24,24 +24,24 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
   "result": {
     "data": {
       "request": {
-        "url": <string>,
+        "url": "string",
         "headers": {
-          "User-Agent": <string>
+          "User-Agent": "string"
         }
       },
       "response": {
-      	"body": <string>,
-        "httpVersion": <string>,
-        "statusCode": <int>,
-        "statusMessage": <string>,
+      	"body": "string",
+        "httpVersion": "string",
+        "statusCode": "int",
+        "statusMessage": "string",
         "headers": {...},
-        "href": <string>,
+        "href": "string",
         "redirects": [{
-          "statusCode": <int>,
-          "redirectUri": <string>
+          "statusCode": "int",
+          "redirectUri": "string"
         }, {
-          "statusCode": <int>,
-          "redirectUri": <string>
+          "statusCode": "int",
+          "redirectUri": "string"
         }]
       }
     }
@@ -87,7 +87,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
         }
       },
       "response": {
-      	"body": <HTML body>,
+      	"body": "<HTML body>",
         "httpVersion": "1.1",
         "statusCode": 200,
         "statusMessage": "OK",

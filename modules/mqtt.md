@@ -21,13 +21,13 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
   ...
   "result": {
     "data": {
-      "connected": <boolean>,
-      "auth": <boolean>,
-      "messages": [<string>],
-      "topics": [<string>],
-      "num_events": <int>,
-      "num_topics": <int>,
-      "bytes_captured": <int>,
+      "connected": "boolean",
+      "auth": "boolean",
+      "messages": ["string"],
+      "topics": ["string"],
+      "num_events": "int",
+      "num_topics": "int",
+      "bytes_captured": "int",
       "connack": {...}
     }
 }

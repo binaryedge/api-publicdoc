@@ -18,17 +18,19 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
     "result": {
         "data": {
             "service": {
-                "name": <string>,
-                "product": <string>,
-                "version": <string>,
-                "extrainfo": <string>,
-                "ostype": <string>,
-                "cpe": [<string>]
+                "name": "string",
+                "product": "string",
+                "version": "string",
+                "device": "string",
+                "ostype": "string",
+                "hostname": "string",
+                "extrainfo": "string",
+                "cpe": ["string"], 
             },
             "scripts": [
-                {"results": [<string>],
-                 "id": <string>,
-                 "output": <string>}
+                {"results": ["string"],
+                 "id": "string",
+                 "output": "string"}
             ]
         }
     }

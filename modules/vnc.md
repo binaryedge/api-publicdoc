@@ -17,13 +17,13 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
   ...
   "result": {
     "data": {
-      "title": <string>,
-      "width": <int>,
-      "height": <int>,
-      "version": <string>,
-      "link": <string>,
-      "auth_enabled": <boolean>,
-      "msg": <string>
+      "title": "string",
+      "width": "int",
+      "height": "int",
+      "version": "string",
+      "link": "string",
+      "auth_enabled": "boolean",
+      "msg": "string"
     }
   }
 }

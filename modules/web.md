@@ -18,14 +18,14 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
   "result": {
     "data": {
       "apps": [{
-          "name": <string>,
-          "confidence": <int>,
-          "version": <string>,
-          "categories": [<string>]
+          "name": "string",
+          "confidence": "int",
+          "version": "string",
+          "categories": ["string"]
         }]
       },
       "headers": {
-      	"string": <string>
+      	"string": "string"
         }
       }
     }

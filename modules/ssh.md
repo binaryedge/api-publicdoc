@@ -19,36 +19,35 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
     "data": {
       "cyphers": [
         {
-          "cypher": <string>,
-          "key": <string>,
-          "fingerprint": <string>,
-          "length": <int> | may not be present
+          "cypher": "string",
+          "key": "string",
+          "fingerprint": "string",
+          "length": "int | may not be present"
         }
       ],
       "algorithms": {
-        "kex": [<string>],
-        "server_host_key": [<string>],
-        "encryption": [<string>],
-        "mac": [<string>],
-        "compression": [<string>],
+        "kex": ["string"],
+        "server_host_key": ["string"],
+        "encryption": ["string"],
+        "mac": ["string"],
+        "compression": ["string"],
       },
-      "banner": <string>
+      "banner": "string"
     }
-  },
-  ...
+  }
 }
 
 ```
 
 ### Contents of the fields:
 
-  * **cyphers** - Array with the cyphers found on the target server, may be empty if the server takes too long to respond. Array of:
-		* cypher - Name of the cypher
+  * **cyphers** - Array with the cyphers found on the target server, may be empty if the server takes too long to respond.
+    * cypher - Name of the cypher
 		* key - Public Key
 		* fingerprint - Fingerprint of the key
 		* length - Length of the key
-  * **algorithms** - Supported Algorithms that the target server report:
-		* kex
+  * **algorithms** - Supported Algorithms that the target server report.
+    * kex
 		* server_host_key
 		* encryption
 		* mac

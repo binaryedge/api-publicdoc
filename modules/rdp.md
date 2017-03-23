@@ -17,9 +17,9 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
   ...
   "result": {
     "data": {
-      "security": <string>,
-      "link": <string>,
-      "reason": <string>
+      "security": "string",
+      "link": "string",
+      "reason": "string"
     }
 }
 ```
