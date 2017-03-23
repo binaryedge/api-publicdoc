@@ -17,6 +17,9 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
     ...
     "result": {
         "data": {
+          "state": {
+            "state": "string"
+          },
           "service": {
               "name": "string",
               "product": "string",
