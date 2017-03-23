@@ -4,14 +4,15 @@ Grab RDP information and screenshots.
 
 ## RDP Request Example
 
-  ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":3389,"modules": ["rdp"]}]}]}' -H "X-Token:NNNNNN"
-  ```
+```
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":3389,"modules": ["rdp"]}]}]}' -H "X-Token:<Token>"
+```
 
 ## Schema
 
 ### RDP Event Schema
-```
+
+```json
 {
   ...
   "result": {
@@ -31,7 +32,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
 
 ## RDP Event Example
 
-```
+```json
 {
   "origin": {
     "type": "rdp",

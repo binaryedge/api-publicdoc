@@ -4,31 +4,31 @@ Grab MQTT information, including messages and topics.
 
 This module connects to MQTT brokers and grabs data it. The module listens for **30 seconds** for the first **100 messages** until a maximun of **9 MB** of data. 
 
-
 More information about MQTT at http://mqtt.org/documentation .
 
 ## MQTT Request Example
 
-  ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":1883,"modules": ["mqtt"]}]}]}' -H "X-Token:"
-  ```
+```
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":1883,"modules": ["mqtt"]}]}]}' -H "X-Token:<Token>"
+```
 
 ## Schema
 
 ### MQTT Event Schema
-```
+
+```json
 {
   ...
   "result": {
     "data": {
-      "connected": <boolean>,
-      "auth": <boolean>,
+      "connected": "boolean",
+      "auth": "boolean",
       "messages": ["string"],
       "topics": ["string"],
-      "num_events": number,
-      "num_topics": number,
-      "bytes_captured": number,
-      "connack": { connack packet }
+      "num_events": "int",
+      "num_topics": "int",
+      "bytes_captured": "int",
+      "connack": {...}
     }
 }
 ```
@@ -46,7 +46,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
 
 ## MQTT Event Example
 
-```
+```json
 {
     "origin": {
         "type": "mqtt",

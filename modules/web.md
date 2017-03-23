@@ -2,29 +2,26 @@
 
 Extract Web technologies information and headers.
 
-## HTTP Request Example
+## Web Request Example
 
 ```
 curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"modules": ["web"]}]}]}' -H "X-Token:<Token>"
 ```
 
-
 ## Schema
 
-### HTTP & HTTPS Event Schema
+### Web Event Schema
 
-```
+```json
 {
   ...
   "result": {
     "data": {
       "apps": [{
           "name": "string",
-          "confidence": int,
+          "confidence": "int",
           "version": "string",
-          "categories": [
-            "string"
-          ]
+          "categories": ["string"]
         }]
       },
       "headers": {
@@ -39,15 +36,15 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
 ### Contents of the fields:
 
   * apps - Request made by the module
-  	* name - name of the technoloy
-  	* confidence": confidence level for the match
-    * version - version of the technology
-    * categories - categories of the techonology
+  	* name - Name of the technoloy
+  	* confidence - Confidence level for the match
+    * version - Version of the technology
+    * categories - Categories of the techonology
   * headers - Headers from the web server
 
-## HTTP Event Example
+## Web Event Example
 
-```
+```json
 {
 ...
   "result": {
@@ -99,4 +96,5 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
       }
     }
   }
-}```
+}
+```
