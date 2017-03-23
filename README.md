@@ -22,19 +22,27 @@ Note: all requests are identified by Job ID and are shown in the stream window.
     * [2. grab](#2-grab)
   
   * [Supported Modules](#supported-modules)
-    * [ssh](#1-ssh)
-    * [ssl](#2-ssl)
-    * [vnc](#3-vnc)
-    * [service](#4-service)
-    * [service-simple](#5-service-simple)
-    * [http & https](#6-http--https)
-    * [telnet](#telnet)
-    * [rdp](#rdp)
-    * [x11](#x11)
+    * [1. ssh](#1-ssh)
+    * [2. ssl](#2-ssl)
+    * [3. vnc](#3-vnc)
+    * [4. rdp](#4-rdp)
+    * [5. x11](#5-x11)
+    * [6. service](#6-service)
+    * [7. service-simple](#7-service-simple)
+    * [8. http & https](#8-http--https)
+    * [9. telnet](#9-telnet)
+    * [10. web](#10-web)
+    * [11. mqtt](#11-mqtt)
 
   * [Query Endpoints](#query-endpoints)
-    * [GET /v1/query/image - Remote Desktop Query](#get-v1queryimage)
-    * [GET /v1/query/raw - Historical Query](#get-v1queryraw)
+    * Historical Query
+      * [GET /v1/query/historical](#get-v1queryhistorical---historical-ip-data-endpoint)
+      * [GET /v1/query/latest](#get-v1querylatest---latest-ip-data-endpoint)
+    * Remote Desktop Query
+      * [GET /v1/query/image](#get-v1queryimage)
+      * [GET /v1/query/image/<image_id>?(options)](#get-v1queryimageimage_idoptions)
+      * [GET /v1/query/image/search?(options)](#get-v1queryimagesearchoptions)
+      * [GET /v1/query/image/search?similar=<image_id>](#get-v1queryimagesearchsimilarimage_id)
 
 
 ### Data Stream
@@ -89,35 +97,45 @@ _Description_: Extract VNC details and screenshot
 
 _Detailed documentation_: [vnc module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/vnc.md "vnc")
 
-#### 4. service
-_Description_: Extract detailed product specific information, e.g. product name, version, headers, scripts. If you just want product name and version, consider using the faster "service-simple".
-
-_Detailed documentation_: [service module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service.md "service")
-
-#### 5. service-simple
-_Description_: Extract basic product specific information, e.g. product name, version. This module is much faster than "service", since it returns less information.
-
-_Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
-
-#### 6. http & https
-_Description_: Extract HTTP/HTTPS information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
-
-_Detailed documentation_: [http & https module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/http.md "http")
-
-#### 7. telnet
-_Description_: Extract Telnet information, e.g. Will, Do, Don't Won't commands.
-
-_Detailed documentation_: [telnet module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/telnet.md "telnet")
-
-#### 8. rdp
+#### 4. rdp
 _Description_: Extract RDP details and screenshot
 
 _Detailed documentation_: [rdp module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/rdp.md "rdp")
 
-#### 9. x11
+#### 5. x11
 _Description_: Extract x11 screenshot
 
 _Detailed documentation_: [x11 module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/x11.md "x11")
+
+#### 6. service
+_Description_: Extract detailed product specific information, e.g. product name, version, headers, scripts. If you just want product name and version, consider using the faster "service-simple".
+
+_Detailed documentation_: [service module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service.md "service")
+
+#### 7. service-simple
+_Description_: Extract basic product specific information, e.g. product name, version. This module is much faster than "service", since it returns less information.
+
+_Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
+
+#### 8. http & https
+_Description_: Extract HTTP/HTTPS information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
+
+_Detailed documentation_: [http & https module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/http.md "http")
+
+#### 9. telnet
+_Description_: Extract Telnet information, e.g. Will, Do, Don't Won't commands.
+
+_Detailed documentation_: [telnet module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/telnet.md "telnet")
+
+#### 10. web
+_Description_: (BETA) Extract Web technologies information and headers.
+
+_Detailed documentation_: [web module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/web.md "web")
+
+#### 11. mqtt
+_Description_: (BETA) Grab MQTT information, including messages and topics.
+
+_Detailed documentation_: [mqtt module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/mqtt.md "mqtt")
 
 
 #### Custom Modules
@@ -129,7 +147,7 @@ The configuration should be set in the "config" key at the same json level of th
 
 Example:
 
-```
+```json
 {
    "type": "scan",
    "description": "test a bunch of networks",
@@ -141,10 +159,10 @@ Example:
             "port": 80,
             "modules": ["http"],
             "config":
-            	{
-            		"user_agent":"Test user Agent", 
-            		"host_header":"google.com"
-            	}
+              {
+                "user_agent":"Test user Agent", 
+                "host_header":"google.com"
+              }
            }]
        }
      ]
@@ -210,37 +228,37 @@ In your stream you will find messages providing insight on the current status of
 
 ***When a Job is created:***
 
-```
+```json
 {
-	"origin": {
-		"job_id": "c4773cb-aa1e-4356eac1ad08",
-		"type": "job_status",
+  "origin": {
+    "job_id": "c4773cb-aa1e-4356eac1ad08",
+    "type": "job_status",
     ...
-	},
-	"status": {
-		"success": null,
-		"started": null,
-		"completed": null,
-		"revoked": null
-	}
+  },
+  "status": {
+    "success": null,
+    "started": null,
+    "completed": null,
+    "revoked": null
+  }
 }
 ```
 
 ***Job is completed***
 
-```
+```json
 {
-	"origin": {
-		"job_id": "c4773cb-aa1e-4356eac1ad08",
-		"type": "job_status",
+  "origin": {
+    "job_id": "c4773cb-aa1e-4356eac1ad08",
+    "type": "job_status",
     ...
-	},
-	"status": {
-		"success": true,
-		"started": true,
-		"completed": true,
-		"revoked": false
-	}
+  },
+  "status": {
+    "success": true,
+    "started": true,
+    "completed": true,
+    "revoked": false
+  }
 }
 ```
 
@@ -252,10 +270,9 @@ Meaning of the status fields:
   * "revoked": If the job was canceled by the user or not.
 
 
-
 ### Query Endpoints
 
-##### GET /v1/query/image
+#### GET /v1/query/image
 
 Query for a list of remote desktops found (latest first).
 
@@ -270,15 +287,15 @@ Available options:
 curl -v https://api.binaryedge.io/v1/query/image -H 'X-Token:InsertYourClientToken'
 ```
 
-```
+```json
 [{
-	"url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-	"image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
+  "url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+  "image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
 }, {
-	"url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-	"image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
+  "url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+  "image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
 }]
 ```
 
@@ -291,7 +308,7 @@ HTTP/1.1 401 Unauthorized
 {"title": "Unauthorized"}
 ```
 
-##### GET /v1/query/image/<image_id>?(options)
+#### GET /v1/query/image/<image_id>?(options)
 
 Query details about remote desktops that were detected by BinaryEdge. This includes the following information:
 
@@ -318,30 +335,30 @@ Available options:
 curl -v https://api.binaryedge.io/v1/query/image/f1b0a311af803ea73ac48adce2378f58adce2378f5?ocr=1 -H 'X-Token:InsertYourClientToken'
 ```
 
-```
+```json
 {
-	"modified_at": 1473888487412,
-	"tags": ["vnc"],
-	"geoip": {
-		"timezone": "Asia/Shanghai",
-		"continent_code": "AS",
-		"location": [120.4586, 41.5703],
-		"city_name": "Chaoyang",
-		"country_name": "China",
-		"country_code": "CN"
-	},
-	"n_faces": 0,
-	"words": ["administrator", "windows", "thinkpad", "enterprise"],
-	"created_at": 1473544493392,
-	"image_id": "f1b0a311af803ea73ac48adce2378f58adce2378f5",
-	"height": 600,
-	"ts": 1473544466000,
-	"has_faces": false,
-	"port": 5910,
-	"ip": "XXX.XXX.XXX.XXX",
-	"width": 800,
-	"url": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg",
-	"thumb": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg"
+  "modified_at": 1473888487412,
+  "tags": ["vnc"],
+  "geoip": {
+    "timezone": "Asia/Shanghai",
+    "continent_code": "AS",
+    "location": [120.4586, 41.5703],
+    "city_name": "Chaoyang",
+    "country_name": "China",
+    "country_code": "CN"
+  },
+  "n_faces": 0,
+  "words": ["administrator", "windows", "thinkpad", "enterprise"],
+  "created_at": 1473544493392,
+  "image_id": "f1b0a311af803ea73ac48adce2378f58adce2378f5",
+  "height": 600,
+  "ts": 1473544466000,
+  "has_faces": false,
+  "port": 5910,
+  "ip": "XXX.XXX.XXX.XXX",
+  "width": 800,
+  "url": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg",
+  "thumb": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg"
 }
 ```
 
@@ -361,7 +378,7 @@ HTTP/1.1 404 Not Found
 {"title": "Not Found"}
 ```
 
-##### GET /v1/query/image/search?(options)
+#### GET /v1/query/image/search?(options)
 
 Query for a list of remote desktops according to certain filters.
 
@@ -388,15 +405,15 @@ Available options:
 curl https://api.binaryedge.io/v1/query/image/search\?ip\=120.XXX.XXX.XXX  -H 'X-Token:InsertYourClientToken'
 ```
 
-```
+```json
 [{
-	"url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-	"image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
+  "url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+  "image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
 }, {
-	"url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-	"image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
+  "url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+  "image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
 }]
 ```
 
@@ -416,7 +433,7 @@ HTTP/1.1 401 Unauthorized
 {"title": "Unauthorized"}
 ```
 
-##### GET /v1/query/image/search?similar=<image_id>
+#### GET /v1/query/image/search?similar=<image_id>
 
 Query for a list of remote desktops that are similar to another remote desktop.
 Note: This option cannot be used together with the previous ones.
@@ -425,15 +442,15 @@ Note: This option cannot be used together with the previous ones.
 curl https://api.binaryedge.io/v1/query/image/search\?similar\=f1b0a311af803ea73ac48adce2378f58adce2378f5  -H 'X-Token:InsertYourClientToken'
 ```
 
-```
+```json
 [{
-	"url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-	"image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
+  "url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
+  "image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
 }, {
-	"url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-	"thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-	"image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
+  "url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
+  "image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
 }]
 ```
 
@@ -473,7 +490,7 @@ Available options:
 curl -v https://api.binaryedge.io/v1/query/historical/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
 ```
 
-```
+```json
 {
   "origin": {
     "country": "uk",
@@ -543,7 +560,7 @@ Available options:
 curl -v https://api.binaryedge.io/v1/query/latest/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
 ```
 
-```
+```json
 {
   "origin": {
     "country": "uk",
@@ -634,7 +651,7 @@ options: [{
 
 for example:
 
-```
+```json
 {
    "type": "scan",
    "description": "test a bunch of networks",
