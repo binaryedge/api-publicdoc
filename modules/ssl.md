@@ -1,27 +1,32 @@
 # SSL
 
-## About
-
 SSL Module can analyze the SSL configuration of a server by connecting to it.
 It is designed to be fast and comprehensive and should help organizations and testers identify misconfigurations affecting their SSL servers.
 
 By default, the SSL module runs in full mode, where it will run all the cipher suite tests. It is possible to disable the cipher tests by selecting the fast mode, i.e., changing the configuration key **ssl_mode** to **fast**.
 
+## SSL Request Example
+
+```
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":443,"protocol":"tcp","modules": ["ssl"]}]}]}' -H "X-Token:<Token>"
+```
 
 ## Schema
 
+### SSL Event Schema 
+
 ```json
-...
-"result": {
+{
+    ...
+    "result": {
         "data": {
             "server_info": {...},
             "cert_info": {...},
             "ciphers": {...},
             "vulnerabilities": {...},
             "truststores": {...}
-       }
+    }
 }
-...
 ```
 
 ### Contents of the fields:
@@ -32,10 +37,13 @@ By default, the SSL module runs in full mode, where it will run all the cipher s
   * **vulnerabilities** - Vulnerabilities tests. Heartbleed and OpenSSL CCS.
   * **truststores** - Truststores validation of certificates.
 
-## Example
+## SSL Event Example
 
 ### Request
-curl https://api.binaryedge.io/v1/tasks -d '{"type":"grab", "description": "SSL Request", "options":[{"targets":["104.28.6.147"], "ports":[{"port":"443", "config":{"sni":"www.binaryedge.io", "ssl_mode":"full"},"modules": ["ssl"]}]}]}' -H "X-Token:**Token**"
+
+```
+curl https://api.binaryedge.io/v1/tasks -d '{"type":"grab", "description": "SSL Request", "options":[{"targets":["X.X.X.X"], "ports":[{"port":"443", "config":{"sni":"www.binaryedge.io", "ssl_mode":"full"},"modules": ["ssl"]}]}]}' -H "X-Token:<Token>"
+```
 
 ### Response
 
@@ -50,7 +58,7 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"grab", "description": "SSL 
     "ts": 1471951814799
   },
   "target": {
-    "ip": "104.28.6.147",
+    "ip": "X.X.X.X",
     "port": 443
   },
   "result": {
@@ -59,9 +67,9 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"grab", "description": "SSL 
         "client_auth_credentials": null,
         "client_auth_requirement": 1,
         "highest_ssl_version_supported": 5,
-        "hostname": "104.28.6.147",
+        "hostname": "X.X.X.X",
         "http_tunneling_settings": null,
-        "ip_address": "104.28.6.147",
+        "ip_address": "X.X.X.X",
         "port": 443,
         "ssl_cipher_supported": "ECDHE-ECDSA-CHACHA20-POLY1305",
         "tls_server_name_indication": "www.binaryedge.io",
@@ -822,5 +830,4 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"grab", "description": "SSL 
     }
   }
 }
-
 ```

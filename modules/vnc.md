@@ -4,25 +4,26 @@ Grab VNC information and screenshots.
 
 ## VNC Request Example
 
-  ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":5900,"protocol":"tcp","modules": ["vnc"]}]}]}' -H "X-Token:NNNNNN"
-  ```
+```
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":5900,"protocol":"tcp","modules": ["vnc"]}]}]}' -H "X-Token:<Token>"
+```
 
 ## Schema
 
 ### VNC Event Schema
-```
+
+```json
 {
   ...
   "result": {
     "data": {
-      "title": "string",
-      "width": int,
-      "height": int,
-      "version": "string",
-      "link": "string",
-      "auth_enabled": "boolean"
-      "msg": "string"
+      "title": <string>,
+      "width": <int>,
+      "height": <int>,
+      "version": <string>,
+      "link": <string>,
+      "auth_enabled": <boolean>,
+      "msg": <string>
     }
   }
 }
@@ -39,7 +40,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
 
 ## VNC Event Example
 
-```
+```json
 {
   "origin": {
     "type": "vnc",

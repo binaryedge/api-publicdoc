@@ -1,7 +1,6 @@
 # HTTP & HTTPS
 
-
-ExtractHTTP/HTTPSs informatio, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirectss.
+Extract HTTP/HTTPSs information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
 
 ## HTTP Request Example
 
@@ -19,30 +18,30 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
 
 ### HTTP & HTTPS Event Schema
 
-```
+```json
 {
   ...
   "result": {
     "data": {
       "request": {
-        "url": "string",
+        "url": <string>,
         "headers": {
-          "User-Agent": "string"
+          "User-Agent": <string>
         }
       },
       "response": {
-      	"body": "string",
-        "httpVersion": "string",
-        "statusCode": int,
-        "statusMessage": "string",
-        "headers": {<found headers>},
-        "href": "string",
+      	"body": <string>,
+        "httpVersion": <string>,
+        "statusCode": <int>,
+        "statusMessage": <string>,
+        "headers": {...},
+        "href": <string>,
         "redirects": [{
-          "statusCode": int,
-          "redirectUri": "string"
+          "statusCode": <int>,
+          "redirectUri": <string>
         }, {
-          "statusCode": int,
-          "redirectUri": "string"
+          "statusCode": <int>,
+          "redirectUri": <string>
         }]
       }
     }
@@ -60,22 +59,23 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
 	* httpVersion - HTTP version
 	* statusCode - HTTP response status code
 	* statusMeessage - HTTP status message
-	* headers - HTTP headers
+	* headers - HTTP headers (if found)
 	* href - Final href found (after redirects if the case)
 	* redirects - List of redirects followed
 		* statusCode - Redirect status code
 		* redirectUri - Redirect location
 
-## HTTP Event Example
-The HTTP module request:
+## HTTP & HTTPS Event Example
+
+### Request
 
 ```
 curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["2a03:2880:2130:cf24:face:b00c::25de"], "ports":[{"port":80,"protocol":"tcp","modules": ["http"]}]}]}' -H "X-Token:<Token>"
 ```
 
-Would generate a output similar to:
+### Response
 
-```
+```json
 {
   ...
   "result": {

@@ -2,38 +2,37 @@
 
 Extract SSH keys and algorithms from SSH servers.
 
-
 ## SSH Request Example
 
-  ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":22,"protocol":"tcp","modules": ["ssh"]}]}]}' -H "X-Token:NNNNNN"
-  ```
+```
+curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":22,"protocol":"tcp","modules": ["ssh"]}]}]}' -H "X-Token:<Token>"
+```
 
 ## Schema
 
 ### SSH Event Schema  
 
-```
+```json
 {
   ...
   "result": {
     "data": {
       "cyphers": [
         {
-          "cypher": "string",
-          "key": "string",
-          "fingerprint": "string",
-          "length": int | may not be present
-        },...
+          "cypher": <string>,
+          "key": <string>,
+          "fingerprint": <string>,
+          "length": <int> | may not be present
+        }
       ],
       "algorithms": {
-        "kex": ["string"],
-        "server_host_key": [ "string" ],
-        "encryption": ["string"],
-        "mac": ["string"],
-        "compression": ["string"],
+        "kex": [<string>],
+        "server_host_key": [<string>],
+        "encryption": [<string>],
+        "mac": [<string>],
+        "compression": [<string>],
       },
-      "banner": "string"
+      "banner": <string>
     }
   },
   ...
@@ -41,32 +40,24 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
 
 ```
 
-
-
 ### Contents of the fields:
 
+  * **cyphers** - Array with the cyphers found on the target server, may be empty if the server takes too long to respond. Array of:
+		* cypher - Name of the cypher
+		* key - Public Key
+		* fingerprint - Fingerprint of the key
+		* length - Length of the key
+  * **algorithms** - Supported Algorithms that the target server report:
+		* kex
+		* server_host_key
+		* encryption
+		* mac
+		* compression
+  * **banner** - Server response identifying service.
 
-**Cyphers** - Array with the cyphers found on the target server, may be empty if the server takes too long to respond. Array of:
-		cypher - Name of the cypher
-		key - Public Key
-		fingerprint - Fingerprint of the key
-		length - Length of the key
+## SSH Event Example
 
-**Algorithms** - Supported Algorithms that the target server report:
-		kex
-		server_host_key
-		encryption
-		mac
-		compression
-
-**Banner** - Server response identifying service.
-
-
-### Example
-
-###### SSH Event Example  Collapse source
-
-```
+```json
 {
   "origin": {
     "type": "ssh",
