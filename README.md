@@ -390,13 +390,6 @@ HTTP/1.1 401 Unauthorized
 {"status": 401, "msg": "Unauthorized."}
 ```
 
-Querying for an IP that has no records:
-
-```
-HTTP/1.1 404 Not Found
-{"status": 404, "msg": "No information available for given targets."}
-```
-
 #### GET /v1/query/latest - Latest IP Data Endpoint
 
 Access our historical database. This will provide with the latest raw events regarding an IP 
@@ -460,13 +453,6 @@ HTTP/1.1 401 Unauthorized
 {"status": 401, "msg": "Unauthorized."}
 ```
 
-Querying for an IP that has no records:
-
-```
-HTTP/1.1 404 Not Found
-{"status": 404, "msg": "No information available for given targets."}
-```
-
 #### GET /v1/query/torrent - Torrent IP Data Endpoint
 
 Access our historical database. This will provide with raw events related with torrent activity regarding an IP 
@@ -527,13 +513,6 @@ HTTP/1.1 401 Unauthorized
 {"status": 401, "msg": "Unauthorized."}
 ```
 
-Querying for an IP that has no records:
-
-```
-HTTP/1.1 404 Not Found
-{"status": 404, "msg": "No information available for given targets."}
-```
-
 #### GET /v1/query/image
 
 Query for a list of remote desktops found (latest first).
@@ -550,15 +529,26 @@ curl -v https://api.binaryedge.io/v1/query/image -H 'X-Token:InsertYourClientTok
 ```
 
 ```json
-[{
-  "url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-  "image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
-}, {
-  "url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-  "image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
-}]
+{
+    "total_records": 3,
+    "events": [
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+          "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
+        },
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+          "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
+        },
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+          "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
+        }
+    ]
+}
 ```
 
 ##### Error Messages
@@ -668,15 +658,26 @@ curl https://api.binaryedge.io/v1/query/image/search\?ip\=120.XXX.XXX.XXX  -H 'X
 ```
 
 ```json
-[{
-  "url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-  "image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
-}, {
-  "url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-  "image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
-}]
+{
+    "total_records": 3,
+    "events": [
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+          "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
+        },
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+          "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
+        },
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+          "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
+        }
+    ]
+}
 ```
 
 ##### Error Messages
@@ -705,15 +706,26 @@ curl https://api.binaryedge.io/v1/query/image/search\?similar\=f1b0a311af803ea73
 ```
 
 ```json
-[{
-  "url": "https://d1ngxp4ef6grqi.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd.jpg",
-  "image_id": "1af8b357b28adce2378f5f1b0a311af802ec73ac49b2113a6686azgfd"
-}, {
-  "url": "https://d1ngxp4ef6grqi.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-  "thumb": "https://d3f9qnon04ymh2.cloudfront.net/903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd.jpg",
-  "image_id": "903fb357b28adce2378f5f1b0a311af803ea73ac49b2113a6287adzgfd"
-}]
+{
+    "total_records": 3,
+    "events": [
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+          "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
+        },
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+          "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
+        },
+        {
+          "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+          "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
+        }
+    ]
+}
 ```
 
 ##### Error Messages
