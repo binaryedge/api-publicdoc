@@ -18,10 +18,10 @@ Note: all requests are identified by Job ID and are shown in the stream window.
     * [2. stream](#2-stream)
 
   * [Tasks](#tasks)
-    * [GET /v1/tasks - List Requested Jobs](get-v1tasks-list-requested-jobs)
-    * [POST /v1/tasks - Create Job](post-v1tasks-create-job)
-    * [POST /v1/tasks/job_id/revoke - Job Revoke](post-v1tasksjobidrevoke-job-revoke)
-    * [GET /v1/replay/job_id - Replay Job](get-v1replayjobid-replay-job)
+    * [GET /v1/tasks - List Requested Jobs](#get-v1tasks---list-requested-jobs)
+    * [POST /v1/tasks - Create Job](#post-v1tasks---create-job)
+    * [POST /v1/tasks/job_id/revoke - Job Revoke](#post-v1tasksjob_idrevoke---job-revoke)
+    * [GET /v1/replay/job_id - Replay Job](#get-v1replayjob_id---replay-job)
     * [Job Status](#job-status)
 
   * [Supported Types](#supported-types)
