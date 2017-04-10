@@ -38,6 +38,7 @@ Note: all requests are identified by Job ID and are shown in the stream window.
     * Historical Query
       * [GET /v1/query/historical](#get-v1queryhistorical---historical-ip-data-endpoint)
       * [GET /v1/query/latest](#get-v1querylatest---latest-ip-data-endpoint)
+      * [GET /v1/query/torrent](#get-v1querytorrent---torrent-ip-data-endpoint)
     * Remote Desktop Query
       * [GET /v1/query/image](#get-v1queryimage)
       * [GET /v1/query/image/<image_id>?(options)](#get-v1queryimageimage_idoptions)
@@ -272,6 +273,214 @@ Meaning of the status fields:
 
 ### Query Endpoints
 
+#### GET /v1/query/raw (deprecated)
+#### GET /v1/query/historical - Historical IP Data Endpoint
+
+Access our historical database. This will provide with all the raw events regarding an IP 
+
+Available options:
+
+  * Target IP, e.g.: 
+    * /v1/query/historical/210.1.1.X
+  * Target CIDR, e.g.:
+    * /v1/query/historical/210.1.1.X/24
+  * Target Range, e.g.:
+    * /v1/query/historical/210.1.1.X-210.1.1.Y
+
+##### Response
+
+```
+curl -v https://api.binaryedge.io/v1/query/historical/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
+```
+
+```json
+{
+  "origin": {
+    "country": "uk",
+    "module": "grabber",
+    "ts": 1464558594512,
+    "type": "service-simple"
+  },
+  "target": {
+    "ip": "222.208.xxx.xxx",
+    "protocol": "tcp",
+    "port": 992
+  },
+  "result": {
+    "data": {
+      "state": {
+        "state": "open|filtered"
+      },
+      "service": {
+        "name": "telnets",
+        "method": "table_default"
+      }
+    }
+  }
+}
+
+```
+
+##### Error Messages
+
+Querying for a malformed IP address, CIDR or range
+
+```
+HTTP/1.1 401 Bad Request
+{"status": 400, "msg": "Targets with wrong format/type or range ill-defined. Please review your query."}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 401 Unauthorized
+{"status": 401, "msg": "Unauthorized."}
+```
+
+Querying for an IP that has no records:
+
+```
+HTTP/1.1 404 Not Found
+{"status": 404, "msg": "No information available for given targets."}
+```
+
+#### GET /v1/query/latest - Latest IP Data Endpoint
+
+Access our historical database. This will provide with the latest raw events regarding an IP 
+
+Available options:
+
+  * Target IP, e.g.: 
+    * /v1/query/latest/210.1.1.X
+  * Target CIDR, e.g.:
+    * /v1/query/latest/210.1.1.X/24
+  * Target Range, e.g.:
+    * /v1/query/latest/210.1.1.X-210.1.1.Y
+
+##### Response
+
+```
+curl -v https://api.binaryedge.io/v1/query/latest/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
+```
+
+```json
+{
+  "origin": {
+    "country": "uk",
+    "module": "grabber",
+    "ts": 1464558594512,
+    "type": "service-simple"
+  },
+  "target": {
+    "ip": "222.208.xxx.xxx",
+    "protocol": "tcp",
+    "port": 992
+  },
+  "result": {
+    "data": {
+      "state": {
+        "state": "open|filtered"
+      },
+      "service": {
+        "name": "telnets",
+        "method": "table_default"
+      }
+    }
+  }
+}
+
+```
+
+##### Error Messages
+
+Querying for a malformed IP address, CIDR or range
+
+```
+HTTP/1.1 401 Bad Request
+{"status": 400, "msg": "Targets with wrong format/type or range ill-defined. Please review your query."}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 401 Unauthorized
+{"status": 401, "msg": "Unauthorized."}
+```
+
+Querying for an IP that has no records:
+
+```
+HTTP/1.1 404 Not Found
+{"status": 404, "msg": "No information available for given targets."}
+```
+
+#### GET /v1/query/torrent - Torrent IP Data Endpoint
+
+Access our historical database. This will provide with raw events related with torrent activity regarding an IP 
+
+Available options:
+
+  * Target IP, e.g.: 
+    * /v1/query/torrent/210.1.1.X
+  * Target CIDR, e.g.:
+    * /v1/query/torrent/210.1.1.X/24
+  * Target Range, e.g.:
+    * /v1/query/torrent/210.1.1.X-210.1.1.Y
+
+##### Response
+
+```
+curl -v https://api.binaryedge.io/v1/query/latest/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
+```
+
+```json
+{
+  "origin":{  
+    "type":"peer",
+    "module":"torrent",
+    "ts":1491827676263
+  },
+  "node":{  
+    "ip":"219.88.xxx.xxx",
+    "port":25923
+  },
+  "peer":{  
+    "ip":"222.208.xxx.xxx",
+    "port":30236
+  },
+  "torrent":{  
+    "infohash":"cbe45addbb48c07ef6451bd3bee326d5cd82538f",
+    "name":"NCIS Los Angeles S08E20 HDTV x264-LOL EZTV",
+    "source":"EZTV",
+    "category":"TV Show"
+  }
+}
+
+```
+
+##### Error Messages
+
+Querying for a malformed IP address, CIDR or range
+
+```
+HTTP/1.1 401 Bad Request
+{"status": 400, "msg": "Targets with wrong format/type or range ill-defined. Please review your query."}
+```
+
+Sending invalid Token:
+
+```
+HTTP/1.1 401 Unauthorized
+{"status": 401, "msg": "Unauthorized."}
+```
+
+Querying for an IP that has no records:
+
+```
+HTTP/1.1 404 Not Found
+{"status": 404, "msg": "No information available for given targets."}
+```
+
 #### GET /v1/query/image
 
 Query for a list of remote desktops found (latest first).
@@ -468,147 +677,6 @@ Sending invalid Token:
 ```
 HTTP/1.1 401 Unauthorized
 {"title": "Unauthorized"}
-```
-
-#### GET /v1/query/raw (deprecated)
-#### GET /v1/query/historical - Historical IP Data Endpoint
-
-Access our historical database. This will provide with all the raw events regarding an IP 
-
-Available options:
-
-  * Target IP, e.g.: 
-    * /v1/query/historical/210.1.1.X
-  * Target CIDR, e.g.:
-    * /v1/query/historical/210.1.1.X/24
-  * Target Range, e.g.:
-    * /v1/query/historical/210.1.1.X-210.1.1.Y
-
-##### Response
-
-```
-curl -v https://api.binaryedge.io/v1/query/historical/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
-```
-
-```json
-{
-  "origin": {
-    "country": "uk",
-    "module": "grabber",
-    "ts": 1464558594512,
-    "type": "service-simple"
-  },
-  "target": {
-    "ip": "222.208.xxx.xxx",
-    "protocol": "tcp",
-    "port": 992
-  },
-  "result": {
-    "data": {
-      "state": {
-        "state": "open|filtered"
-      },
-      "service": {
-        "name": "telnets",
-        "method": "table_default"
-      }
-    }
-  }
-}
-
-```
-
-##### Error Messages
-
-Querying for a malformed IP address, CIDR or range
-
-```
-HTTP/1.1 401 Bad Request
-{"status": 400, "msg": "Targets with wrong format/type or range ill-defined. Please review your query."}
-```
-
-Sending invalid Token:
-
-```
-HTTP/1.1 401 Unauthorized
-{"status": 401, "msg": "Unauthorized."}
-```
-
-Querying for an IP that has no records:
-
-```
-HTTP/1.1 404 Not Found
-{"status": 404, "msg": "No information available for given targets."}
-```
-
-#### GET /v1/query/latest - Latest IP Data Endpoint
-
-Access our historical database. This will provide with the latest raw events regarding an IP 
-
-Available options:
-
-  * Target IP, e.g.: 
-    * /v1/query/latest/210.1.1.X
-  * Target CIDR, e.g.:
-    * /v1/query/latest/210.1.1.X/24
-  * Target Range, e.g.:
-    * /v1/query/latest/210.1.1.X-210.1.1.Y
-
-##### Response
-
-```
-curl -v https://api.binaryedge.io/v1/query/latest/222.208.xxx.xxx -H 'X-Token:InsertYourClientToken'
-```
-
-```json
-{
-  "origin": {
-    "country": "uk",
-    "module": "grabber",
-    "ts": 1464558594512,
-    "type": "service-simple"
-  },
-  "target": {
-    "ip": "222.208.xxx.xxx",
-    "protocol": "tcp",
-    "port": 992
-  },
-  "result": {
-    "data": {
-      "state": {
-        "state": "open|filtered"
-      },
-      "service": {
-        "name": "telnets",
-        "method": "table_default"
-      }
-    }
-  }
-}
-
-```
-
-##### Error Messages
-
-Querying for a malformed IP address, CIDR or range
-
-```
-HTTP/1.1 401 Bad Request
-{"status": 400, "msg": "Targets with wrong format/type or range ill-defined. Please review your query."}
-```
-
-Sending invalid Token:
-
-```
-HTTP/1.1 401 Unauthorized
-{"status": 401, "msg": "Unauthorized."}
-```
-
-Querying for an IP that has no records:
-
-```
-HTTP/1.1 404 Not Found
-{"status": 404, "msg": "No information available for given targets."}
 ```
 
 
