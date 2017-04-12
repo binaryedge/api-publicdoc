@@ -5,8 +5,15 @@ The Service grabber tries to extract product specific information from a remote 
 ## Service Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"protocol":"tcp","modules": ["service"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "protocol":"tcp", "modules":["service"], "config":{}}]}]}' -H "X-Token:<Token>"
 ```
+
+### Service Request Options
+
+These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
+
+  * user_agent - change HTTP User Agent.
+    * "config":{"user_agent":"Test user Agent"}
 
 ## Schema
 

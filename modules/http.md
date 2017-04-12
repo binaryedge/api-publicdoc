@@ -5,14 +5,34 @@ Extract HTTP/HTTPSs information, e.g. HTTP headers, HTTP status codes, HTTP body
 ## HTTP Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"modules": ["http"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "protocol":"tcp", "modules":["http"], "config":{}}]}]}' -H "X-Token:<Token>"
 ```
+
+### HTTP Request Options
+
+These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
+
+  * host_header - change HTTP Host header
+    * "config":{"host_header":"google.com"}
+  * user_agent - change HTTP User Agent
+    * "config":{"user_agent":"Test user Agent"}
 
 ## HTTPS Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"modules": ["https"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "protocol":"tcp", "modules":["https"], "config":{}}]}]}' -H "X-Token:<Token>"
 ```
+
+### HTTPS Request Options
+
+These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
+
+  * host_header - change HTTP Host header
+    * "config":{"host_header":"google.com"}
+  * user_agent - change HTTP User Agent
+    * "config":{"user_agent":"Test user Agent"}
+  * sni - set HTTPS Server Name Indication
+    * "config":{"sni":"google.com"}
 
 ## Schema
 

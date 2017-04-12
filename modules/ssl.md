@@ -8,8 +8,17 @@ By default, the SSL module runs in full mode, where it will run all the cipher s
 ## SSL Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":443,"protocol":"tcp","modules": ["ssl"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":443, "protocol":"tcp", "modules":["ssl"], "config":{}}]}]}' -H "X-Token:<Token>"
 ```
+
+### SSL Request Options
+
+These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
+
+  * sni - set HTTPS Server Name Indication
+    * "config":{"sni":"google.com"}
+  * ssl_mode - disable the cipher tests
+    * "config":{"ssl_mode":"fast"}
 
 ## Schema
 
@@ -42,7 +51,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
 ### Request
 
 ```
-curl https://api.binaryedge.io/v1/tasks -d '{"type":"grab", "description": "SSL Request", "options":[{"targets":["X.X.X.X"], "ports":[{"port":"443", "config":{"sni":"www.binaryedge.io", "ssl_mode":"full"},"modules": ["ssl"]}]}]}' -H "X-Token:<Token>"
+curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL Request", "options":[{"targets":["X.X.X.X"], "ports":[{"port":"443", "protocol":"tcp", "modules": ["ssl"], "config":{"sni":"www.binaryedge.io", "ssl_mode":"full"}}]}]}' -H "X-Token:<Token>"
 ```
 
 ### Response

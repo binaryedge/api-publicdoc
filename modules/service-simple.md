@@ -5,7 +5,7 @@ The Service Simple grabber tries to extract product specific information from se
 ## Service Simple Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"protocol":"tcp","modules": ["service-simple"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "protocol":"tcp", "modules":["service-simple"]}]}]}' -H "X-Token:<Token>"
 ```
 
 ## Schema

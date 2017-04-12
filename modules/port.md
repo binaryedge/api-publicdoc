@@ -2,6 +2,12 @@
 
 The Port event is the default event that runs with every job.
 
+## Port Request Example
+
+```
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "protocol":"tcp", "modules":[]}]}]}' -H "X-Token:<Token>"
+```
+
 ## Port Event Example
 
 ```json

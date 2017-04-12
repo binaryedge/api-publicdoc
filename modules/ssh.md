@@ -5,7 +5,7 @@ Extract SSH keys and algorithms from SSH servers.
 ## SSH Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":22,"protocol":"tcp","modules": ["ssh"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":22, "protocol":"tcp", "modules":["ssh"]}]}]}' -H "X-Token:<Token>"
 ```
 
 ## Schema
