@@ -5,7 +5,7 @@ Grab Telnet information.
 ## Telnet Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":23,"modules": ["telnet"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":23, "protocol":"tcp", "modules":["telnet"]}]}]}' -H "X-Token:<Token>"
 ```
 
 ## Schema
@@ -17,23 +17,25 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{
   ...
   "result": {
     "data": {
-      "banner": "string",
-      "will": [{
-          "name": "string",
-          "value": "int"
+      "telnet": {
+        "banner": "string",
+        "will": [{
+            "name": "string",
+            "value": "int"
         }],
-      "do": [{
-          "name": "string",
-          "value": "int"
+        "do": [{
+            "name": "string",
+            "value": "int"
         }],
-      "wont": [{
-          "name": "string",
-          "value": "int"
+        "wont": [{
+            "name": "string",
+            "value": "int"
         }],
-      "dont": [{
-          "name": "string",
-          "value": "int"
+        "dont": [{
+            "name": "string",
+            "value": "int"
         }]
+      }
     }
   }
 }

@@ -1,18 +1,21 @@
-# Web (BETA)
+# Web
 
 Extract Web technologies information and headers.
 
 ## Web Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "config":{}, "modules": ["web"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "protocol":"tcp", "modules":["web"], "config":{}}]}]}' -H "X-Token:<Token>"
 ```
 
-## Request Options
+### Web Request Options
 
 These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
 
-  * https: true - whether to use an HTTPS instead of HTTP
+  * https - Whether to use HTTPS instead of HTTP
+    * "config":{"https":true}
+  * screenshot - Whether to take a screenshot of the website
+    * "config":{"screenshot":true}
 
 ## Schema
 
@@ -33,7 +36,9 @@ These are optional parameters that can alter the behaviour of the module. These 
       "headers": {
       	"string": "string"
         }
-      }
+      },
+      "html": "string",
+      "screenshot": "string"
     }
   }
 }
@@ -47,6 +52,8 @@ These are optional parameters that can alter the behaviour of the module. These 
     * version - Version of the technology
     * categories - Categories of the techonology
   * headers - Headers from the web server
+  * html - URL link to the html code of the web page
+  * screenshot - URL link to the screenshot of the web page
 
 ## Web Event Example
 

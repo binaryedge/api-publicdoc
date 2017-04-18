@@ -1,4 +1,4 @@
-# MQTT (beta)
+# MQTT
 
 Grab MQTT information, including messages and topics.
 
@@ -9,7 +9,7 @@ More information about MQTT at http://mqtt.org/documentation .
 ## MQTT Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"grab", "options":[{"targets":["X.X.X.X"], "ports":[{"port":1883,"modules": ["mqtt"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":1883, "protocol":"tcp", "modules":["mqtt"]}]}]}' -H "X-Token:<Token>"
 ```
 
 ## Schema

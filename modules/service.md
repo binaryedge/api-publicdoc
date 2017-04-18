@@ -5,8 +5,15 @@ The Service grabber tries to extract product specific information from a remote 
 ## Service Request Example
 
 ```
-curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80,"protocol":"tcp","modules": ["service"]}]}]}' -H "X-Token:<Token>"
+curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "protocol":"tcp", "modules":["service"], "config":{}}]}]}' -H "X-Token:<Token>"
 ```
+
+### Service Request Options
+
+These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
+
+  * user_agent - Change HTTP User Agent.
+    * "config":{"user_agent":"Test user Agent"}
 
 ## Schema
 
@@ -17,6 +24,11 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
     ...
     "result": {
         "data": {
+            "state": {
+                "reason": "string",
+                "reason_ttl": "string",
+                "state": "string"
+            },
             "service": {
                 "name": "string",
                 "product": "string",
@@ -28,9 +40,11 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
                 "cpe": ["string"], 
             },
             "scripts": [
-                {"results": ["string"],
-                 "id": "string",
-                 "output": "string"}
+                {
+                    "results": ["string"],
+                    "id": "string",
+                    "output": "string"
+                }
             ]
         }
     }
@@ -41,6 +55,10 @@ curl -v -L https://api.binaryedge.io/v1/tasks  -d  '{"type":"scan", "options":[{
 
 This module provides the following data (if available):
 
+* **state**: Information regarding the state of the port
+  * **state**: State of the port
+  * **reason**: Reason for the state definition
+  * **reason_ttl**: TTL for the reason
 * **service**: Information regarding the service that is likely to be running on the target
   * **name**: Type of service that is running
   * **product**: Product designation (and Vendor)
@@ -74,6 +92,11 @@ This module provides the following data (if available):
     },
     "result": {
         "data": {
+            "state": {
+                "reason": "syn-ack",
+                "reason_ttl": "52",
+                "state": "open"
+            },
             "service": {
                 "name": "http",
                 "product": "nginx",
