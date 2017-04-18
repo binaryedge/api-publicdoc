@@ -17,23 +17,25 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
   ...
   "result": {
     "data": {
-      "banner": "string",
-      "will": [{
-          "name": "string",
-          "value": "int"
+      "telnet": {
+        "banner": "string",
+        "will": [{
+            "name": "string",
+            "value": "int"
         }],
-      "do": [{
-          "name": "string",
-          "value": "int"
+        "do": [{
+            "name": "string",
+            "value": "int"
         }],
-      "wont": [{
-          "name": "string",
-          "value": "int"
+        "wont": [{
+            "name": "string",
+            "value": "int"
         }],
-      "dont": [{
-          "name": "string",
-          "value": "int"
+        "dont": [{
+            "name": "string",
+            "value": "int"
         }]
+      }
     }
   }
 }

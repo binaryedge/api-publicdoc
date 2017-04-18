@@ -40,6 +40,10 @@ Note: all requests are identified by Job ID and are shown in the stream window.
     * [9. telnet](#9-telnet)
     * [10. web](#10-web)
     * [11. mqtt](#11-mqtt)
+    * [12. elasticsearch](#12-elasticsearch)
+    * [13. memcached](#13-memcached)
+    * [14. redis](#14-redis)
+    * [15. mongodb](#15-mongodb)
 
   * [Configurations](#configurations)
 
@@ -274,6 +278,26 @@ _Detailed documentation_: [web module documentation](https://github.com/binaryed
 _Description_: (BETA) Grab MQTT information, including messages and topics.
 
 _Detailed documentation_: [mqtt module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/mqtt.md "mqtt")
+
+#### 12. elasticsearch
+_Description_: (BETA) Extract Elasticsearch detailed information.
+
+_Detailed documentation_: [elasticsearch module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/elasticsearch.md "elasticsearch")
+
+#### 13. memcached
+_Description_: (BETA) Extract Memcached detailed information.
+
+_Detailed documentation_: [memcached module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/memcached.md "memcached")
+
+#### 14. redis
+_Description_: (BETA) Extract Redis detailed information.
+
+_Detailed documentation_: [redis module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/redis.md "redis")
+
+#### 15. mongodb
+_Description_: (BETA) Extract MongoDB detailed information.
+
+_Detailed documentation_: [mongodb module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/mongodb.md "mongodb")
 
 #### Custom Modules
 Note: If you want a custom-made module, please contact BinaryEdge.

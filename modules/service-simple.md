@@ -28,7 +28,8 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
               "ostype": "string",
               "hostname": "string",
               "extrainfo": "string",
-              "cpe": ["string"],              
+              "cpe": ["string"],
+              "banner": "string",
               "method": "string"
           }
         }
@@ -65,32 +66,29 @@ This module provides the following data (if available):
 ## Service Simple Event Example
 
 ```json
-{
-    "origin": {
-        "type": "service-simple",
-        "job_id": "3bafd752-3ecc-4ba7-ae9a-f851025c3e50",
-        "client_id": "client",
-        "module": "grabber",
-        "country": "us",
-        "ts": 1458647916156
-    },
-    "target": {
-        "ip": "X.X.X.X",
-        "port": 80,
-        "protocol": "tcp"
-    },
-    "result": {
-        "data": {
-          "service": {
-              "product": "nginx",
-              "name": "http",
-              "extrainfo": "Ubuntu",
-              "cpe": ["cpe:/a:igor_sysoev:nginx:1.4.6", "cpe:/o:canonical:ubuntu_linux", "cpe:/o:linux:linux_kernel"],
-              "version": "1.4.6",
-              "ostype": "Linux",
-              "method": "probe_matching"
-          }
-        }
+{  
+  ...
+  "result":{  
+    "data":{  
+      "state":{  
+        "state":"open"
+      },
+      "service":{  
+        "product":"nginx",
+        "name":"http",
+        "extrainfo":"Ubuntu",
+        "cpe":[  
+          "cpe:/a:igor_sysoev:nginx:1.4.6",
+          "cpe:/o:canonical:ubuntu_linux",
+          "cpe:/o:linux:linux_kernel"
+        ],
+        "state":"open",
+        "version":"1.4.6",
+        "ostype":"Linux",
+        "banner":"\"HTTP/1.1 200 OK\\\\r\\\\nServer: nginx/1.4.6 (Ubuntu)\\\\r\\\\nDate: Tue, 18 Apr 2017 09:39:42 GMT\\\\r\\\\nContent-Type: text/html\\\\r\\\\nContent-Length: 612\\\\r\\\\nLast-Modified: Tue, 04 Mar 2014 11:46:45 GMT\\\\r\\\\nConnection: close\\\\r\\\\nETag: \\\"5315bd25-264\\\"\\\\r\\\\nAccept-Ranges: bytes\\\\r\\\\n\\\\r\\\\n<!DOCTYPE html>\\\\n<html>\\\\n<head>\\\\n<title>Welcome to nginx!</title>\\\\n<style>\\\\n    body {\\\\n        width: 35em;\\\\n        margin: 0 auto;\\\\n        font-family: Tahoma, Verdana, Arial, sans-serif;\\\\n    }\\\\n</style>\\\\n</head>\\\\n<body>\\\\n<h1>Welcome to nginx!</h1>\\\\n<p>If you see this page, the nginx web server is successfully installed and\\\\nworking. Further configuration is required.</p>\\\\n\\\\n<p>For online documentation and support please refer to\\\\n<a href=\\\"http://nginx.org/\\\">nginx.org</a>.<br/>\\\\nCommercial support is available at\\\\n<a href=\\\"http://nginx.com/\\\">nginx.com</a>.</p>\\\\n\\\\n<p><em>Thank you for using nginx.</em></p>\\\\n</body>\\\\n</html>\\\\n\"",
+        "method":"probe_matching"
+      }
     }
+  }
 }
 ```
