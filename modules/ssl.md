@@ -15,9 +15,9 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
 
 These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
 
-  * sni - set HTTPS Server Name Indication
+  * sni - Set HTTPS Server Name Indication
     * "config":{"sni":"google.com"}
-  * ssl_mode - disable the cipher tests
+  * ssl_mode - Disable the cipher tests
     * "config":{"ssl_mode":"fast"}
 
 ## Schema

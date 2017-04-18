@@ -12,7 +12,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
 
 These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
 
-  * user_agent - change HTTP User Agent.
+  * user_agent - Change HTTP User Agent.
     * "config":{"user_agent":"Test user Agent"}
 
 ## Schema

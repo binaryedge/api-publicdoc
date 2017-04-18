@@ -8,6 +8,17 @@ The Service Simple grabber tries to extract product specific information from se
 curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":80, "protocol":"tcp", "modules":["service-simple"]}]}]}' -H "X-Token:<Token>"
 ```
 
+### Service Simple Request Options
+
+These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
+
+  * prioritize_probes - List of probe names to prioritize
+    * "config":{"prioritize_probes":"SIPOptions, GetRequest, SSLSessionReq, NULL, HTTPOptions, RTSPRequest"}
+  * custom_probes - List of custom probes to use
+    * "config":{"custom_probes":"GET / HTTP/1.0\r\n\r\n,OPTIONS / HTTP/1.0\r\n\r\n"}
+  * probe_rarity - Rarity level of probes used (light/probable/default/all)
+    * "config":{"probe_rarity":"all"}
+
 ## Schema
 
 ### Service Simple Event Schema
