@@ -227,75 +227,75 @@ Should be used against a small number of targets.
 
 _Description_: Extract SSH details, e.g. key and algorithms for SSH servers
 
-_Detailed documentation_: [ssh module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/ssh.md "ssh")
+_Detailed documentation_: [ssh module documentation](modules/ssh.md "ssh")
 
 #### 2. ssl
 _Description_: Extract SSL details e.g. type of encryption
 
-_Detailed documentation_: [ssl module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/ssl.md "ssl")
+_Detailed documentation_: [ssl module documentation](modules/ssl.md "ssl")
 
 #### 3. vnc
 _Description_: Extract VNC details and screenshot
 
-_Detailed documentation_: [vnc module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/vnc.md "vnc")
+_Detailed documentation_: [vnc module documentation](modules/vnc.md "vnc")
 
 #### 4. rdp
 _Description_: Extract RDP details and screenshot
 
-_Detailed documentation_: [rdp module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/rdp.md "rdp")
+_Detailed documentation_: [rdp module documentation](modules/rdp.md "rdp")
 
 #### 5. x11
 _Description_: Extract x11 screenshot
 
-_Detailed documentation_: [x11 module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/x11.md "x11")
+_Detailed documentation_: [x11 module documentation](modules/x11.md "x11")
 
 #### 6. service
 _Description_: Extract detailed product specific information, e.g. product name, version, headers, scripts. If you just want product name and version, consider using the faster "service-simple".
 
-_Detailed documentation_: [service module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service.md "service")
+_Detailed documentation_: [service module documentation](modules/service.md "service")
 
 #### 7. service-simple
 _Description_: Extract basic product specific information, e.g. product name, version. This module is much faster than "service", since it returns less information.
 
-_Detailed documentation_: [service-simple module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/service-simple.md "service-simple")
+_Detailed documentation_: [service-simple module documentation](modules/service-simple.md "service-simple")
 
 #### 8. http & https
 _Description_: Extract HTTP/HTTPS information, e.g. HTTP headers, HTTP status codes, HTTP body, and redirects information. Follows up to 5 redirects.
 
-_Detailed documentation_: [http & https module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/http.md "http")
+_Detailed documentation_: [http & https module documentation](modules/http.md "http")
 
 #### 9. telnet
 _Description_: Extract Telnet information, e.g. Will, Do, Don't Won't commands.
 
-_Detailed documentation_: [telnet module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/telnet.md "telnet")
+_Detailed documentation_: [telnet module documentation](modules/telnet.md "telnet")
 
 #### 10. web
-_Description_: (BETA) Extract Web technologies information and headers.
+_Description_: Extract Web technologies information and headers.
 
-_Detailed documentation_: [web module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/web.md "web")
+_Detailed documentation_: [web module documentation](modules/web.md "web")
 
 #### 11. mqtt
-_Description_: (BETA) Grab MQTT information, including messages and topics.
+_Description_: Grab MQTT information, including messages and topics.
 
-_Detailed documentation_: [mqtt module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/mqtt.md "mqtt")
+_Detailed documentation_: [mqtt module documentation](modules/mqtt.md "mqtt")
 
 #### 12. elasticsearch
-_Description_: (BETA) Extract Elasticsearch detailed information.
+_Description_: Extract Elasticsearch detailed information.
 
-_Detailed documentation_: [elasticsearch module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/elasticsearch.md "elasticsearch")
+_Detailed documentation_: [elasticsearch module documentation](modules/elasticsearch.md "elasticsearch")
 
 #### 13. memcached
-_Description_: (BETA) Extract Memcached detailed information.
+_Description_: Extract Memcached detailed information.
 
-_Detailed documentation_: [memcached module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/memcached.md "memcached")
+_Detailed documentation_: [memcached module documentation](modules/memcached.md "memcached")
 
 #### 14. redis
-_Description_: (BETA) Extract Redis detailed information.
+_Description_: Extract Redis detailed information.
 
-_Detailed documentation_: [redis module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/redis.md "redis")
+_Detailed documentation_: [redis module documentation](modules/redis.md "redis")
 
 #### 15. mongodb
-_Description_: (BETA) Extract MongoDB detailed information.
+_Description_: Extract MongoDB detailed information.
 
 _Detailed documentation_: [mongodb module documentation](modules/mongodb.md "mongodb")
 
