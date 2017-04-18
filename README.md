@@ -297,7 +297,7 @@ _Detailed documentation_: [redis module documentation](https://github.com/binary
 #### 15. mongodb
 _Description_: (BETA) Extract MongoDB detailed information.
 
-_Detailed documentation_: [mongodb module documentation](https://github.com/binaryedge/api-publicdoc/blob/master/modules/mongodb.md "mongodb")
+_Detailed documentation_: [mongodb module documentation](modules/mongodb.md "mongodb")
 
 #### Custom Modules
 Note: If you want a custom-made module, please contact BinaryEdge.
