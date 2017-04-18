@@ -24,6 +24,11 @@ These are optional parameters that can alter the behaviour of the module. These 
     ...
     "result": {
         "data": {
+            "state": {
+                "reason": "string",
+                "reason_ttl": "string",
+                "state": "string"
+            },
             "service": {
                 "name": "string",
                 "product": "string",
@@ -35,9 +40,11 @@ These are optional parameters that can alter the behaviour of the module. These 
                 "cpe": ["string"], 
             },
             "scripts": [
-                {"results": ["string"],
-                 "id": "string",
-                 "output": "string"}
+                {
+                    "results": ["string"],
+                    "id": "string",
+                    "output": "string"
+                }
             ]
         }
     }
@@ -48,6 +55,10 @@ These are optional parameters that can alter the behaviour of the module. These 
 
 This module provides the following data (if available):
 
+* **state**: Information regarding the state of the port
+  * **state**: State of the port
+  * **reason**: Reason for the state definition
+  * **reason_ttl**: TTL for the reason
 * **service**: Information regarding the service that is likely to be running on the target
   * **name**: Type of service that is running
   * **product**: Product designation (and Vendor)
@@ -81,6 +92,11 @@ This module provides the following data (if available):
     },
     "result": {
         "data": {
+            "state": {
+                "reason": "syn-ack",
+                "reason_ttl": "52",
+                "state": "open"
+            },
             "service": {
                 "name": "http",
                 "product": "nginx",
