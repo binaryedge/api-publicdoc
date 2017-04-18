@@ -12,10 +12,16 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
 
 These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
 
-  * host_header - change HTTP Host header
-    * "config":{"host_header":"google.com"}
-  * user_agent - change HTTP User Agent
-    * "config":{"user_agent":"Test user Agent"}
+  * http_path - Set HTTP path
+    * "config":{"http_path":"/robots.txt"}
+  * http_method - Set HTTP method
+    * "config":{"http_method":"PROPFIND"}
+  * user_agent - Change HTTP User Agent
+    * "config":{"user_agent":"Mozilla /5.0 (Compatible MSIE 9.0;Windows NT 6.1;WOW64; Trident/5.0)"}
+  * host_header - Change HTTP Host header
+    * "config":{"host_header":"www.w3.org"}
+  * custom_http_header - Set a custom HTTP header
+    * "config":{"custom_http_header": "X-Forwarded-Host: en.wikipedia.org"}
 
 ## HTTPS Request Example
 
@@ -27,11 +33,17 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
 
 These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
 
-  * host_header - change HTTP Host header
-    * "config":{"host_header":"google.com"}
-  * user_agent - change HTTP User Agent
-    * "config":{"user_agent":"Test user Agent"}
-  * sni - set HTTPS Server Name Indication
+  * http_path - Set HTTP path
+    * "config":{"http_path":"/robots.txt"}
+  * http_method - Set HTTP method
+    * "config":{"http_method":"PROPFIND"}
+  * user_agent - Change HTTP User Agent
+    * "config":{"user_agent":"Mozilla /5.0 (Compatible MSIE 9.0;Windows NT 6.1;WOW64; Trident/5.0)"}
+  * host_header - Change HTTP Host header
+    * "config":{"host_header":"www.w3.org"}
+  * custom_http_header - Set a custom HTTP header
+    * "config":{"custom_http_header": "X-Forwarded-Host: en.wikipedia.org"}
+  * sni - Set HTTPS Server Name Indication
     * "config":{"sni":"google.com"}
 
 ## Schema

@@ -1,4 +1,4 @@
-# MQTT (beta)
+# MQTT
 
 Grab MQTT information, including messages and topics.
 
