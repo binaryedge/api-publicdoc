@@ -38,7 +38,7 @@ Note: all requests are identified by Job ID and are shown in the stream window.
     * [4. mongodb](#4-mongodb)
     * [5. mqtt](#5-mqtt)
     * [6. rdp](#6-rdp)
-    * [8. redis](#7-redis)
+    * [7. redis](#7-redis)
     * [8. service](#8-service)
     * [9. service-simple](#9-service-simple)
     * [10. ssh](#10-ssh)
