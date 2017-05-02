@@ -32,21 +32,21 @@ Note: all requests are identified by Job ID and are shown in the stream window.
 
 
   * [Supported Modules](#supported-modules)
-    * [1. ssh](#1-ssh)
-    * [2. ssl](#2-ssl)
-    * [3. vnc](#3-vnc)
-    * [4. rdp](#4-rdp)
-    * [5. x11](#5-x11)
-    * [6. service](#6-service)
-    * [7. service-simple](#7-service-simple)
-    * [8. http & https](#8-http--https)
-    * [9. telnet](#9-telnet)
-    * [10. web](#10-web)
-    * [11. mqtt](#11-mqtt)
-    * [12. elasticsearch](#12-elasticsearch)
-    * [13. memcached](#13-memcached)
-    * [14. redis](#14-redis)
-    * [15. mongodb](#15-mongodb)
+    * [1. elasticsearch](#1-elasticsearch)
+    * [2. http & https](#2-http--https)
+    * [3. memcached](#3-memcached)
+    * [4. mongodb](#4-mongodb)
+    * [5. mqtt](#5-mqtt)
+    * [6. rdp](#6-rdp)
+    * [8. redis](#7-redis)
+    * [8. service](#8-service)
+    * [9. service-simple](#9-service-simple)
+    * [10. ssh](#10-ssh)
+    * [11. ssl](#11-ssl)
+    * [12. telnet](#12-telnet)
+    * [13. vnc](#13-vnc)
+    * [14. web](#14-web)
+    * [15. x11](#15-x11)
 
 
   * [Configurations](#configurations)
@@ -56,14 +56,14 @@ Note: all requests are identified by Job ID and are shown in the stream window.
       * [GET /v1/query/historical](#get-v1queryhistorical---historical-ip-data-endpoint)
       * [GET /v1/query/latest](#get-v1querylatest---latest-ip-data-endpoint)
       * [GET /v1/query/torrent](#get-v1querytorrent---torrent-ip-data-endpoint)
-      * [Possible Error Messages in Historical Query](#possible-error-messages-in-historical-query)
+      * [Error Messages in Historical Query](#error-messages-in-historical-query)
 
     * [Remote Desktop Query](#remote-desktop-query)
       * [GET /v1/query/image](#get-v1queryimage)
       * [GET /v1/query/image/<image_id>?(options)](#get-v1queryimageimage_idoptions)
       * [GET /v1/query/image/search?(options)](#get-v1queryimagesearchoptions)
       * [GET /v1/query/image/search?similar=<image_id>](#get-v1queryimagesearchsimilarimage_id)
-      * [Possible Error Messages in Remote Desktop Query](#possible-error-messages-in-remote-desktop-query)
+      * [Error Messages in Remote Desktop Query](#error-messages-in-remote-desktop-query)
 
 
 
@@ -494,7 +494,7 @@ curl -v https://api.binaryedge.io/v1/query/torrent/222.208.xxx.xxx -H 'X-Token:I
 
 ```
 
-#### Possible Error Messages in Historical Query
+#### Error Messages in Historical Query
 
 Querying for a malformed IP address, CIDR or range
 
@@ -702,7 +702,7 @@ curl https://api.binaryedge.io/v1/query/image/search\?similar\=f1b0a311af803ea73
 }
 ```
 
-#### Possible Error Messages in Remote Desktop Query
+#### Error Messages in Remote Desktop Query
 
 Performing a malformed query:
 
@@ -718,7 +718,7 @@ HTTP/1.1 401 Unauthorized
 {"title": "Unauthorized"}
 ```
 
-Querying for an image_id with no records:
+Accessing a page that does not exist:
 
 ```
 HTTP/1.1 404 Not Found
