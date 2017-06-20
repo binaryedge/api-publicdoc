@@ -56,6 +56,7 @@ Note: all requests are identified by Job ID and are shown in the stream window.
       * [GET /v1/query/historical](#get-v1queryhistorical---historical-ip-data-endpoint)
       * [GET /v1/query/latest](#get-v1querylatest---latest-ip-data-endpoint)
       * [GET /v1/query/torrent](#get-v1querytorrent---torrent-ip-data-endpoint)
+      * [GET /v1/query/search](#get-v1querysearch---full-text-search)
       * [Error Messages in Historical Query](#error-messages-in-historical-query)
 
     * [Remote Desktop Query](#remote-desktop-query)
@@ -492,6 +493,26 @@ curl -v https://api.binaryedge.io/v1/query/torrent/222.208.xxx.xxx -H 'X-Token:I
   }
 }
 
+```
+
+#### GET /v1/query/search - Full-Text Search 
+
+Query our data, using our Text Search Engine.
+
+```
+curl -v https://api.binaryedge.io/v1/query/search\?query\="mysql" -H 'X-Token:InsertYourClientToken'
+```
+
+Or, you can use some filters:
+
+Available options:
+
+  * product: (string) search product names, e.g. "nginx"
+  * country: (string) search using country codes, e.g. "ES"
+  * port: (int) filter by port number, e.g. 80
+
+```
+curl -v https://api.binaryedge.io/v1/query/search\?query\="product:mysql%20AND%20country:ES" -H 'X-Token:InsertYourClientToken'
 ```
 
 #### Error Messages in Historical Query
