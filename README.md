@@ -510,6 +510,7 @@ Available options:
   * product: (string) search product names, e.g. "nginx"
   * country: (string) search using country codes, e.g. "ES"
   * port: (int) filter by port number, e.g. 80
+  * Conditionals: the following conditionals are available: AND, OR. Must be UPERCASE.
 
 ```
 curl -v https://api.binaryedge.io/v1/query/search\?query\="product:mysql%20AND%20country:ES" -H 'X-Token:InsertYourClientToken'
