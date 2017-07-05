@@ -10,7 +10,243 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
 
 ## Schema
 
-### Elasticsearch Event Schema
+  Note: You can see the version on "result.data.version"
+
+### [Version 5.X] Elasticsearch Event Schema 
+
+```json
+{
+  ...
+  "result": {
+    "data": {
+      "cluster_name": "string",
+      "node_name": "string",
+      "name": "string",
+      "transport_address": "string",
+      "host": "string",
+      "ip": "string",
+      "version": "string",
+      "build_hash": "string",
+      "total_indexing_buffer": "int",
+      "roles": [ 
+        "string" 
+      ],
+      "settings": {
+        "pidfile": "string",
+        "client": {
+          "type": "string"
+        },
+        "default": {
+          "path:" {
+            "data": "string",
+            "logs": "string",
+            "conf": "string"
+          }
+        },
+        "node":{
+          "name": "string"
+        },
+        "path": {
+          "logs": "string",
+          "home": "string"
+        },
+        "cluster": {
+          "name": "string"
+        },
+        "http": {
+          "type": {
+            "default": "string"
+          },
+          "port": "int"
+        },
+        "transport": {
+          "type": {
+            "default": "string"
+          }
+        },
+        "network": {
+          "host": "string"
+        }
+      },
+      "os": {
+        "refresh_interval_in_millis": "int",
+        "name": "string",
+        "arch": "string",
+        "version": "string",
+        "available_processors": "int",
+        "allocated_processors": "int"
+      },
+      "process": {
+        "refresh_interval_in_millis": "int",
+        "id": "int",
+        "mlockall": "boolean"
+      },
+      "jvm": {
+        "pid": "int",
+        "version": "string",
+        "vm_name": "string",
+        "vm_version": "string",
+        "vm_vendor": "string",
+        "start_time_in_millis": "int",
+        "mem": {
+          "heap_init_in_bytes": "int",
+          "heap_max_in_bytes": "int",
+          "non_heap_init_in_bytes": "int",
+          "non_heap_max_in_bytes": "int",
+          "direct_max_in_bytes": "int"
+        },
+        "gc_collectors": [
+          "string"
+        ],
+        "memory_pools": [
+          "string"
+        ],
+        "using_compressed_ordinary_object_pointers": "string",
+        "input_arguments": [
+          "string"
+        ]
+      },
+      "ingest": {
+        "processors":[
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "thread_pool": {
+        "generic": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "keep_alive": "string",
+          "queue_size": "int"
+        },
+        "index": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "queue_size": "int"
+        },
+        "fetch_shard_store": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "keep_alive": "string",
+          "queue_size": "int"
+        },
+        "get": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "queue_size": "int"
+        },
+        "snapshot": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "keep_alive": "string",
+          "queue_size": "int"
+        },
+        "force_merge": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "queue_size": "int"
+        },
+        "bulk": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "queue_size": "int"
+        },
+        "warmer": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "keep_alive": "string",
+          "queue_size": "int"
+        },
+        "flush": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "keep_alive": "string",
+          "queue_size": "int"
+        },
+        "search": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "queue_size": "int"
+        },
+        "fetch_shard_started": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "keep_alive": "string",
+          "queue_size": "int"
+        },
+        "listener": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "queue_size": "int"
+        },
+        "refresh": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "keep_alive": "string",
+          "queue_size": "int"
+        },
+        "management": {
+          "type": "string",
+          "min": "int",
+          "max": "int",
+          "keep_alive": "string",
+          "queue_size": "int"
+        }
+      },
+      "transport": {
+        "bound_address": [
+          "string"
+        ],
+        "publish_address": "string",
+        "profiles": {}
+      },
+      "http": {
+        "bound_address": [
+          "string"
+        ],
+        "publish_address": "string",
+        "max_content_length_in_bytes": "int"
+      },
+      "plugins": [
+        {
+          "name": "string",
+          "description": "string",
+          "site": "boolean",
+          "jvm": "boolean",
+          "url": "string"
+        },
+        ...
+      ],
+      "modules": [
+        {
+          "name": "string",
+          "version": "string",
+          "description": "string",
+          "classname": "string",
+          "has_native_controller": "boolean",
+        },
+        ...
+      ]
+    }
+  }
+}
+```
+
+### [Version 2.X] Elasticsearch Event Schema
 
 ```json
 {
