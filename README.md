@@ -162,7 +162,7 @@ To check the current status of a Requested job:
 curl https://api.binaryedge.io/v1/tasks/<job_id>/status -H "X-Token:InsertYourClientToken"
 
 HTTP/1.1 200 OK
-{"message":"<STATUS>"}
+{"status":"<STATUS>"}
 ```
 
 Where Status can be:
