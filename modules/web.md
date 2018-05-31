@@ -30,7 +30,10 @@ These are optional parameters that can alter the behaviour of the module. These 
           "name": "string",
           "confidence": "int",
           "version": "string",
-          "categories": ["string"]
+          "categories": [{
+              "name": "string",
+              "priority": "string"
+            }]
         }]
       },
       "headers": {
@@ -50,7 +53,9 @@ These are optional parameters that can alter the behaviour of the module. These 
   	* name - Name of the technoloy
   	* confidence - Confidence level for the match
     * version - Version of the technology
-    * categories - Categories of the techonology
+    * categories - Categories of the technology
+      * name - Name of the category
+      * priority - Priority (importance) of the category
   * headers - Headers from the web server
   * html - URL link to the html code of the web page
   * screenshot - URL link to the screenshot of the web page
@@ -68,7 +73,10 @@ These are optional parameters that can alter the behaviour of the module. These 
           "confidence": 100,
           "version": "2.2.26",
           "categories": [
-            "web-servers"
+            {
+              "name": "web-servers",
+              "priority": 7
+            }
           ]
         },
         {
@@ -76,7 +84,10 @@ These are optional parameters that can alter the behaviour of the module. These 
           "confidence": 100,
           "version": "0.9.8e",
           "categories": [
-            "web-server-extensions"
+            {
+              "name": "web-server-extensions",
+              "priority": "5"
+            }
           ]
         },
         {
@@ -84,7 +95,10 @@ These are optional parameters that can alter the behaviour of the module. These 
           "confidence": 100,
           "version": "",
           "categories": [
-            "operating-systems"
+            {
+              "name": "operating-systems",
+              "priority": "5"
+            }
           ]
         },
         {
@@ -92,7 +106,10 @@ These are optional parameters that can alter the behaviour of the module. These 
           "confidence": 100,
           "version": "2.2.26",
           "categories": [
-            "web-server-extensions"
+            {
+              "name": "web-server-extensions",
+              "priority": "5"
+            }
           ]
         }
       ],
