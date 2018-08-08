@@ -41,7 +41,7 @@ These are optional parameters that can alter the behaviour of the module. These 
             },
             "scripts": [
                 {
-                    "results": ["string"],
+                    "results": ["string OR object"],
                     "id": "string",
                     "output": "string"
                 }
@@ -68,10 +68,10 @@ This module provides the following data (if available):
   * **hostname**: Hostname (if any) offered by the service
   * **extrainfo**: Extra information extracted, can be an OS, version of a framework, etc
   * **cpe**: List of Common Platform Enumeration tags, if available
-* **scripts**: Extra information obtained by a set os scripts (results vary with the service found)
-  * **results**: Formatted output of the script
+* **scripts**: Extra information obtained by a set of scripts (results vary with the service found)
   * **id**: Identifier of the script that generated the information
   * **output**: Raw output of the script
+  * **results**: Formatted output of the script (format may vary)
 
 ## Service Event Example
 
@@ -106,12 +106,15 @@ This module provides the following data (if available):
                 "cpe": ["cpe:/a:igor_sysoev:nginx:1.4.6", "cpe:/o:linux:linux_kernel"]
             },
             "scripts": [
-                {"results": ["GET", "HEAD"],
-                 "id": "http-methods",
-                 "output": "\n  Supported Methods: GET HEAD"},
-                {"results": ["nginx/1.4.6 (Ubuntu)"],
-                 "id": "http-server-header",
-                 "output": "nginx/1.4.6 (Ubuntu)"},
+                {"id": "http-methods",
+                 "output": "\n  Supported Methods: GET HEAD",
+                 "results": ["GET", "HEAD"]},
+                {"id": "http-server-header",
+                 "output": "nginx/1.4.6 (Ubuntu)",
+                 "results": ["nginx/1.4.6 (Ubuntu)"]}
+                {"id": "clock-skew",
+                 "output": "mean: 0s, deviation: 0s, median: 0s",
+                 "results": [{"mean":"0","stddev":"0","median":"0"}]}
             ]
         }
     }
