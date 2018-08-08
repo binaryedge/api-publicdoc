@@ -161,6 +161,10 @@ These are optional parameters that can alter the behaviour of the module. These 
         "verified_certificate_chain": [
           ...
         ],
+        "successful_trust_store": {
+          "version": "string",
+          "name": "string"
+        },
         "path_validation_result_list": [
           {
             "is_certificate_trusted": "boolean",
@@ -272,6 +276,9 @@ These are optional parameters that can alter the behaviour of the module. These 
     * hpkp_pin - HTTP Public Key pin
     * as_pem - the certificate in PEM format
   * verified_certificate_chain - verified certificate chain, all the fields are the same as certificate_chain
+  * successful_trust_store - the trust store successfully used for validation
+    * name - the human-readable name of the trust store
+    * version - the human-readable version or date of the trust store
   * path_validation_result_list - the list of attempts at validating the server's certificate chain path using the trust stores packaged (Mozilla, Apple, etc.)
     * is_certificate_trusted - whether the certificate chain is trusted when using supplied the trust_store
     * trust_store - the trust store used for validation
