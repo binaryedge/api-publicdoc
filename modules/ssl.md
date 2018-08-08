@@ -26,7 +26,6 @@ These are optional parameters that can alter the behaviour of the module. These 
 
 ```json
 {
-  ...
   "result": {
     "data": {
       "truststores": [
@@ -46,7 +45,7 @@ These are optional parameters that can alter the behaviour of the module. These 
           "preferred_cipher": {
             "ssl_version": "string",
             "is_anonymous": "boolean",
-            "openssl_name": "string",
+            "name": "string",
             "post_handshake_response": "string",
             "dh_info": {
               "Order": "string",
@@ -110,7 +109,6 @@ These are optional parameters that can alter the behaviour of the module. These 
       "cert_info": {
         "ocsp_response": {},
         "is_certificate_chain_order_valid": "boolean",
-        "hostname_validation_result": "int",
         "has_anchor_in_certificate_chain": "boolean",
         "has_sha1_in_certificate_chain": "boolean",
         "is_leaf_certificate_ev": "boolean",
@@ -194,6 +192,7 @@ These are optional parameters that can alter the behaviour of the module. These 
       }
     }
   },
+  ...
 }
 ```
 
@@ -234,7 +233,6 @@ These are optional parameters that can alter the behaviour of the module. These 
   * ocsp_response - the OCSP response returned by the server, null if no response was sent by the server
   * has_anchor_in_certificate_chain - true if the server included the anchor/root certificate in the chain it send back to clients, null if the verified chain could not be built or no HPKP header was returned
   * has_sha1_in_certificate_chain - true if any of the leaf or intermediate certificates are signed using the SHA-1 algorithm, null if the verified chain could not be built or no HPKP header was returned
-  * hostname_validation_result - validation result of the certificate hostname
   * is_certificate_chain_order_valid - true if the order of the certificate chain is valid
   * is_leaf_certificate_ev - true if the leaf certificate is Extended Validation according to Mozilla
   * is_ocsp_response_trusted - true if the OCSP response is trusted using the Mozilla trust store, null if no OCSP response was sent by the server
@@ -1464,8 +1462,8 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
         "http_tunneling_settings": null,
         "ip_address": "104.28.6.147"
       }
-    },
-    ...
-  }
+    }
+  },
+  ...
 }
 ```
