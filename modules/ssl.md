@@ -253,8 +253,10 @@ These are optional parameters that can alter the behaviour of the module. These 
         * publicKeyAlgorithm - algorithm used to create the public key
         * publicKeySize - size of the public key
         * publicKey - contains the target public key
-          * modulus - returns the value of attribute modulus
-          * exponent - returns the value of attribute exponent
+          * curve - curve algorithm used (for Elliptic Curve keys)
+          * pub - public bytes of key (for Elliptic Curve keys)
+          * modulus - returns the value of attribute modulus (for keys not Elliptic Curve)
+          * exponent - returns the value of attribute exponent (for keys not Elliptic Curve)
         * validity -  contains the target's certificate validity
           * notAfter - expiration date of the certificate
           * notBefore - date from which the certificate is valid
