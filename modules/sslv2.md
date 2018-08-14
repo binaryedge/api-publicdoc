@@ -5,7 +5,7 @@ It is designed to be fast and comprehensive and should help organizations and te
 
 By default, the SSL module runs in full mode, where it will run all tests including the cipher suite tests which are very noisy. It is possible to disable the cipher tests by selecting the fast mode, i.e., changing the configuration key **ssl_mode** to **fast**.
 
-You can also run only specific cypher suites at a time, by changing **cypher_mode** to one of **sslv2**, **sslv3**, **tlsv1**, **tlsv1_1**, **tlsv1_2**, **tlsv1_3**. 
+You can also run only specific cypher suites at a time, by changing **cypher_mode** to one of **sslv2**, **sslv3**, **tlsv1**, **tlsv1_1**, **tlsv1_2**, **tlsv1_3**.
 
 
 ## SSL Request Example
@@ -491,7 +491,7 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                 "organization_name": "COMODO CA Limited",
                 "state_or_province_name": "Greater Manchester"
               },
-              "public_key": {
+              "public_key_info": {
                 "algorithm": "ec",
                 "curve": "secp256r1",
                 "key_size": 256,
