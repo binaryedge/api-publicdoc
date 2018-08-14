@@ -107,6 +107,7 @@ These are optional parameters that can alter the behaviour of the module. These 
         }
       },
       "cert_info": {
+        "error_message": "string",
         "ocsp_response": {},
         "is_certificate_chain_order_valid": "boolean",
         "has_anchor_in_certificate_chain": "boolean",
@@ -232,6 +233,7 @@ These are optional parameters that can alter the behaviour of the module. These 
   * fallback - test the server(s) for support of the TLS_FALLBACK_SCSV cipher suite which prevents downgrade attacks
     * supports_fallback_scsv - true if the server supports the TLS_FALLBACK_SCSV mechanism to block downgrade
 * cert_info - verify the validity of the server(s) certificate(s) against various trust stores (Mozilla, Apple, etc.), and check for OCSP stapling support
+  * error_message - an error message in case that the certificate couldn't be parsed correctly
   * ocsp_response - the OCSP response returned by the server, null if no response was sent by the server
   * has_anchor_in_certificate_chain - true if the server included the anchor/root certificate in the chain it send back to clients, null if the verified chain could not be built or no HPKP header was returned
   * has_sha1_in_certificate_chain - true if any of the leaf or intermediate certificates are signed using the SHA-1 algorithm, null if the verified chain could not be built or no HPKP header was returned
