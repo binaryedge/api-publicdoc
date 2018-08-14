@@ -202,8 +202,6 @@ These are optional parameters that can alter the behaviour of the module. These 
 
 ### Contents of the fields:
 
-*Variables description from https://nabla-c0d3.github.io/sslyze/documentation/available-scan-commands.html, https://github.com/nabla-c0d3/sslyze/blob/1.0.0/sslyze/server_connectivity.py and https://godoc.org/github.com/lair-framework/go-sslyze*
-
 * truststores - a set of truststores to be used for certificate validation
   * is_certificate_trusted - whether the certificate chain is trusted when using supplied the trust_store
   * trust_store - the trust store used for validation
@@ -259,9 +257,9 @@ These are optional parameters that can alter the behaviour of the module. These 
           * pub - public bytes of key (for Elliptic Curve keys)
           * modulus - returns the value of attribute modulus (for keys not Elliptic Curve)
           * exponent - returns the value of attribute exponent (for keys not Elliptic Curve)
-        * validity -  contains the target's certificate validity
-          * notAfter - expiration date of the certificate
-          * notBefore - date from which the certificate is valid
+      * validity -  contains the target's certificate validity
+        * notAfter - expiration date of the certificate
+        * notBefore - date from which the certificate is valid
       * version - the certificate SSL version
       * issuer - contains the target's certificate issuer information
         * commonName - common name of the issuer
