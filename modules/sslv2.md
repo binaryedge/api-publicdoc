@@ -8,28 +8,28 @@ By default, the SSL module runs in full mode, where it will run all tests includ
 You can also run only specific cypher suites at a time, by changing **cypher_mode** to one of **sslv2**, **sslv3**, **tlsv1**, **tlsv1_1**, **tlsv1_2**, **tlsv1_3**.
 
 
-## SSL Request Example
+## SSLv2 Request Example
 
 ```
 curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"targets":["X.X.X.X"], "ports":[{"port":443, "protocol":"tcp", "modules":["sslv2"], "config":{}}]}]}' -H "X-Token:<Token>"
 ```
 
-### SSL Request Options
+### SSLv2 Request Options
 
 These are optional parameters that can alter the behaviour of the module. These options can be inserted into the "config" object on the request.
 
   * sni - Set HTTPS Server Name Indication
     * "config":{"sni":"google.com"}
-  * ssl_mode - Disable the cipher tests
-    * "config":{"ssl_mode":"fast"}
+  * disable_cyphers - Disable the cipher tests
+    * "config":{"disable_cyphers":true}
   * cypher_mode - Run only specific cipher tests
     * "config":{"cypher_mode":"tls1_3"}
   * robot - Run only ROBOT vuln detection
-    * "config":{"robot":"1"}
+    * "config":{"robot":true}
 
 ## Schema
 
-### SSL Event Schema
+### SSLv2 Event Schema
 
 ```json
 {
@@ -164,7 +164,7 @@ These are optional parameters that can alter the behaviour of the module. These 
           },
           ...
         ],
-        "symantec_distrust_timeline" : "boolean",
+        "symantec_distrust_timeline" : "string",
         "verified_certificate_chain": [
           ...
         ],
@@ -261,7 +261,7 @@ These are optional parameters that can alter the behaviour of the module. These 
         * p - returns the value of attribute p (DSA)
         * q - returns the value of attribute q (DSA)
         * g - returns the value of attribute g (DSA)
-        * public_key - contains the target public key
+        * public_key - contains the target public key (DSA,EC)
       * validity -  contains the target's certificate validity
         * not_after - expiration date of the certificate
         * not_before - date from which the certificate is valid
@@ -277,34 +277,34 @@ These are optional parameters that can alter the behaviour of the module. These 
       * signature_value - the certificate signature
     * sha1_fingerprint - the SHA1 fingerprint of the certificate
     * sha256_fingerprint - the SHA256 fingerprint of the certificate
-    * hpkp_pin - HTTP Public Key pin
+    * hpkp_pin - the generated HTTP Public Key Pinning hash for a given certificate (https://tools.ietf.org/html/rfc7469)
     * crl_lookup_status - true if serial number of certificate was found on one of the CRL lists provided, false if not, null if there was an error performing the lookup
     * as_pem - the certificate in PEM format
   * symantec_distrust_timeline - when the certificate will be distrusted in Chrome and Firefox (https://blog.qualys.com/ssllabs/2017/09/26/google-and-mozilla-deprecating-existing-symantec-certificates), null if the certificate chain was not issued by one of the Symantec CAs
-  * verified_certificate_chain - verified certificate chain, all the fields are the same as certificate_chain
-  * successful_trust_store - the trust store successfully used for validation
+  * verified_certificate_chain - certificate chain after validation using the successful_trust_store; all the fields are the same as certificate_chain
+  * successful_trust_store - the first trust store successfully used for validation; used afterwards to verify the certificate chain and the OSCP response
     * name - the human-readable name of the trust store
     * version - the human-readable version or date of the trust store
-  * path_validation_result_list - the list of attempts at validating the server's certificate chain path using the trust stores packaged (Mozilla, Apple, etc.)
+  * path_validation_result_list - the list of attempts at validating the server's certificate chain path using the trust stores packaged (Mozilla, Apple, etc.), the first element of this list becomes the value of successful_trust_store
     * is_certificate_trusted - whether the certificate chain is trusted when using supplied the trust_store
     * trust_store - the trust store used for validation
       * name - the human-readable name of the trust store
       * version - the human-readable version or date of the trust store
     * verify_string - the string returned by OpenSSL's validation function
 * server_info - the server against which the command was run
-  * ssl_cipher_supported - one of the ssl ciphers supported by the server
+  * openssl_cipher_string_supported - one of the ssl ciphers supported by the server
   * hostname - the server's hostname
-  * client_auth_requirement(_string) - does the server require the client to be authenticated
-  * highest_ssl_version_supported(_string) - the highest version of ssl supported for connections
+  * client_auth_requirement - does the server require the client to be authenticated
+  * highest_ssl_version_supported - the highest version of ssl supported for connections
   * port - the server's TLS port number. If not supplied, the default port number for the specified `tls_wrapped_protocol` will be used
   * http_tunneling_settings - settings defined for http tunnel
   * ip_address - the server's IP address. If not supplied, a DNS lookup for the specified `hostname` will be performed. If `http_tunneling_settings` is specified, `ip_address` cannot be supplied as the HTTP proxy will be responsible for looking up and connecting to the server to be scanned.
   * client_auth_credentials - The client certificate and private key needed to perform mutual authentication with the server. If not supplied, will attempt to connect to the server without performing mutual authentication
-  * tls_wrapped_protocol(_string) - the protocol wrapped in TLS that the server expects. It allows to figure out how to establish a (Start)TLS connection to the server and what kind of "hello" message (SMTP, XMPP, etc.) to send to the server after the handshake was completed. If not supplied, standard TLS will be used.
+  * tls_wrapped_protocol - the protocol wrapped in TLS that the server expects. It allows to figure out how to establish a (Start)TLS connection to the server and what kind of "hello" message (SMTP, XMPP, etc.) to send to the server after the handshake was completed. If not supplied, standard TLS will be used.
   * xmpp_to_hostname - the hostname to set within the `to` attribute of the XMPP stream. If not supplied, the specified `hostname` will be used. Should only be set if the supplied `tls_wrapped_protocol` is an XMPP protocol
   * tls_server_name_indication - the hostname to set within the Server Name Indication TLS extension. If not supplied, the specified `hostname` will be used
 
-## SSL Event Example
+## SSLv2 Event Example
 
 ### Request
 
