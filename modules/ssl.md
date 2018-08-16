@@ -273,7 +273,7 @@ These are optional parameters that can alter the behaviour of the module. These 
       * signatureAlgorithm - the certificate signature algorithm
       * signatureValue - the certificate signature
     * sha1_fingerprint - the SHA1 fingerprint of the certificate
-    * hpkp_pin - the generated HTTP Public Key Pinning hash for a given certificate (https://tools.ietf.org/html/rfc7469)
+    * hpkp_pin - a generated HTTP Public Key Pinning hash for a given certificate (https://tools.ietf.org/html/rfc7469); not to be confused with an extracted HPKP header
     * as_pem - the certificate in PEM format
   * verified_certificate_chain - certificate chain after validation using the successful_trust_store; all the fields are the same as certificate_chain
   * successful_trust_store - the first trust store successfully used for validation; used afterwards to verify the certificate chain and the OSCP response

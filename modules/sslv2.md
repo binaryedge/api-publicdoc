@@ -27,6 +27,25 @@ These are optional parameters that can alter the behaviour of the module. These 
   * robot - Run only ROBOT vuln detection
     * "config":{"robot":true}
 
+## SSL VS SSLv2
+
+### Bug Fixes
+- certificate validation against hostname was bugged on the original SSL module, new field certificate_matches_hostname now shows the correct information
+- certificate subject public keys generated with DSA would trigger errors when parsing
+
+### Added features
+- added ROBOT vulnerability
+- added CRL checking
+- added TLSv1.3
+- added Symantec distrust timeline
+
+### Misc
+- standardized JSON keys to snake case only
+- timestamps formats changed
+- some enumerated fields now only appear as strings, the int value had no real meaning
+- removed trust_stores key, which was an out-of-context accumulation of path_validation_result_list from all the certificates in a chain
+- other minor schema changes (see below)
+
 ## Schema
 
 ### SSLv2 Event Schema
@@ -277,7 +296,7 @@ These are optional parameters that can alter the behaviour of the module. These 
       * signature_value - the certificate signature
     * sha1_fingerprint - the SHA1 fingerprint of the certificate
     * sha256_fingerprint - the SHA256 fingerprint of the certificate
-    * hpkp_pin - the generated HTTP Public Key Pinning hash for a given certificate (https://tools.ietf.org/html/rfc7469)
+    * hpkp_pin - a generated HTTP Public Key Pinning hash for a given certificate (https://tools.ietf.org/html/rfc7469); not to be confused with an extracted HPKP header
     * crl_lookup_status - true if serial number of certificate was found on one of the CRL lists provided, false if not, null if there was an error performing the lookup
     * as_pem - the certificate in PEM format
   * symantec_distrust_timeline - when the certificate will be distrusted in Chrome and Firefox (https://blog.qualys.com/ssllabs/2017/09/26/google-and-mozilla-deprecating-existing-symantec-certificates), null if the certificate chain was not issued by one of the Symantec CAs
