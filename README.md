@@ -58,6 +58,7 @@ Note: all requests are identified by Job ID and are shown in the stream window.
       * [Error Messages in Historical Query](#error-messages-in-historical-query)
 
     * [Remote Desktop Query](#remote-desktop-query)
+      * [GET /v1/query/image/ip/<ip>(options)](#get-v1queryimageipipoptions)
       * [GET /v1/query/image](#get-v1queryimage)
       * [GET /v1/query/image/<image_id>?(options)](#get-v1queryimageimage_idoptions)
       * [GET /v1/query/image/search?(options)](#get-v1queryimagesearchoptions)
@@ -584,19 +585,86 @@ Querying for a malformed IP address, CIDR or range
 
 ```
 HTTP/1.1 400 Bad Request
-{"msg": "Targets with wrong format/type or range ill-defined. Please review your query.", "status": 400}
+  {
+      "status": 400,
+      "title": "Bad Request",
+      "message": "Parameters with wrong format/type or ill-defined, please review your query"
+  }
 ```
 
 Sending invalid Token:
 
 ```
 HTTP/1.1 401 Unauthorized
-{msg": "Unauthorized.", "status": 401}
+{
+    "status": 401,
+    "title": "Unauthorized",
+    "message": "Could not validate token, please review your token"
+}
 ```
 
 
 
 ### Remote Desktop Query
+
+#### GET /v1/query/image/ip/<ip>(options)
+
+Query details about remote desktops that were detected by BinaryEdge for a specific IP. This includes the following information:
+
+  * IP: target address where the screenshot was taken;
+  * Port: target port where the service was running;
+  * ts: timestamp of when the screenshot was taken;
+  * geoip: geographical information;
+  * has_faces: Boolean, whether faces were detected or not;
+  * n_faces: Integer, Number of faces detected on the image;
+  * tags: Array, Strings, List of tags automatically attributed by our process;
+  * height: Integer;
+  * width: Integer;
+  * url: String, URL to download image;
+  * thumb: String, URL to download image thumbnail;
+
+Available options:
+
+  * ocr: if present, shows an additional "words" field, which is a list of words obtains via our OCR process, e.g.:
+    * ocr=1
+
+```
+curl -v https://api.binaryedge.io/v1/query/image/ip/XXX.XXX.XXX.XXX?ocr=1 -H 'X-Token:InsertYourClientToken'
+```
+
+##### Response
+
+```json
+{
+    "total_records": 3,
+    "events": [
+        {
+            "tags": ["vnc"],
+            "geoip": {
+                "timezone": "Asia/Shanghai",
+                "continent_code": "AS",
+                "location": [120.4586, 41.5703],
+                "city_name": "Chaoyang",
+                "country_name": "China",
+                "country_code": "CN"
+            },
+            "n_faces": 0,
+            "words": ["administrator", "windows", "thinkpad", "enterprise"],
+            "image_id": "f1b0a311af803ea73ac48adce2378f58adce2378f5",
+            "height": 600,
+            "ts": 1473544466000,
+            "has_faces": false,
+            "port": 5910,
+            "ip": "XXX.XXX.XXX.XXX",
+            "width": 800,
+            "url": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg",
+            "thumb": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg"
+        }
+    ]
+}
+```
+
+
 
 #### GET /v1/query/image
 
@@ -620,19 +688,19 @@ curl -v https://api.binaryedge.io/v1/query/image -H 'X-Token:InsertYourClientTok
     "total_records": 3,
     "events": [
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
-          "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+            "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
         },
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
-          "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+            "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
         },
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
-          "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+            "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
         }
     ]
 }
@@ -653,8 +721,6 @@ Query details about remote desktops that were detected by BinaryEdge. This inclu
   * tags: Array, Strings, List of tags automatically attributed by our process;
   * height: Integer;
   * width: Integer;
-  * created_at: timestamp of when the screenshot information entered the database;
-  * modified_at: timestamp of when the screenshot information was last updated;
   * url: String, URL to download image;
   * thumb: String, URL to download image thumbnail;
 
@@ -671,28 +737,26 @@ curl -v https://api.binaryedge.io/v1/query/image/f1b0a311af803ea73ac48adce2378f5
 
 ```json
 {
-  "modified_at": 1473888487412,
-  "tags": ["vnc"],
-  "geoip": {
-    "timezone": "Asia/Shanghai",
-    "continent_code": "AS",
-    "location": [120.4586, 41.5703],
-    "city_name": "Chaoyang",
-    "country_name": "China",
-    "country_code": "CN"
-  },
-  "n_faces": 0,
-  "words": ["administrator", "windows", "thinkpad", "enterprise"],
-  "created_at": 1473544493392,
-  "image_id": "f1b0a311af803ea73ac48adce2378f58adce2378f5",
-  "height": 600,
-  "ts": 1473544466000,
-  "has_faces": false,
-  "port": 5910,
-  "ip": "XXX.XXX.XXX.XXX",
-  "width": 800,
-  "url": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg",
-  "thumb": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg"
+    "tags": ["vnc"],
+    "geoip": {
+        "timezone": "Asia/Shanghai",
+        "continent_code": "AS",
+        "location": [120.4586, 41.5703],
+        "city_name": "Chaoyang",
+        "country_name": "China",
+        "country_code": "CN"
+    },
+    "n_faces": 0,
+    "words": ["administrator", "windows", "thinkpad", "enterprise"],
+    "image_id": "f1b0a311af803ea73ac48adce2378f58adce2378f5",
+    "height": 600,
+    "ts": 1473544466000,
+    "has_faces": false,
+    "port": 5910,
+    "ip": "XXX.XXX.XXX.XXX",
+    "width": 800,
+    "url": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg",
+    "thumb": "https://path/to/f1b0a311af803ea73ac48adce2378f58adce2378f5.jpg"
 }
 ```
 
@@ -732,19 +796,19 @@ curl https://api.binaryedge.io/v1/query/image/search\?ip\=120.XXX.XXX.XXX  -H 'X
     "total_records": 3,
     "events": [
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
-          "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+            "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
         },
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
-          "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+            "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
         },
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
-          "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+            "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
         }
     ]
 }
@@ -768,19 +832,19 @@ curl https://api.binaryedge.io/v1/query/image/search\?similar\=f1b0a311af803ea73
     "total_records": 3,
     "events": [
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
-          "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/903cb557b597d9fa29905e1908381cf90b851da945b711366686af50.jpg",
+            "image_id":"903cb557b597d9fa29905e1908381cf90b851da945b711366686af50"
         },
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
-          "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21.jpg",
+            "image_id":"933db157b280dfe236975e07073315f201e215c24cb11a3d658ba054dd21"
         },
         {
-          "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
-          "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
-          "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
+            "url":"https://d1ngxp4ef6grqi.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+            "thumb":"https://d3f9qnon04ymh2.cloudfront.net/9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59.jpg",
+            "image_id":"9735ad48b289c0f9338f5c1908381cf90b851da945b712386387ac59"
         }
     ]
 }
@@ -792,21 +856,32 @@ Performing a malformed query:
 
 ```
 HTTP/1.1 400 Bad Request
-{"title": "Bad Request"}
+{
+    "status": 400,
+    "title": "Bad Request",
+    "message": "Parameters with wrong format/type or ill-defined, please review your query"
+}
 ```
 
 Sending invalid Token:
 
 ```
 HTTP/1.1 401 Unauthorized
-{"title": "Unauthorized"}
+{
+    "status": 401,
+    "title": "Unauthorized",
+    "message": "Could not validate token, please review your token"
+}
 ```
 
 Accessing a page that does not exist:
 
 ```
-HTTP/1.1 404 Not Found
-{"title": "Not Found"}
+{
+    "status": 404,
+    "title": "Not Found",
+    "message": "Page not found"
+}
 ```
 
 

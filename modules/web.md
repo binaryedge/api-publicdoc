@@ -38,7 +38,6 @@ These are optional parameters that can alter the behaviour of the module. These 
       },
       "headers": {
       	"string": "string"
-        }
       },
       "html": "string",
       "screenshot": "string"
@@ -50,7 +49,7 @@ These are optional parameters that can alter the behaviour of the module. These 
 ### Contents of the fields:
 
   * apps - Request made by the module
-  	* name - Name of the technoloy
+  	* name - Name of the technology
   	* confidence - Confidence level for the match
     * version - Version of the technology
     * categories - Categories of the technology
@@ -74,7 +73,7 @@ These are optional parameters that can alter the behaviour of the module. These 
           "version": "2.2.26",
           "categories": [
             {
-              "name": "web-servers",
+              "name": "Web Servers",
               "priority": 7
             }
           ]
@@ -85,7 +84,7 @@ These are optional parameters that can alter the behaviour of the module. These 
           "version": "0.9.8e",
           "categories": [
             {
-              "name": "web-server-extensions",
+              "name": "Web Server Extensions",
               "priority": "5"
             }
           ]
@@ -96,7 +95,7 @@ These are optional parameters that can alter the behaviour of the module. These 
           "version": "",
           "categories": [
             {
-              "name": "operating-systems",
+              "name": "Operating Systems",
               "priority": "5"
             }
           ]
@@ -107,7 +106,7 @@ These are optional parameters that can alter the behaviour of the module. These 
           "version": "2.2.26",
           "categories": [
             {
-              "name": "web-server-extensions",
+              "name": "Web Server Extensions",
               "priority": "5"
             }
           ]
