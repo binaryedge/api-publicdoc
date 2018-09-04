@@ -58,6 +58,7 @@ Note: all requests are identified by Job ID and are shown in the stream window.
       * [Error Messages in Historical Query](#error-messages-in-historical-query)
 
     * [Remote Desktop Query](#remote-desktop-query)
+      * [GET /v1/query/image/ip/<ip>(options)](#get-v1queryimageipipoptions)
       * [GET /v1/query/image](#get-v1queryimage)
       * [GET /v1/query/image/<image_id>?(options)](#get-v1queryimageimage_idoptions)
       * [GET /v1/query/image/search?(options)](#get-v1queryimagesearchoptions)
