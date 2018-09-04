@@ -606,7 +606,7 @@ HTTP/1.1 401 Unauthorized
 
 ### Remote Desktop Query
 
-#### GET /v1/query/ip/<ip>(options)
+#### GET /v1/query/image/ip/<ip>(options)
 
 Query details about remote desktops that were detected by BinaryEdge for a specific IP. This includes the following information:
 
