@@ -20,17 +20,17 @@ Note: all requests are identified by Job ID and are shown in the stream window.
 
   * [Tasks](#tasks)
     * [GET /v1/tasks - List Requested Jobs](#get-v1tasks---list-requested-jobs)
-    * [POST /v1/tasks - Create Job](#post-v1tasks---create-job)
-    * [POST /v1/tasks/job_id/revoke - Job Revoke](#post-v1tasksjob_idrevoke---job-revoke)
+    * [POST /v1/tasks - Create Job](#post-v1tasks---create-scan-job)
+    * [POST /v1/tasks/job_id/revoke - Job Revoke](#post-v1tasksjob_idrevoke---revoke-job)
     * [GET /v1/replay/job_id - Replay Job](#get-v1replayjob_id---replay-job)
     * [Job Status](#job-status)
-    * [Supported Types](#supported-types)
+    * [Supported Types](#supported-job-types)
       * [1. scan](#1-scan)
       * [2. grab](#2-grab)
 
   * [General Data Format](#general-data-format)
 
-  * [Supported Modules](#supported-modules)
+  * [Supported Modules](#supported-modules-types)
     * [1. elasticsearch](#1-elasticsearch)
     * [2. http & https](#2-http--https)
     * [3. memcached](#3-memcached)
@@ -58,14 +58,12 @@ Note: all requests are identified by Job ID and are shown in the stream window.
       * [Error Messages in Historical Query](#error-messages-in-historical-query)
 
     * [Remote Desktop Query](#remote-desktop-query)
-      * [GET /v1/query/image/ip/<ip>(options)](#get-v1queryimageipipoptions)
+      * [GET /v1/query/image/ip/<ip>(options)](#get-v1queryimageipoptions)
       * [GET /v1/query/image](#get-v1queryimage)
       * [GET /v1/query/image/<image_id>?(options)](#get-v1queryimageimage_idoptions)
       * [GET /v1/query/image/search?(options)](#get-v1queryimagesearchoptions)
       * [GET /v1/query/image/search?similar=<image_id>](#get-v1queryimagesearchsimilarimage_id)
       * [Error Messages in Remote Desktop Query](#error-messages-in-remote-desktop-query)
-
-
 
 ## Data Stream
 
