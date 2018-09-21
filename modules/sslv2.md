@@ -399,7 +399,7 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                     "log_id": "ee:4b:bd:b7:75:ce:60:ba:e1:42:69:1f:ab:e1:9e:66:a3:0f:7e:5f:b0:72:d8:83:00:c4:7b:89:7a:a8:fd:cb",
                     "signature": "30:45:02:20:37:4c:2f:d9:8e:ce:e2:ea:13:eb:c7:7a:bd:0d:e1:4d:1a:7d:d8:7c:22:9b:a4:71:db:d2:4f:21:56:00:f4:bf:02:21:00:c5:5d:ef:e9:25:92:06:cd:8e:f5:aa:db:35:ea:8a:c0:52:67:2f:6a:d6:47:3a:79:d0:45:ff:4f:86:14:9f:83",
                     "signature_algorithm": "sha256_ecdsa",
-                    "timestamp": "2018-08-09 01:21:12 GMT",
+                    "timestamp": "2018-08-29T15:05:08.373000",
                     "version": "v1"
                   },
                   {
@@ -407,7 +407,7 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                     "log_id": "74:7e:da:83:31:ad:33:10:91:21:9c:ce:25:4f:42:70:c2:bf:fd:5e:42:20:08:c6:37:35:79:e6:10:7b:cc:56",
                     "signature": "30:44:02:20:52:76:ff:f9:cc:f8:86:43:ce:b8:4b:17:38:8a:68:7c:2c:3c:2c:66:a1:43:75:2a:46:a8:b6:bd:cb:f2:f2:2a:02:20:55:0c:b2:63:2c:a2:af:80:6c:8d:15:e9:1c:a0:9e:0f:9b:9b:53:ec:bb:69:1c:ff:4d:92:ad:76:59:16:8f:9c",
                     "signature_algorithm": "sha256_ecdsa",
-                    "timestamp": "2018-08-09 01:21:12 GMT",
+                    "timestamp": "2018-08-29T15:05:08.465000",
                     "version": "v1"
                   }
                 ],
@@ -524,8 +524,8 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                 "organizational_unit_name": "Domain Control Validated | PositiveSSL Multi-Domain"
               },
               "validity": {
-                "not_after": "2019-02-15 23:59:59 UTC+00:00",
-                "not_before": "2018-08-09 00:00:00 UTC+00:00"
+                "not_after": "2019-03-07T23:59:59+00:00",
+                "not_before": "2018-08-29T00:00:00+00:00"
               },
               "version": "v3"
             },
@@ -611,8 +611,8 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                 "state_or_province_name": "Greater Manchester"
               },
               "validity": {
-                "not_after": "2029-09-24 23:59:59 UTC+00:00",
-                "not_before": "2014-09-25 00:00:00 UTC+00:00"
+                "not_after": "2029-09-24T23:59:59+00:00",
+                "not_before": "2014-09-25T00:00:00+00:00"
               },
               "version": "v3"
             },
@@ -685,8 +685,8 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                 "state_or_province_name": "Greater Manchester"
               },
               "validity": {
-                "not_after": "2020-05-30 10:48:38 UTC+00:00",
-                "not_before": "2000-05-30 10:48:38 UTC+00:00"
+                "not_after": "2020-05-30T10:48:38+00:00",
+                "not_before": "2000-05-30T10:48:38+00:00"
               },
               "version": "v3"
             },
@@ -842,7 +842,7 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                     "log_id": "ee:4b:bd:b7:75:ce:60:ba:e1:42:69:1f:ab:e1:9e:66:a3:0f:7e:5f:b0:72:d8:83:00:c4:7b:89:7a:a8:fd:cb",
                     "signature": "30:45:02:20:37:4c:2f:d9:8e:ce:e2:ea:13:eb:c7:7a:bd:0d:e1:4d:1a:7d:d8:7c:22:9b:a4:71:db:d2:4f:21:56:00:f4:bf:02:21:00:c5:5d:ef:e9:25:92:06:cd:8e:f5:aa:db:35:ea:8a:c0:52:67:2f:6a:d6:47:3a:79:d0:45:ff:4f:86:14:9f:83",
                     "signature_algorithm": "sha256_ecdsa",
-                    "timestamp": "2018-08-09 01:21:12 GMT",
+                    "timestamp": "2018-08-29T15:05:08.373000",
                     "version": "v1"
                   },
                   {
@@ -850,7 +850,7 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                     "log_id": "74:7e:da:83:31:ad:33:10:91:21:9c:ce:25:4f:42:70:c2:bf:fd:5e:42:20:08:c6:37:35:79:e6:10:7b:cc:56",
                     "signature": "30:44:02:20:52:76:ff:f9:cc:f8:86:43:ce:b8:4b:17:38:8a:68:7c:2c:3c:2c:66:a1:43:75:2a:46:a8:b6:bd:cb:f2:f2:2a:02:20:55:0c:b2:63:2c:a2:af:80:6c:8d:15:e9:1c:a0:9e:0f:9b:9b:53:ec:bb:69:1c:ff:4d:92:ad:76:59:16:8f:9c",
                     "signature_algorithm": "sha256_ecdsa",
-                    "timestamp": "2018-08-09 01:21:12 GMT",
+                    "timestamp": "2018-08-29T15:05:08.465000",
                     "version": "v1"
                   }
                 ],
@@ -967,8 +967,8 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                 "organizational_unit_name": "Domain Control Validated | PositiveSSL Multi-Domain"
               },
               "validity": {
-                "not_after": "2019-02-15 23:59:59 UTC+00:00",
-                "not_before": "2018-08-09 00:00:00 UTC+00:00"
+                "not_after": "2019-03-07T23:59:59+00:00",
+                "not_before": "2018-08-29T00:00:00+00:00"
               },
               "version": "v3"
             },
@@ -1054,8 +1054,8 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                 "state_or_province_name": "Greater Manchester"
               },
               "validity": {
-                "not_after": "2029-09-24 23:59:59 UTC+00:00",
-                "not_before": "2014-09-25 00:00:00 UTC+00:00"
+                "not_after": "2029-09-24T23:59:59+00:00",
+                "not_before": "2014-09-25T00:00:00+00:00"
               },
               "version": "v3"
             },
@@ -1102,8 +1102,8 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
                 "state_or_province_name": "Greater Manchester"
               },
               "validity": {
-                "not_after": "2038-01-18 23:59:59 UTC+00:00",
-                "not_before": "2008-03-06 00:00:00 UTC+00:00"
+                "not_after": "2038-01-18T23:59:59+00:00",
+                "not_before": "2008-03-06T00:00:00+00:00"
               },
               "version": "v3"
             },
