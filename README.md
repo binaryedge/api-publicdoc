@@ -640,7 +640,7 @@ HTTP/1.1 401 Unauthorized
 
 ### Remote Desktop Query
 
-#### GET /v1/query/image/ip/<ip>(options)
+#### GET /v1/query/image/ip
 
 Query details about remote desktops that were detected by BinaryEdge for a specific IP. This includes the following information:
 
@@ -754,7 +754,7 @@ $ curl -v https://api.binaryedge.io/v1/query/image -H 'X-Token:InsertYourClientT
 }
 ```
 
-#### GET /v1/query/image/<image_id>?(options)
+#### GET /v1/query/image
 
 Query details about remote desktops that were detected by BinaryEdge. This includes the following information:
 
@@ -821,7 +821,7 @@ $ curl -v https://api.binaryedge.io/v1/query/image/f1b0a311af803ea73ac48adce2378
 }
 ```
 
-#### GET /v1/query/image/search?(options)
+#### GET /v1/query/image/search
 
 Query for a list of remote desktops according to certain filters.
 
@@ -887,7 +887,7 @@ $ curl https://api.binaryedge.io/v1/query/image/search\?ip\=120.XXX.XXX.XXX  -H 
 }
 ```
 
-#### GET /v1/query/image/search?similar=<image_id>
+#### GET /v1/query/image/search
 
 Query for a list of remote desktops that are similar to another remote desktop.
 Note: This option cannot be used together with the previous ones.
