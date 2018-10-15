@@ -33,7 +33,7 @@ These are optional parameters that can alter the behaviour of the module. These 
                 "name": "string",
                 "product": "string",
                 "version": "string",
-                "device": "string",
+                "devicetype": "string",
                 "ostype": "string",
                 "hostname": "string",
                 "extrainfo": "string",
@@ -63,7 +63,7 @@ This module provides the following data (if available):
   * **name**: Type of service that is running
   * **product**: Product designation (and Vendor)
   * **version**: Application version number
-  * **device**: Type of device running the service
+  * **devicetype**: Type of device running the service
   * **ostype**: Operating system running the service
   * **hostname**: Hostname (if any) offered by the service
   * **extrainfo**: Extra information extracted, can be an OS, version of a framework, etc
