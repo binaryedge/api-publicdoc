@@ -38,6 +38,7 @@ These are optional parameters that can alter the behaviour of the module. These 
 - added CRL checking
 - added TLSv1.3
 - added Symantec distrust timeline
+- added JA3 fingerprinting
 
 ### Misc
 - standardized JSON keys to snake case only
@@ -214,7 +215,9 @@ These are optional parameters that can alter the behaviour of the module. These 
         "client_auth_credentials": {},
         "tls_wrapped_protocol": "string",
         "xmpp_to_hostname": "string",
-        "tls_server_name_indication": "string"
+        "tls_server_name_indication": "string",
+        "ja3": "string",
+        "ja3_digest": "string"
       }
     }
   },
@@ -322,6 +325,8 @@ These are optional parameters that can alter the behaviour of the module. These 
   * tls_wrapped_protocol - the protocol wrapped in TLS that the server expects. It allows to figure out how to establish a (Start)TLS connection to the server and what kind of "hello" message (SMTP, XMPP, etc.) to send to the server after the handshake was completed. If not supplied, standard TLS will be used.
   * xmpp_to_hostname - the hostname to set within the `to` attribute of the XMPP stream. If not supplied, the specified `hostname` will be used. Should only be set if the supplied `tls_wrapped_protocol` is an XMPP protocol
   * tls_server_name_indication - the hostname to set within the Server Name Indication TLS extension. If not supplied, the specified `hostname` will be used
+  * ja3 - JA3 is a method for creating SSL/TLS fingerprints for threat intelligence, based on version, cyphers and extensions supported by the server. See https://github.com/salesforce/ja3 for details
+  * ja3_digest - MD5 fingerprint using the extracted informaiton on `ja3`
 
 ## SSLv2 Event Example
 
@@ -1451,7 +1456,9 @@ curl https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "description": "SSL 
         "port": 443,
         "tls_server_name_indication": "binaryedge.io",
         "tls_wrapped_protocol": "PLAIN_TLS",
-        "xmpp_to_hostname": null
+        "xmpp_to_hostname": null,
+        "ja3": "771,4865,51-43",
+        "ja3_digest": "eb1d94daa7e0344597e756a1fb6e7054"
       },
       "vulnerabilities": {
         "compression": {
