@@ -32,7 +32,11 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
         "mac": ["string"],
         "compression": ["string"],
       },
-      "banner": "string"
+      "banner": "string",
+      "hassh": {
+        "hassh": "string",
+        "hassh_algorithms": "string"
+      }
     }
   }
 }
@@ -46,13 +50,16 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
 		* key - Public Key
 		* fingerprint - Fingerprint of the key
 		* length - Length of the key
-  * **algorithms** - Supported Algorithms that the target server report.
-    * kex
-		* server_host_key
-		* encryption
-		* mac
-		* compression
+  * **algorithms** - Supported Algorithms that the target server reports.
+    * kex - Key Exchange Algorithms
+		* server_host_key - Server Host Key Signature Algorithms
+		* encryption - Encryption Algorithms
+		* mac - Message Authentication Code Algorithms
+		* compression - Compressiom Algorithms
   * **banner** - Server response identifying service.
+  * **hassh** - Network fingerprinting standard which can be used to identify specific Client and Server SSH implementations. See https://github.com/salesforce/hassh for details.
+    * hassh - MD5 fingerprint based on the algorithms supported by the server.
+    * hassh_algorithms - String used to generate the MD5 fingerprint, containing the algorithms supported by the server.
 
 ## SSH Event Example
 
@@ -147,7 +154,11 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
           "zlib@openssh.com"
         ]
       },
-      "banner": "SSH-2.0-OpenSSH_6.6.1p1"
+      "banner": "SSH-2.0-OpenSSH_6.6.1p1",
+      "hassh": {
+        "hassh_algorithms": "curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1;aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se;hmac-md5-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96;none,zlib@openssh.com",
+        "hassh": "ba6d3d2aecbd0d91b01dfa7828110d70"
+      }
     }
   }
 }
