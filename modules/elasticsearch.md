@@ -20,7 +20,15 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
   "result": {
     "data": {
       "cluster_name": "string",
+      "cluster_nodes": "int",
       "node_name": "string",
+      "indices": [
+        {
+          "index_name": "string",
+          "docs": "int",
+          "size_in_bytes": "int"
+        }
+      ],
       "name": "string",
       "transport_address": "string",
       "host": "string",
@@ -37,7 +45,7 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
           "type": "string"
         },
         "default": {
-          "path:" {
+          "path": {
             "data": "string",
             "logs": "string",
             "conf": "string"
@@ -254,7 +262,15 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
   "result": {
     "data": {
       "cluster_name": "string",
+      "cluster_nodes": "int",
       "node_name": "string",
+      "indices": [
+        {
+          "index_name": "string",
+          "docs": "int",
+          "size_in_bytes": "int"
+        }
+      ],
       "name": "string",
       "transport_address": "string",
       "host": "string",
@@ -476,6 +492,11 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
 *Variables description from https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html*
 
 * cluster_name - the cluster's name
+* cluster_nodes - number of nodes in the cluster
+* indices - list of indices currently stored in the cluster
+    * index_name - name of the index
+    * docs - number of documents in the index
+    * size_in_bytes - size of the index
 * node_name - the node's name
 * name - the database's name
 * transport_address - host and port where transport HTTP connections are accepted
@@ -498,228 +519,233 @@ curl -v -L https://api.binaryedge.io/v1/tasks -d '{"type":"scan", "options":[{"t
 
 ```json
 {
-  ...
   "result": {
     "data": {
-      "cluster_name": "eamon-database",
-      "node_name": "VxD8WziwSeqcZjf7B5Eh8A",
-      "name": "Vagabond",
-      "transport_address": "XXX.XXX.XXX.XXX:9300",
-      "host": "XXX.XXX.XXX.XXX",
-      "ip": "XXX.XXX.XXX.XXX",
-      "version": "2.3.3",
-      "build": "218bdf1",
-      "http_address": "XXX.XXX.XXX.XXX:9200",
+      "indices": [
+        {
+          "size_in_bytes": 4783,
+          "docs": 1,
+          "index_name": "readme"
+        },
+        {
+          "size_in_bytes": 74938880,
+          "docs": 20842,
+          "index_name": "atom"
+        }
+      ],
+      "plugins": [],
+      "http": {
+        "max_content_length_in_bytes": 104857600,
+        "publish_address": "inet[/XXX.XXX.XXX.XXX:9200]",
+        "bound_address": "inet[/0:0:0:0:0:0:0:0:9200]"
+      },
+      "transport": {
+        "profiles": {},
+        "publish_address": "inet[/XXX.XXX.XXX.XXX:9300]",
+        "bound_address": "inet[/0:0:0:0:0:0:0:0:9300]"
+      },
+      "version": "1.7.6",
+      "ip": "127.0.1.1",
+      "host": "gir5",
+      "transport_address": "inet[/XXX.XXX.XXX.XXX:9300]",
+      "name": "Karolina Dean",
+      "node_name": "ZWxo6SmoTGKxzsW1ArD9XQ",
+      "cluster_nodes": 1,
+      "cluster_name": "elasticsearch",
+      "build": "c730b59",
+      "http_address": "inet[/XXX.XXX.XXX.XXX:9200]",
       "settings": {
+        "config": "/etc/elasticsearch/elasticsearch.yml",
+        "config.ignore_system_properties": "true",
+        "foreground": "yes",
         "client": {
           "type": "node"
         },
-        "name": "Vagabond",
-        "path": {
-          "logs": "/usr/local/elasticsearch/logs",
-          "home": "/usr/local/elasticsearch"
-        },
+        "name": "Karolina Dean",
         "cluster": {
-          "name": "eamon-database"
+          "name": "elasticsearch"
         },
-        "cloud": {
-          "aws": {
-            "region": "us-east-1"
-          }
+        "path": {
+          "home": "/usr/share/elasticsearch",
+          "logs": "/var/log/elasticsearch",
+          "data": "/var/lib/elasticsearch",
+          "conf": "/etc/elasticsearch"
         },
-        "config": {
-          "ignore_system_properties": "true"
-        },
-        "discovery": {
-          "type": "ec2"
-        },
-        "network": {
-          "host": "0.0.0.0"
-        },
-        "foreground": "false"
+        "pidfile": "/var/run/elasticsearch/elasticsearch.pid"
       },
       "os": {
-        "refresh_interval_in_millis": 1000,
-        "name": "Linux",
-        "arch": "amd64",
-        "version": "3.13.0-48-generic",
-        "available_processors": 2,
-        "allocated_processors": 2
+        "swap": {
+          "total_in_bytes": 4292866048
+        },
+        "mem": {
+          "total_in_bytes": 5200592896
+        },
+        "cpu": {
+          "cache_size_in_bytes": 6144,
+          "cores_per_socket": 1,
+          "total_sockets": 1,
+          "total_cores": 1,
+          "mhz": 2327,
+          "model": "Xeon",
+          "vendor": "Intel"
+        },
+        "available_processors": 1,
+        "refresh_interval_in_millis": 1000
       },
       "process": {
-        "refresh_interval_in_millis": 1000,
-        "id": 1930,
-        "mlockall": false
+        "mlockall": false,
+        "max_file_descriptors": 65535,
+        "id": 3501,
+        "refresh_interval_in_millis": 1000
       },
       "jvm": {
-        "pid": 1930,
-        "version": "1.7.0_101",
+        "memory_pools": [
+          "Code Cache",
+          "Metaspace",
+          "Compressed Class Space",
+          "Par Eden Space",
+          "Par Survivor Space",
+          "CMS Old Gen"
+        ],
+        "pid": 3501,
+        "version": "1.8.0_181",
         "vm_name": "OpenJDK 64-Bit Server VM",
-        "vm_version": "24.95-b01",
+        "vm_version": "25.181-b13",
         "vm_vendor": "Oracle Corporation",
-        "start_time_in_millis": 1466264171719,
+        "start_time_in_millis": 1541638803839,
         "mem": {
-          "heap_init_in_bytes": 268435456,
-          "heap_max_in_bytes": 1056309248,
-          "non_heap_init_in_bytes": 24313856,
-          "non_heap_max_in_bytes": 224395264,
-          "direct_max_in_bytes": 1056309248
+          "direct_max_in_bytes": 1065025536,
+          "non_heap_max_in_bytes": 0,
+          "non_heap_init_in_bytes": 2555904,
+          "heap_max_in_bytes": 1065025536,
+          "heap_init_in_bytes": 268435456
         },
         "gc_collectors": [
           "ParNew",
           "ConcurrentMarkSweep"
-        ],
-        "memory_pools": [
-          "Code Cache",
-          "Par Eden Space",
-          "Par Survivor Space",
-          "CMS Old Gen",
-          "CMS Perm Gen"
-        ],
-        "using_compressed_ordinary_object_pointers": "true"
+        ]
       },
       "thread_pool": {
-        "generic": {
-          "type": "cached",
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "index": {
-          "type": "fixed",
-          "min": 2,
-          "max": 2,
-          "queue_size": 200
-        },
-        "fetch_shard_store": {
-          "type": "scaling",
-          "min": 1,
-          "max": 4,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "get": {
-          "type": "fixed",
-          "min": 2,
-          "max": 2,
-          "queue_size": 1000
-        },
         "snapshot": {
-          "type": "scaling",
-          "min": 1,
-          "max": 1,
+          "queue_size": -1,
           "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "force_merge": {
-          "type": "fixed",
-          "min": 1,
           "max": 1,
-          "queue_size": -1
-        },
-        "suggest": {
-          "type": "fixed",
-          "min": 2,
-          "max": 2,
-          "queue_size": 1000
-        },
-        "bulk": {
-          "type": "fixed",
-          "min": 2,
-          "max": 2,
-          "queue_size": 50
+          "min": 1,
+          "type": "scaling"
         },
         "warmer": {
-          "type": "scaling",
-          "min": 1,
-          "max": 1,
+          "queue_size": -1,
           "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "flush": {
-          "type": "scaling",
-          "min": 1,
           "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "search": {
-          "type": "fixed",
-          "min": 4,
-          "max": 4,
-          "queue_size": 1000
-        },
-        "fetch_shard_started": {
-          "type": "scaling",
           "min": 1,
-          "max": 4,
-          "keep_alive": "5m",
-          "queue_size": -1
+          "type": "scaling"
         },
-        "listener": {
-          "type": "fixed",
-          "min": 1,
+        "generic": {
+          "queue_size": -1,
+          "keep_alive": "30s",
+          "type": "cached"
+        },
+        "suggest": {
+          "queue_size": "1k",
           "max": 1,
-          "queue_size": -1
-        },
-        "percolate": {
-          "type": "fixed",
-          "min": 2,
-          "max": 2,
-          "queue_size": 1000
+          "min": 1,
+          "type": "fixed"
         },
         "refresh": {
-          "type": "scaling",
-          "min": 1,
-          "max": 1,
+          "queue_size": -1,
           "keep_alive": "5m",
-          "queue_size": -1
+          "max": 1,
+          "min": 1,
+          "type": "scaling"
+        },
+        "index": {
+          "queue_size": "200",
+          "max": 1,
+          "min": 1,
+          "type": "fixed"
+        },
+        "listener": {
+          "queue_size": -1,
+          "max": 1,
+          "min": 1,
+          "type": "fixed"
+        },
+        "fetch_shard_started": {
+          "queue_size": -1,
+          "keep_alive": "5m",
+          "max": 2,
+          "min": 1,
+          "type": "scaling"
+        },
+        "percolate": {
+          "queue_size": "1k",
+          "max": 1,
+          "min": 1,
+          "type": "fixed"
+        },
+        "search": {
+          "queue_size": "1k",
+          "max": 2,
+          "min": 2,
+          "type": "fixed"
+        },
+        "flush": {
+          "queue_size": -1,
+          "keep_alive": "5m",
+          "max": 1,
+          "min": 1,
+          "type": "scaling"
+        },
+        "optimize": {
+          "queue_size": -1,
+          "max": 1,
+          "min": 1,
+          "type": "fixed"
+        },
+        "fetch_shard_store": {
+          "queue_size": -1,
+          "keep_alive": "5m",
+          "max": 2,
+          "min": 1,
+          "type": "scaling"
         },
         "management": {
-          "type": "scaling",
-          "min": 1,
-          "max": 5,
+          "queue_size": -1,
           "keep_alive": "5m",
-          "queue_size": -1
-        }
-      },
-      "transport": {
-        "bound_address": [
-          "[::]:9300"
-        ],
-        "publish_address": "XXX.XXX.XXX.XXX:9300",
-        "profiles": {}
-      },
-      "http": {
-        "bound_address": [
-          "[::]:9200"
-        ],
-        "publish_address": "XXX.XXX.XXX.XXX:9200",
-        "max_content_length_in_bytes": 104857600
-      },
-      "plugins": [
-        {
-          "name": "cloud-aws",
-          "version": "2.3.3",
-          "description": "The Amazon Web Service (AWS) Cloud plugin allows to use AWS API for the unicast discovery mechanism and add S3 repositories.",
-          "jvm": true,
-          "classname": "org.elasticsearch.plugin.cloud.aws.CloudAwsPlugin",
-          "isolated": true,
-          "site": false
-        }
-      ],
-      "modules": [
-        {
-          "name": "lang-expression",
-          "version": "2.3.3",
-          "description": "Lucene expressions integration for Elasticsearch",
-          "jvm": true,
-          "classname": "org.elasticsearch.script.expression.ExpressionPlugin",
-          "isolated": true,
-          "site": false
+          "max": 5,
+          "min": 1,
+          "type": "scaling"
         },
-        ...
-      ]
+        "get": {
+          "queue_size": "1k",
+          "max": 1,
+          "min": 1,
+          "type": "fixed"
+        },
+        "merge": {
+          "queue_size": -1,
+          "keep_alive": "5m",
+          "max": 1,
+          "min": 1,
+          "type": "scaling"
+        },
+        "bulk": {
+          "queue_size": "50",
+          "max": 1,
+          "min": 1,
+          "type": "fixed"
+        }
+      },
+      "network": {
+        "primary_interface": {
+          "mac_address": "00:50:56:85:06:2B",
+          "name": "eth0",
+          "address": "10.50.0.120"
+        },
+        "refresh_interval_in_millis": 5000
+      }
     }
-  }
+  },
+  ...
 }
 ```
