@@ -1,5 +1,9 @@
 # How to use BinaryEdge’s API
 
+
+New Documentation URL : https://docs.binaryedge.io/api-v1/
+
+
 <p align="center"><img src ="https://dl.dropboxusercontent.com/s/sgwwkchh59nrhgk/how_to_use_api_2.png?dl=0" /></p>
 
 Note: all requests are identified by Job ID and are shown in the stream window.
