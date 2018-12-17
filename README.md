@@ -965,17 +965,35 @@ $ curl https://api.binaryedge.io/v1/query/image/search\?similar\=f1b0a311af803ea
 Get all dataleaks for a given email.
 
 ```
-$ curl https://api.binaryedge.io/v1/dataleaks/check/captain.morgan@gmail.com -H 'X-Token:InsertYourClientToken'
+$ curl https://api.binaryedge.io/v1/dataleaks/check/user@example.com -H 'X-Token:InsertYourClientToken'
 ```
 
 ##### Response
 
 ```json
 {
-  "events": [
-    "ashleymadison"
-  ],
-  "total_records": 1
+   "total_records":19,
+   "events":[
+      "antipublic",
+      "ashleymadison",
+      "breachcompilation",
+      "cannabis",
+      "customerslive",
+      "dropbox",
+      "exploitin",
+      "fling",
+      "imesh",
+      "lastfm",
+      "linkedin",
+      "mate1",
+      "neopets",
+      "pastebin",
+      "rsboards",
+      "tianya",
+      "torrentinvites",
+      "tumblr",
+      "vk"
+   ]
 }
 ```
 
@@ -994,7 +1012,7 @@ Available options:
     * jsonl=1
 
 ```
-$ curl https://api.binaryedge.io/v1/dataleaks/organization/duckduckgo.com -H 'X-Token:InsertYourClientToken'
+$ curl https://api.binaryedge.io/v1/dataleaks/organization/example.com -H 'X-Token:InsertYourClientToken'
 ```
 
 ##### Response
@@ -1003,7 +1021,7 @@ $ curl https://api.binaryedge.io/v1/dataleaks/organization/duckduckgo.com -H 'X-
 {
   "events": [
     {
-      "user": "rurururugogo",
+      "user": "user",
       "leak": "ashleymadison"
     }
   ],
